@@ -1,0 +1,16 @@
+﻿@using EFDatatable.Net.Models
+
+@{
+    ViewBag.Title = "DataTable";
+}
+
+<h2>DataTable</h2>
+
+@(Html.EK().GridFor<Person>()
+        .Name("PersonGrid")
+        .Columns(cols =>
+        {
+            cols.Field(a => a.Id).Visible(false);
+            cols.Field(a => a.Name).Title("First Name");
+        })
+        )
