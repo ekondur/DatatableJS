@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDatatable.Utilities", "EFDatatable.Utilities\EFDatatable.Utilities.csproj", "{14E776DE-6441-452F-98D0-4DEF45B24B7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDatatable.Models", "EFDatatable.Models\EFDatatable.Models.csproj", "{C9537E36-DAFA-401C-AA94-39EFA68364B6}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14E776DE-6441-452F-98D0-4DEF45B24B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E776DE-6441-452F-98D0-4DEF45B24B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E776DE-6441-452F-98D0-4DEF45B24B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E776DE-6441-452F-98D0-4DEF45B24B7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9537E36-DAFA-401C-AA94-39EFA68364B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9537E36-DAFA-401C-AA94-39EFA68364B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9537E36-DAFA-401C-AA94-39EFA68364B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9537E36-DAFA-401C-AA94-39EFA68364B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
