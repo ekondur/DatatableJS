@@ -1,9 +1,0 @@
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\bin\Debug\netstandard2.0\EFDatatable.Utilities.deps.json
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\bin\Debug\netstandard2.0\EFDatatable.Utilities.dll
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\bin\Debug\netstandard2.0\EFDatatable.Utilities.pdb
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\obj\Debug\netstandard2.0\EFDatatable.Utilities.csprojAssemblyReference.cache
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\obj\Debug\netstandard2.0\EFDatatable.Utilities.csproj.CoreCompileInputs.cache
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\obj\Debug\netstandard2.0\EFDatatable.Utilities.AssemblyInfoInputs.cache
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\obj\Debug\netstandard2.0\EFDatatable.Utilities.AssemblyInfo.cs
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\obj\Debug\netstandard2.0\EFDatatable.Utilities.dll
-C:\Users\emrah\source\Repos\ekondur\ef-datatable.js\EFDatatable.Utilities\obj\Debug\netstandard2.0\EFDatatable.Utilities.pdb
