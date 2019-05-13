@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/EFDatatable/v15/Server/sqlite3
+/EFDatatable.Net/bin
+/.vs/EFDatatable/v15
+/EFDatatable.Net/obj/Debug
