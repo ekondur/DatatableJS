@@ -1,6 +1,8 @@
 ﻿using EFDatatable.Models.Definitions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace EFDatatable.Net.Helpers.Datatable
@@ -27,12 +29,6 @@ namespace EFDatatable.Net.Helpers.Datatable
         public GridBuilder<T> Name(string name)
         {
             _name = name;
-            return this;
-        }
-
-        public GridBuilder<T> Query(string query)
-        {
-            _query = query;
             return this;
         }
 
@@ -73,6 +69,58 @@ namespace EFDatatable.Net.Helpers.Datatable
             _leftColumns = leftColumns;
             _rightColumns = rightColums;
             return this;
+        }
+
+        public MvcHtmlString Render()
+        {
+            var html = $@"
+                    <table id=""{_name}"" class=""table table-bordered table-striped"">
+                        <thead>
+                            <tr>
+                                {string.Join(Environment.NewLine, _columns.Select(a => string.Format("<th>{0}</th>", a.Title)))}
+                            </tr>
+                        </thead>
+                    </table>
+                    <script>
+                    $(document).ready(function () {{
+                        $('#{_name}').DataTable( {{
+                            processing:true,
+                            serverSide:true,
+                            fixedColumns: {{ 
+                                leftColumns: {_leftColumns},
+                                rightColumns: {_rightColumns}
+                            }},
+                            order:[],
+                            orderdering: {_ordering.ToLowString()},
+                            searching: {_searching.ToLowString()},
+                            ajax: {{
+                                url: ""{_url}"",
+                                type: ""POST"",
+                                data: {GetDataStr()}
+                            }},
+                            columns: [{string.Join(", ", _columns.Select(a => $@"{{ 
+                                'data': '{a.Data}',
+                                'orderable': {a.Orderable.ToLowString()},
+                                'searchable': {a.Searchable.ToLowString()},
+                                'className': '{a.ClassName}',
+                                'visible': {a.Visible.ToLowString()},
+                                'width': '{a.Width}%',
+                                    {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ return {a.Render}; }}")}
+                            }}"))}]
+                        }});
+                    }});
+                    </script>";
+
+            return new MvcHtmlString(html);
+        }
+
+        private string GetDataStr()
+        {
+            var filters = string.Format("d.filters = {0}", JsonConvert.SerializeObject(_filters));
+
+            return $@"function (d) {{
+                    {(_filters.Count > 0 ? filters : string.Empty)}
+                    }}";
         }
     }
 }

@@ -10,7 +10,9 @@
         .Name("PersonGrid")
         .Columns(cols =>
         {
-            cols.Field(a => a.Id).Visible(false);
+            cols.Field(a => a.Id).Visible(true).Orderable(false);
             cols.Field(a => a.Name).Title("First Name");
         })
+        .URL(Url.Action("GetList"))
+        .Render()
         )
