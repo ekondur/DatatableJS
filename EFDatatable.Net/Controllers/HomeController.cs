@@ -26,9 +26,25 @@ namespace EFDatatable.Net.Controllers
         {
             var result = new DataResult<Person>();
             result.draw = request.draw;
-            result.data = new List<Person> { new Person { Id = 1, Name = "Jon Snow" } };
-            result.recordsFiltered = 1;
-            result.recordsTotal = 1;
+            result.data = new List<Person> {
+                new Person { Id = 1, Name = "Jon Snow" },
+                new Person { Id = 2, Name = "Ned Stark" },
+                new Person { Id = 3, Name = "Arya Stark" },
+                new Person { Id = 4, Name = "Daenerys Targaryen" },
+                new Person { Id = 5, Name = "Bran Stark" },
+                new Person { Id = 6, Name = "Jamie Lannister" },
+                new Person { Id = 7, Name = "Sansa Stark" },
+                new Person { Id = 8, Name = "Tyrion Lannister" },
+                new Person { Id = 9, Name = "Sandor Clegane" },
+                new Person { Id = 10, Name = "Lord Varys" },
+                new Person { Id = 11, Name = "Cersei Lannister" }
+            };
+            result.recordsTotal = result.data.Count;
+            result.recordsFiltered = result.data.Count;
+            if (request.draw > 0)
+            {
+                result.data = result.data.Skip(request.start).Take(request.length).ToList();
+            }
             return Json(result);
         }
     }

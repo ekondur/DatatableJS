@@ -17,6 +17,8 @@ namespace EFDatatable.Net.Helpers.Datatable
         private bool _searching { get; set; } = true;
         private int _leftColumns { get; set; }
         private int _rightColumns { get; set; }
+        private bool _serverSide { get; set; }
+        private string _method { get; set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -46,9 +48,10 @@ namespace EFDatatable.Net.Helpers.Datatable
             return this;
         }
 
-        public GridBuilder<T> URL(string url)
+        public GridBuilder<T> URL(string url, string method = "GET")
         {
             _url = url;
+            _method = method;
             return this;
         }
 
@@ -71,6 +74,12 @@ namespace EFDatatable.Net.Helpers.Datatable
             return this;
         }
 
+        public GridBuilder<T> ServerSide(bool serverSide)
+        {
+            _serverSide = serverSide;
+            return this;
+        }
+
         public MvcHtmlString Render()
         {
             var html = $@"
@@ -85,7 +94,7 @@ namespace EFDatatable.Net.Helpers.Datatable
                     $(document).ready(function () {{
                         $('#{_name}').DataTable( {{
                             processing:true,
-                            serverSide:true,
+                            serverSide:{_serverSide.ToLowString()},
                             fixedColumns: {{ 
                                 leftColumns: {_leftColumns},
                                 rightColumns: {_rightColumns}
@@ -95,7 +104,7 @@ namespace EFDatatable.Net.Helpers.Datatable
                             searching: {_searching.ToLowString()},
                             ajax: {{
                                 url: ""{_url}"",
-                                type: ""POST"",
+                                type: ""{_method}"",
                                 data: {GetDataStr()}
                             }},
                             columns: [{string.Join(", ", _columns.Select(a => $@"{{ 
