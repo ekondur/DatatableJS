@@ -28,6 +28,12 @@ namespace EFDatatable.Net.Controllers
             return View();
         }
 
+        public JsonResult GetDataResult(DataRequest request)
+        {
+            var result = ctx.Customers.ToDataResult(request);
+            return Json(result);
+        }
+
         public JsonResult GetDataList(DataRequest request)
         {
             var result = new DataResult<Customer>();
@@ -40,7 +46,6 @@ namespace EFDatatable.Net.Controllers
                 result.data = result.data.Skip(request.start).Take(request.length).ToList();
             }
             return Json(result);
-
         }
 
         [HttpPost]

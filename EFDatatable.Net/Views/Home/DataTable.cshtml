@@ -13,7 +13,7 @@
             cols.Field(a => a.Id).Visible(true).Orderable(false);
             cols.Field(a => a.Name).Title("First Name");
         })
-        .URL(Url.Action("GetDataList"), "POST")
+        .URL(Url.Action("GetDataResult"), "POST")
         .ServerSide(true)
         .Render()
         )
