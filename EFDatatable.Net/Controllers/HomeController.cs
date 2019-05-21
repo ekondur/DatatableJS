@@ -1,5 +1,7 @@
 ﻿using EFDatatable.Models.Data;
 using EFDatatable.Net.Models;
+using EFDatatable.Sql;
+using EFDatatable.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,11 @@ namespace EFDatatable.Net.Controllers
 {
     public class HomeController : Controller
     {
+        EFContext ctx;
+        public HomeController()
+        {
+            ctx = new EFContext();
+        }
         // GET: Datatable
         public ActionResult Index()
         {
@@ -19,6 +26,21 @@ namespace EFDatatable.Net.Controllers
         public ActionResult DataTable()
         {
             return View();
+        }
+
+        public JsonResult GetDataList(DataRequest request)
+        {
+            var result = new DataResult<Customer>();
+            result.draw = request.draw;
+            result.data = ctx.Customers.ToList();
+            result.recordsTotal = result.data.Count;
+            result.recordsFiltered = result.data.Count;
+            if (request.draw > 0)
+            {
+                result.data = result.data.Skip(request.start).Take(request.length).ToList();
+            }
+            return Json(result);
+
         }
 
         [HttpPost]
@@ -47,5 +69,11 @@ namespace EFDatatable.Net.Controllers
             }
             return Json(result);
         }
+        protected override void Dispose(bool disposing)
+        {
+            ctx.Dispose();
+            base.Dispose(disposing);
+        }
+
     }
 }
