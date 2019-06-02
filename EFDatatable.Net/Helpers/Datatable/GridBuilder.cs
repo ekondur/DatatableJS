@@ -19,6 +19,7 @@ namespace EFDatatable.Net.Helpers.Datatable
         private int _rightColumns { get; set; }
         private bool _serverSide { get; set; }
         private string _method { get; set; }
+        private string _data { get; set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -80,6 +81,12 @@ namespace EFDatatable.Net.Helpers.Datatable
             return this;
         }
 
+        public GridBuilder<T> Data(string data)
+        {
+            _data = data;
+            return this;
+        }
+
         public MvcHtmlString Render()
         {
             var html = $@"
@@ -129,6 +136,7 @@ namespace EFDatatable.Net.Helpers.Datatable
 
             return $@"function (d) {{
                     {(_filters.Count > 0 ? filters : string.Empty)}
+                    {(string.IsNullOrEmpty(_data) ? string.Empty : string.Format(", d.data = {0}()", _data))}
                     }}";
         }
     }

@@ -14,7 +14,18 @@
             cols.Field(a => a.Id).Visible(true).Orderable(false);
             cols.Field(a => a.Name).Title("First Name");
         })
+        .Filters(filter =>
+        {
+            filter.Add(a => a.Id).IsEqual(1);
+        })
+        .Data("AddParam")
         .URL(Url.Action("GetDataResult"), "POST")
         .ServerSide(true)
         .Render()
         )
+
+<script>
+    function AddParam() {
+        return { Param1: "test1", Param2: true, Param3: 5 };
+    }
+</script>

@@ -123,6 +123,7 @@
     <Compile Include="Helpers\Datatable\FilterBuilder.cs" />
     <Compile Include="Helpers\Datatable\GridBuilder.cs" />
     <Compile Include="Helpers\EKHelper.cs" />
+    <Compile Include="Models\AddData.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

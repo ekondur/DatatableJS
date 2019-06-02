@@ -24,14 +24,13 @@ namespace EFDatatable.Net
 
                 foreach (var item in request.order)
                 {
-                    var prop = typeof(T).GetProperty(request.columns[item.column].data);
                     if (item.dir == "asc")
                     {
-                        query = query.OrderBy(prop.Name);
+                        query = query.OrderBy(request.columns[item.column].data);
                     }
                     else
                     {
-                        query = query.OrderByDescending(prop.Name);
+                        query = query.OrderByDescending(request.columns[item.column].data);
                     }
                 }
             }
@@ -41,26 +40,22 @@ namespace EFDatatable.Net
 
         private static IOrderedQueryable<T> OrderBy<T>(this IQueryable<T> query, string memberName)
         {
-            var typeParams = new ParameterExpression[] { Expression.Parameter(typeof(T), "") };
-            var pi = typeof(T).GetProperty(memberName);
-            return (IOrderedQueryable<T>)query.Provider.CreateQuery(
-                Expression.Call(
-                    typeof(Queryable),
-                    "OrderBy",
-                    new Type[] { typeof(T), pi.PropertyType },
-                    query.Expression,
-                    Expression.Lambda(Expression.Property(typeParams[0], pi), typeParams))
-            );
+            return OrderByCreate(query, memberName, "OrderBy");
         }
 
         private static IOrderedQueryable<T> OrderByDescending<T>(this IQueryable<T> query, string memberName)
+        {
+            return OrderByCreate(query, memberName, "OrderByDescending");
+        }
+
+        private static IOrderedQueryable<T> OrderByCreate<T>(this IQueryable<T> query, string memberName, string direction)
         {
             var typeParams = new ParameterExpression[] { Expression.Parameter(typeof(T), "") };
             var pi = typeof(T).GetProperty(memberName);
             return (IOrderedQueryable<T>)query.Provider.CreateQuery(
                 Expression.Call(
                     typeof(Queryable),
-                    "OrderByDescending",
+                    direction,
                     new Type[] { typeof(T), pi.PropertyType },
                     query.Expression,
                     Expression.Lambda(Expression.Property(typeParams[0], pi), typeParams))
