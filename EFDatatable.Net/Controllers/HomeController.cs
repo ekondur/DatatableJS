@@ -28,7 +28,7 @@ namespace EFDatatable.Net.Controllers
             return View();
         }
 
-        public JsonResult GetDataResult(DataRequest request)
+        public JsonResult GetDataResult(DataRequest request, AddData data)
         {
             var result = ctx.Customers.ToDataResult(request);
             return Json(result);

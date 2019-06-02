@@ -15,7 +15,7 @@ namespace EFDatatable.Net.Helpers.Datatable
             _grid = grid;
         }
 
-        public FilterBuilder<T> Add<TProp>(Expression<Func<TProp>> property)
+        public FilterBuilder<T> Add<TProp>(Expression<Func<T, TProp>> property)
         {
             _filter = new FilterDefinition
             {
@@ -24,7 +24,7 @@ namespace EFDatatable.Net.Helpers.Datatable
             return this;
         }
 
-        public FilterBuilder<T> IsEqual(string value)
+        public FilterBuilder<T> IsEqual(object value)
         {
             _filter.Operand = "=";
             _filter.Value = value;
@@ -32,7 +32,7 @@ namespace EFDatatable.Net.Helpers.Datatable
             return this;
         }
 
-        public FilterBuilder<T> IsNotEqual(string value)
+        public FilterBuilder<T> IsNotEqual(object value)
         {
             _filter.Operand = "<>";
             _filter.Value = value;
