@@ -8,6 +8,7 @@
 
 @(Html.EK().GridFor<Person>()
         .Name("PersonGrid")
+        .Searching(false)
         .Columns(cols =>
         {
             cols.Field(a => a.Id).Visible(true).Orderable(false);
