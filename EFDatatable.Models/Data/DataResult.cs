@@ -2,7 +2,7 @@
 
 namespace EFDatatable.Models.Data
 {
-    public class DataResult<T>
+    public class DataResult<T> where T : class
     {
         public int draw { get; set; }
         public long recordsTotal { get; set; }
