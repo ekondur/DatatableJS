@@ -3,7 +3,19 @@
     public class FilterDefinition
     {
         public string Field { get; set; }
-        public object Value { get; set; }
-        public string Operand { get; set; }
+        public string Value { get; set; }
+        public Operand Operand { get; set; }
+    }
+
+    public enum Operand
+    {
+        Equals,
+        GreaterThan,
+        LessThan,
+        GreaterThanOrEqual,
+        LessThanOrEqual,
+        Contains,
+        StartsWith,
+        EndsWith
     }
 }

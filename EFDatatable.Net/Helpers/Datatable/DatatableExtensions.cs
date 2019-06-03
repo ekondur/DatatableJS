@@ -1,4 +1,6 @@
 ﻿using EFDatatable.Models.Data;
+using EFDatatable.Models.Definitions;
+using EFDatatable.Net.Helpers;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -32,6 +34,22 @@ namespace EFDatatable.Net
                     {
                         query = query.OrderByDescending(request.columns[item.column].data);
                     }
+                }
+
+                foreach (var item in request.filters)
+                {
+                    var exp = ExpressionBuilder
+                        .GetExpression<T>(new FilterDefinition
+                        {
+                            Operand = (Operand)item.Operand,
+                            Field = item.Field,
+                            Value = item.Value
+                        });
+                    query = query.Where(exp);
+                }
+
+                if (!string.IsNullOrEmpty(request.search.value))
+                {
                 }
             }
             result.data = query.ToList();

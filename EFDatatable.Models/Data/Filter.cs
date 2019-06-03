@@ -3,7 +3,7 @@
     public class Filter
     {
         public string Field { get; set; }
-        public object Value { get; set; }
-        public string Operand { get; set; }
+        public string Value { get; set; }
+        public int Operand { get; set; }
     }
 }
