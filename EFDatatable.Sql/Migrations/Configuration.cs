@@ -18,8 +18,8 @@ namespace EFDatatable.Sql.Migrations
             //  This method will be called after migrating to the latest version.
             using (var ctx = new EFContext())
             {
-                ctx.Customers.AddOrUpdate(new Customer { Id = 1, Name = "John Snow" });
-                ctx.Customers.AddOrUpdate(new Customer { Id = 1, Name = "Arya Stark" });
+                ctx.Customers.AddOrUpdate(new Customer { Id = 1, Name = "Jon Snow" });
+                ctx.Customers.AddOrUpdate(new Customer { Id = 2, Name = "Arya Stark" });
                 ctx.SaveChanges();
             }
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

@@ -153,6 +153,7 @@
     </Compile>
     <Compile Include="Helpers\Datatable\ColumnBuilder.cs" />
     <Compile Include="Helpers\Datatable\DatatableExtensions.cs" />
+    <Compile Include="Helpers\ExpressionBuilder.cs" />
     <Compile Include="Helpers\Datatable\FilterBuilder.cs" />
     <Compile Include="Helpers\Datatable\GridBuilder.cs" />
     <Compile Include="Helpers\EKHelper.cs" />
