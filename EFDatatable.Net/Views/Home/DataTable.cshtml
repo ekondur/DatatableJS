@@ -11,13 +11,12 @@
         .Searching(true)
         .Columns(cols =>
         {
-            cols.Field(a => a.Id).Visible(true).Orderable(false);
+            cols.Field(a => a.Id).Visible(true).Orderable(false).Searchable(true);
             cols.Field(a => a.Name).Title("First Name");
         })
         .Filters(filter =>
         {
-            filter.Add(a => a.Name).IsEqual("Jon Snow");
-            filter.Add(a => a.Id).IsEqual(2);
+            filter.Add(a => a.Id).GreaterThanOrEqual(1);
         })
         .Data("AddParam")
         .URL(Url.Action("GetDataResult"), "POST")

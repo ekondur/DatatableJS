@@ -132,11 +132,11 @@ namespace EFDatatable.Net.Helpers.Datatable
 
         private string GetDataStr()
         {
-            var filters = string.Format("d.filters = {0}", JsonConvert.SerializeObject(_filters));
+            var filters = string.Format("d.filters = {0}{1}", JsonConvert.SerializeObject(_filters), string.IsNullOrEmpty(_data) ? string.Empty : ",");
 
             return $@"function (d) {{
                     {(_filters.Count > 0 ? filters : string.Empty)}
-                    {(string.IsNullOrEmpty(_data) ? string.Empty : string.Format(", d.data = {0}()", _data))}
+                    {(string.IsNullOrEmpty(_data) ? string.Empty : string.Format("d.data = {0}()", _data))}
                     }}";
         }
     }
