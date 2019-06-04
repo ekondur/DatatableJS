@@ -1,5 +1,6 @@
 ﻿using EFDatatable.Models.Definitions;
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -20,15 +21,17 @@ namespace EFDatatable.Net.Helpers
 
             ParameterExpression param = Expression.Parameter(typeof(T), "t");
             var exp = GetExpression<T>(param, filter);
+            if (exp == null) return null;
             return Expression.Lambda<Func<T, bool>>(exp, param);
         }
 
         private static Expression GetExpression<T>(ParameterExpression param, FilterDefinition filter)
         {
             MemberExpression member = Expression.Property(param, filter.Field);
-            var cType = ConvertDynamic(Type.GetTypeCode(member.Type), filter.Value);          
+            var cType = ConvertDynamic(Type.GetTypeCode(member.Type), filter.Value);
+            if (cType == null) return null;
             ConstantExpression constant = Expression.Constant(cType);
-            
+
             switch (filter.Operand)
             {
                 case Operand.Equals:
@@ -60,45 +63,79 @@ namespace EFDatatable.Net.Helpers
 
         private static object ConvertDynamic(TypeCode code, string value)
         {
-            switch (code)
+            try
             {
-                case TypeCode.Empty:
-                    return string.Empty;
-                case TypeCode.Object:
-                    return value;
-                case TypeCode.Boolean:
-                    return Convert.ToBoolean(value);
-                case TypeCode.Char:
-                    return Convert.ToChar(value);
-                case TypeCode.SByte:
-                    return Convert.ToSByte(value);
-                case TypeCode.Byte:
-                    return Convert.ToByte(value);
-                case TypeCode.Int16:
-                    return Convert.ToInt16(value);
-                case TypeCode.UInt16:
-                    return Convert.ToUInt16(value);
-                case TypeCode.Int32:
-                    return Convert.ToInt32(value);
-                case TypeCode.UInt32:
-                    return Convert.ToUInt32(value);
-                case TypeCode.Int64:
-                    return Convert.ToInt64(value);
-                case TypeCode.UInt64:
-                    return Convert.ToUInt64(value);
-                case TypeCode.Single:
-                    return Convert.ToSingle(value);
-                case TypeCode.Double:
-                    return Convert.ToDouble(value);
-                case TypeCode.Decimal:
-                    return Convert.ToDecimal(value);
-                case TypeCode.DateTime:
-                    return Convert.ToDateTime(value);
-                case TypeCode.String:
-                    return value;
-                default:
-                    return null;
+                switch (code)
+                {
+                    case TypeCode.Empty:
+                        return string.Empty;
+                    case TypeCode.Object:
+                        return value;
+                    case TypeCode.Boolean:
+                        return Convert.ToBoolean(value);
+                    case TypeCode.Char:
+                        return Convert.ToChar(value);
+                    case TypeCode.SByte:
+                        return Convert.ToSByte(value);
+                    case TypeCode.Byte:
+                        return Convert.ToByte(value);
+                    case TypeCode.Int16:
+                        return Convert.ToInt16(value);
+                    case TypeCode.UInt16:
+                        return Convert.ToUInt16(value);
+                    case TypeCode.Int32:
+                        return Convert.ToInt32(value);
+                    case TypeCode.UInt32:
+                        return Convert.ToUInt32(value);
+                    case TypeCode.Int64:
+                        return Convert.ToInt64(value);
+                    case TypeCode.UInt64:
+                        return Convert.ToUInt64(value);
+                    case TypeCode.Single:
+                        return Convert.ToSingle(value);
+                    case TypeCode.Double:
+                        return Convert.ToDouble(value);
+                    case TypeCode.Decimal:
+                        return Convert.ToDecimal(value);
+                    case TypeCode.DateTime:
+                        return Convert.ToDateTime(value);
+                    case TypeCode.String:
+                        return value;
+                    default:
+                        return null;
+                }
             }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public static Expression<Func<T, bool>> GetExpression<T>(IList<FilterDefinition> filters)
+        {
+            if (filters.Count == 0)
+                return null;
+
+            ParameterExpression param = Expression.Parameter(typeof(T), "t");
+            Expression exp = null;
+
+            foreach (var filter in filters)
+            {
+                var expin = GetExpression<T>(param, filter);
+                if (expin != null)
+                {
+                    if (exp == null)
+                    {
+                        exp = expin;
+                    }
+                    else
+                    {
+                        exp = Expression.Or(exp, expin);
+                    }
+                }
+            }
+
+            return Expression.Lambda<Func<T, bool>>(exp, param);
         }
     }
 }

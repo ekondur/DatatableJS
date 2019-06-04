@@ -2,6 +2,7 @@
 using EFDatatable.Models.Definitions;
 using EFDatatable.Net.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -16,44 +17,69 @@ namespace EFDatatable.Net
                 draw = request.draw
             };
             result.recordsTotal = result.recordsFiltered = query.Count();
+
+            foreach (var item in request.filters)
+            {
+                var exp = GetExpression<T>((Operand)item.Operand, item.Field, item.Value);
+                if (exp != null) query = query.Where(exp);
+            }
+
+            if (!string.IsNullOrEmpty(request.search?.value))
+            {
+                Expression<Func<T, bool>> exp = null;
+                var listExp = new List<FilterDefinition>();
+                foreach (var item in request.columns.Where(a => a.searchable))
+                {
+                    ParameterExpression param = Expression.Parameter(typeof(T), "t");
+                    MemberExpression member = Expression.Property(param, item.data);
+                    var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equals;
+                    listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = request.search.value });
+                }
+                exp = ExpressionBuilder.GetExpression<T>(listExp);
+                if (exp != null) query = query.Where(exp);
+            }
+
+            if (!string.IsNullOrEmpty(request.search?.value) || request.filters.Any())
+            {
+                result.recordsFiltered = query.Count();
+            }
+
             if (request.draw > 0)
             {
-                if (request.start > 0)
+                if (!request.order.Any())
                 {
-                    query = query.Skip(request.start);
+                    query = query.OrderBy(request.columns[0].data);
                 }
-                query = query.Take(request.length);
-
-                foreach (var item in request.order)
+                else
                 {
-                    if (item.dir == "asc")
+                    foreach (var item in request.order)
                     {
-                        query = query.OrderBy(request.columns[item.column].data);
-                    }
-                    else
-                    {
-                        query = query.OrderByDescending(request.columns[item.column].data);
-                    }
-                }
-
-                foreach (var item in request.filters)
-                {
-                    var exp = ExpressionBuilder
-                        .GetExpression<T>(new FilterDefinition
+                        if (item.dir == "asc")
                         {
-                            Operand = (Operand)item.Operand,
-                            Field = item.Field,
-                            Value = item.Value
-                        });
-                    query = query.Where(exp);
+                            query = query.OrderBy(request.columns[item.column].data);
+                        }
+                        else
+                        {
+                            query = query.OrderByDescending(request.columns[item.column].data);
+                        }
+                    }
                 }
-
-                if (!string.IsNullOrEmpty(request.search.value))
-                {
-                }
+                query = query.Skip(request.start).Take(request.length);
             }
+
             result.data = query.ToList();
             return result;
+        }
+
+        private static Expression<Func<T, bool>> GetExpression<T>(Operand operand, string field, string value)
+        {
+            return ExpressionBuilder
+                .GetExpression<T>(new FilterDefinition
+                {
+                    Operand = operand,
+                    Field = field,
+                    Value = value
+                });
         }
 
         private static IOrderedQueryable<T> OrderBy<T>(this IQueryable<T> query, string memberName)
