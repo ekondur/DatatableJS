@@ -13,3 +13,5 @@
 /EFDatatable.Sql/obj/Debug
 /EFDatatable.Models/bin
 /EFDatatable.Models/obj
+/EFDatatable.Models/bin/Debug/netstandard2.0
+/EFDatatable.Models/obj/Debug/netstandard2.0
