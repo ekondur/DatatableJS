@@ -5,7 +5,11 @@
 /.vs/EFDatatable/v15/Server/sqlite3
 /EFDatatable.Net/bin
 /.vs/EFDatatable/v15
+/.vs/EFDatatable/v16
+/.vs/EFDatatable/DesignTimeBuild
 /EFDatatable.Net/obj/Debug
 /packages
 /EFDatatable.Sql/bin/Debug
 /EFDatatable.Sql/obj/Debug
+/EFDatatable.Models/bin
+/EFDatatable.Models/obj
