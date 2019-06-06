@@ -1,9 +1,8 @@
-﻿using EFDatatable.Models.Definitions;
-using System;
+﻿using System;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 
-namespace EFDatatable.Net.Helpers.Datatable
+namespace EFDatatable.Builders
 {
     public class FilterBuilder<T>
     {
@@ -95,5 +94,24 @@ namespace EFDatatable.Net.Helpers.Datatable
             _grid._filters.Add(_filter);
             return this;
         }
+    }
+
+    public class FilterDefinition
+    {
+        public string Field { get; set; }
+        public string Value { get; set; }
+        public Operand Operand { get; set; }
+    }
+
+    public enum Operand
+    {
+        Equals,
+        GreaterThan,
+        LessThan,
+        GreaterThanOrEqual,
+        LessThanOrEqual,
+        Contains,
+        StartsWith,
+        EndsWith
     }
 }

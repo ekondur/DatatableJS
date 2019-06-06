@@ -1,12 +1,10 @@
-﻿using EFDatatable.Models.Data;
-using EFDatatable.Models.Definitions;
-using EFDatatable.Net.Helpers;
+﻿using EFDatatable.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace EFDatatable.Net
+namespace EFDatatable
 {
     public static class DatatableExtensions
     {

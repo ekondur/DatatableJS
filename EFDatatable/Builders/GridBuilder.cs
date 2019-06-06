@@ -1,11 +1,10 @@
-﻿using EFDatatable.Models.Definitions;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace EFDatatable.Net.Helpers.Datatable
+namespace EFDatatable.Builders
 {
     public class GridBuilder<T>
     {

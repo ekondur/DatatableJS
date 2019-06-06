@@ -1,14 +1,14 @@
-﻿using EFDatatable.Net.Helpers.Datatable;
+﻿using EFDatatable.Builders;
 using System;
 using System.Reflection;
 using System.Web.Mvc;
 
-namespace EFDatatable.Net
+namespace EFDatatable
 {
-    public class EKHelper
+    public class EFHelper
     {
         private readonly HtmlHelper _htmlHelper;
-        public EKHelper(HtmlHelper helper)
+        public EFHelper(HtmlHelper helper)
         {
             _htmlHelper = helper;
         }
@@ -19,11 +19,11 @@ namespace EFDatatable.Net
         }
     }
 
-    public static class EKHelperExtension
+    public static class EFHelperExtension
     {
-        public static EKHelper EK(this HtmlHelper helper)
+        public static EFHelper EF(this HtmlHelper helper)
         {
-            return new EKHelper(helper);
+            return new EFHelper(helper);
         }
 
         public static string ToLowString(this bool b)

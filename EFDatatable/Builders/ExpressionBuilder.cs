@@ -1,10 +1,9 @@
-﻿using EFDatatable.Models.Definitions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace EFDatatable.Net.Helpers
+namespace EFDatatable.Builders
 {
     public class ExpressionBuilder
     {

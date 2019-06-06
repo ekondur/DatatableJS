@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EFDatatable.Models.Data
+namespace EFDatatable
 {
     public class DataResult<T> where T : class
     {

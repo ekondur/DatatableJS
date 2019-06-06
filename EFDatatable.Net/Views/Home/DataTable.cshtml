@@ -1,10 +1,11 @@
 ﻿@using EFDatatable.Net.Models
+@using EFDatatable
 
 @{
     ViewBag.Title = "DataTable";
 }
 
-@(Html.EK().GridFor<Person>()
+@(Html.EF().GridFor<Person>()
         .Name("PersonGrid")
         .Searching(true)
         .Columns(cols =>
@@ -20,7 +21,7 @@
         .URL(Url.Action("GetDataResult"), "POST")
         .ServerSide(true)
         .Render()
-        )
+)
 
 <script>
     function AddParam() {

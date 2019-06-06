@@ -1,11 +1,10 @@
-﻿using EFDatatable.Models.Definitions;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
-using System.Web.Mvc;
 using System.Reflection;
+using System.Web.Mvc;
 
-namespace EFDatatable.Net.Helpers.Datatable
+namespace EFDatatable.Builders
 {
     public class ColumnBuilder<T>
     {
@@ -80,5 +79,17 @@ namespace EFDatatable.Net.Helpers.Datatable
             _column.Render = $@"'<a href=""#"" class=""{(!string.IsNullOrEmpty(iconClass) && string.IsNullOrEmpty(btnClass) ? "btn btn-xs btn-primary" : btnClass)}"" onClick=""{onClick}(\''+data+'\')"">'+{(string.IsNullOrEmpty(text) ? (string.IsNullOrEmpty(iconClass) ? "data" : "''") : string.Format("'{0}'", text))}+'<i class=""{iconClass}""></i></a>'";
             return this;
         }
+    }
+
+    public class ColumnDefinition
+    {
+        public string Data { get; set; }
+        public string Title { get; set; }
+        public bool Visible { get; set; } = true;
+        public bool Searchable { get; set; } = true;
+        public bool Orderable { get; set; } = true;
+        public int Width { get; set; }
+        public string ClassName { get; set; } = "";
+        public string Render { get; set; } = "data";
     }
 }
