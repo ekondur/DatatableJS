@@ -8,10 +8,12 @@
 /.vs/EFDatatable/v16
 /.vs/EFDatatable/DesignTimeBuild
 /EFDatatable.Net/obj/Debug
+/EFDatatable.Net/obj/Release
 /packages
-/EFDatatable.Sql/bin/Debug
-/EFDatatable.Sql/obj/Debug
 /EFDatatable/bin/Debug
 /EFDatatable/obj/Debug
-/nuget.exe
-/Package.nuspec
+/EFDatatable/bin/Release
+/EFDatatable/obj/Release
+/EFDatatable/nuget.exe
+/EFDatatable/EFDatatable.nuspec
+/EFDatatable/EFDatatable.1.0.0.nupkg
