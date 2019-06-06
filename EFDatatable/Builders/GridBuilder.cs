@@ -11,7 +11,6 @@ namespace EFDatatable.Builders
         private readonly HtmlHelper _htmlHelper;
         private string _name { get; set; } = "DataGrid";
         private string _url { get; set; }
-        private string _query { get; set; }
         private bool _ordering { get; set; } = true;
         private bool _searching { get; set; } = true;
         private int _leftColumns { get; set; }
