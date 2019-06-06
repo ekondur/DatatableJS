@@ -151,9 +151,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddData.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sql\EFContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -184,10 +186,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EFDatatable.Sql\EFDatatable.Sql.csproj">
-      <Project>{03309E92-E991-4D47-B888-496ED6D90AAB}</Project>
-      <Name>EFDatatable.Sql</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EFDatatable\EFDatatable.csproj">
       <Project>{822b6b5e-1f43-44ba-a1f6-67934fd909fc}</Project>
       <Name>EFDatatable</Name>

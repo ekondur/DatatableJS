@@ -1,5 +1,5 @@
 ﻿using EFDatatable.Net.Models;
-using EFDatatable.Sql;
+using EFDatatable.Net.Sql;
 using System.Web.Mvc;
 
 namespace EFDatatable.Net.Controllers
@@ -24,7 +24,7 @@ namespace EFDatatable.Net.Controllers
 
         public JsonResult GetDataResult(DataRequest request, AddData data)
         {
-            var result = ctx.Customers.ToDataResult(request);
+            var result = ctx.People.ToDataResult(request);
             return Json(result);
         }
 
