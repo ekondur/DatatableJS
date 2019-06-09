@@ -18,6 +18,7 @@ namespace EFDatatable.Builders
         private bool _serverSide { get; set; }
         private string _method { get; set; }
         private string _data { get; set; }
+        public string _cssClass { get; set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -85,10 +86,16 @@ namespace EFDatatable.Builders
             return this;
         }
 
+        public GridBuilder<T> Class(string cssClass)
+        {
+            _cssClass = cssClass;
+            return this;
+        }
+
         public MvcHtmlString Render()
         {
             var html = $@"
-                    <table id=""{_name}"" class=""table table-bordered table-striped"">
+                    <table id=""{_name}"" class=""{_cssClass}"">
                         <thead>
                             <tr>
                                 {string.Join(Environment.NewLine, _columns.Select(a => string.Format("<th>{0}</th>", a.Title)))}
