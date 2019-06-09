@@ -33,8 +33,11 @@ namespace EFDatatable.Builders
 
             switch (filter.Operand)
             {
-                case Operand.Equals:
+                case Operand.Equal:
                     return Expression.Equal(member, constant);
+
+                case Operand.NotEqual:
+                    return Expression.NotEqual(member, constant);
 
                 case Operand.GreaterThan:
                     return Expression.GreaterThan(member, constant);

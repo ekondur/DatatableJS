@@ -23,17 +23,17 @@ namespace EFDatatable.Builders
             return this;
         }
 
-        public FilterBuilder<T> IsEqual(object value)
+        public FilterBuilder<T> Equal(object value)
         {
-            _filter.Operand = Operand.Equals;
+            _filter.Operand = Operand.Equal;
             _filter.Value = value.ToString();
             _grid._filters.Add(_filter);
             return this;
         }
 
-        public FilterBuilder<T> IsNotEqual(object value)
+        public FilterBuilder<T> NotEqual(object value)
         {
-            _filter.Operand = Operand.Equals;
+            _filter.Operand = Operand.NotEqual;
             _filter.Value = value.ToString();
             _grid._filters.Add(_filter);
             return this;
@@ -105,7 +105,8 @@ namespace EFDatatable.Builders
 
     public enum Operand
     {
-        Equals,
+        Equal,
+        NotEqual,
         GreaterThan,
         LessThan,
         GreaterThanOrEqual,

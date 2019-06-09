@@ -30,7 +30,7 @@ namespace EFDatatable
                 {
                     ParameterExpression param = Expression.Parameter(typeof(T), "t");
                     MemberExpression member = Expression.Property(param, item.data);
-                    var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equals;
+                    var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
                     listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = request.search.value });
                 }
                 exp = ExpressionBuilder.GetExpression<T>(listExp);
