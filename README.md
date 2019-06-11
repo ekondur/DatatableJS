@@ -15,17 +15,10 @@ EFDatatable is a helper to create a grid with Jquery Datatable and provides an e
         {
             filter.Add(a => a.Id).GreaterThanOrEqual(1);
         })
-        .Data("AddParam")
         .URL(Url.Action("GetDataResult"), "POST")
         .ServerSide(true)
         .Render()
 )
-
-<script>
-    function AddParam() {
-        return { Param1: "test1", Param2: true, Param3: 5 };
-    }
-</script>
 ```
 With "ToDataResult(request)" extension function, data can get with server side pagination very simply.
 ```csharp
