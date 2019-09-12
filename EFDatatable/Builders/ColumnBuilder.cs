@@ -71,12 +71,17 @@ namespace EFDatatable.Builders
             return this;
         }
 
-        public ColumnBuilder<T> Command(string onClick, string iconClass = "", string btnClass = "", string text = "")
+        public ColumnBuilder<T> Command<TProp>(Expression<Func<T, TProp>> property, string onClick, string iconClass = "", string btnClass = "", string text = "")
         {
-            _column.Width = _column.Width == 0 ? 1 : _column.Width;
-            _column.Orderable = false;
-            _column.Searchable = false;
-            _column.Render = $@"'<a href=""#"" class=""{(!string.IsNullOrEmpty(iconClass) && string.IsNullOrEmpty(btnClass) ? "btn btn-xs btn-primary" : btnClass)}"" onClick=""{onClick}(\''+data+'\')"">'+{(string.IsNullOrEmpty(text) ? (string.IsNullOrEmpty(iconClass) ? "data" : "''") : string.Format("'{0}'", text))}+'<i class=""{iconClass}""></i></a>'";
+            _column = new ColumnDefinition
+            {
+                Width = _column.Width == 0 ? 1 : _column.Width,
+                Data = ExpressionHelper.GetExpressionText(property),
+                Orderable = false,
+                Searchable = false,
+                Render = $@"'<a href=""#"" class=""{(!string.IsNullOrEmpty(iconClass) && string.IsNullOrEmpty(btnClass) ? "btn btn-xs btn-primary" : btnClass)}"" onClick=""{onClick}(\''+data+'\')"">'+{(string.IsNullOrEmpty(text) ? (string.IsNullOrEmpty(iconClass) ? "data" : "''") : string.Format("'{0}'", text))}+'<i class=""{iconClass}""></i></a>'"
+            };
+            _grid._columns.Add(_column);
             return this;
         }
     }
