@@ -1,6 +1,7 @@
 # EFDatatable
 ### What is EFDatatable?
 EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options.
+
 ```csharp
 @(Html.EF().GridFor<Person>()
         .Name("PersonGrid")
@@ -33,4 +34,11 @@ First, [install NuGet](http://docs.nuget.org/docs/start-here/installing-nuget). 
 
 ```
 PM> Install-Package EFDatatable
+```
+
+Then add [datatables.net](https://datatables.net/) Javascript and CSS files or links to your project. 
+
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 ```
