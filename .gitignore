@@ -3,12 +3,12 @@
 ################################################################################
 
 /.vs/EFDatatable/v15/Server/sqlite3
-/EFDatatable.Net/bin
+/EFDatatable.Web/bin
 /.vs/EFDatatable/v15
 /.vs/EFDatatable/v16
 /.vs/EFDatatable/DesignTimeBuild
-/EFDatatable.Net/obj/Debug
-/EFDatatable.Net/obj/Release
+/EFDatatable.Web/obj/Debug
+/EFDatatable.Web/obj/Release
 /packages
 /EFDatatable/bin/Debug
 /EFDatatable/obj/Debug
