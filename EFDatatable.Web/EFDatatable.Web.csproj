@@ -174,12 +174,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EFDatatable\EFDatatable.csproj">
-      <Project>{822b6b5e-1f43-44ba-a1f6-67934fd909fc}</Project>
-      <Name>EFDatatable</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +181,16 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EFDatatable.Data\EFDatatable.Data.csproj">
+      <Project>{2566a360-3623-4e13-b107-646406d4b796}</Project>
+      <Name>EFDatatable.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EFDatatable\EFDatatable.csproj">
+      <Project>{822b6b5e-1f43-44ba-a1f6-67934fd909fc}</Project>
+      <Name>EFDatatable</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

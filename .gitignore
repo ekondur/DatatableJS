@@ -4,11 +4,17 @@
 
 /.vs/EFDatatable/v15/Server/sqlite3
 /EFDatatable.Web/bin
+/EFDatatable.Web/bin/Debug
+/EFDatatable.Web/obj/Debug
+/EFDatatable.Web/bin/Release
+/EFDatatable.Web/obj/Release
+/EFDatatable.Data/bin/Debug
+/EFDatatable.Data/obj/Debug
+/EFDatatable.Data/bin/Release
+/EFDatatable.Data/obj/Release
 /.vs/EFDatatable/v15
 /.vs/EFDatatable/v16
 /.vs/EFDatatable/DesignTimeBuild
-/EFDatatable.Web/obj/Debug
-/EFDatatable.Web/obj/Release
 /packages
 /EFDatatable/bin/Debug
 /EFDatatable/obj/Debug

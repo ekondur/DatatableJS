@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EFDatatable
+namespace EFDatatable.Data
 {
     public class DataRequest
     {

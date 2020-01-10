@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
-using System.Web.Mvc;
 
-namespace EFDatatable.Builders
+namespace EFDatatable.Data
 {
     public class FilterBuilder<T>
     {
@@ -18,9 +17,21 @@ namespace EFDatatable.Builders
         {
             _filter = new FilterDefinition
             {
-                Field = ExpressionHelper.GetExpressionText(property),
+                Field = PropertyName(property),
             };
             return this;
+        }
+
+        private static string PropertyName<TProp>(Expression<Func<T, TProp>> expression)
+        {
+            var body = expression.Body as MemberExpression;
+
+            if (body == null)
+            {
+                body = ((UnaryExpression)expression.Body).Operand as MemberExpression;
+            }
+
+            return body.Member.Name;
         }
 
         public FilterBuilder<T> Equal(object value)

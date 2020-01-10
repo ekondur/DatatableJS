@@ -61,19 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\ColumnBuilder.cs" />
-    <Compile Include="Builders\ExpressionBuilder.cs" />
-    <Compile Include="Builders\FilterBuilder.cs" />
-    <Compile Include="Builders\GridBuilder.cs" />
-    <Compile Include="DatatableExtensions.cs" />
     <Compile Include="EFHelper.cs" />
-    <Compile Include="Models\DataRequest.cs" />
-    <Compile Include="Models\DataResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EFDatatable.Data\EFDatatable.Data.csproj">
+      <Project>{2566a360-3623-4e13-b107-646406d4b796}</Project>
+      <Name>EFDatatable.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

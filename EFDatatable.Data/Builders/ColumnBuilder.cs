@@ -2,9 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Web.Mvc;
 
-namespace EFDatatable.Builders
+namespace EFDatatable.Data
 {
     public class ColumnBuilder<T>
     {
@@ -21,8 +20,8 @@ namespace EFDatatable.Builders
             var member = property.Body as MemberExpression;
             _column = new ColumnDefinition
             {
-                Data = ExpressionHelper.GetExpressionText(property),
-                Title = member.Member.GetCustomAttribute<DisplayAttribute>()?.Name ?? ExpressionHelper.GetExpressionText(property),
+                Data = PropertyName(property),
+                Title = member.Member.GetCustomAttribute<DisplayAttribute>()?.Name ?? PropertyName(property),
                 Render = member.Member.GetCustomAttribute<DisplayFormatAttribute>() != null ? $@"moment(data).format('{member.Member.GetCustomAttribute<DisplayFormatAttribute>().DataFormatString}')" : null
             };
             _grid._columns.Add(_column);
@@ -76,13 +75,25 @@ namespace EFDatatable.Builders
             _column = new ColumnDefinition
             {
                 Width = _column.Width == 0 ? 1 : _column.Width,
-                Data = ExpressionHelper.GetExpressionText(property),
+                Data = PropertyName(property),
                 Orderable = false,
                 Searchable = false,
                 Render = $@"'<a href=""#"" class=""{(!string.IsNullOrEmpty(iconClass) && string.IsNullOrEmpty(btnClass) ? "btn btn-xs btn-primary" : btnClass)}"" onClick=""{onClick}(\''+data+'\')"">'+{(string.IsNullOrEmpty(text) ? (string.IsNullOrEmpty(iconClass) ? "data" : "''") : string.Format("'{0}'", text))}+'<i class=""{iconClass}""></i></a>'"
             };
             _grid._columns.Add(_column);
             return this;
+        }
+
+        private static string PropertyName<TProp>(Expression<Func<T, TProp>> expression)
+        {
+            var body = expression.Body as MemberExpression;
+
+            if (body == null)
+            {
+                body = ((UnaryExpression)expression.Body).Operand as MemberExpression;
+            }
+
+            return body.Member.Name;
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using EFDatatable.Web.Models;
+﻿using EFDatatable.Data;
+using EFDatatable.Web.Models;
 using EFDatatable.Web.Sql;
 using System.Web.Mvc;
 
