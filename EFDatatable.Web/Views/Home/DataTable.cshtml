@@ -9,7 +9,6 @@
 @(Html.EF().GridFor<Person>()
         .Name("PersonGrid")
         .Searching(true)
-        .Class("table table-striped")
         .Columns(cols =>
         {
             cols.Field(a => a.Id).Visible(true).Orderable(false).Searchable(true);

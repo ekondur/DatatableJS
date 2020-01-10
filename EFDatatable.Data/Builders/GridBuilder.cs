@@ -15,7 +15,7 @@ namespace EFDatatable.Data
         public bool _serverSide { get; set; }
         public string _method { get; set; }
         public string _data { get; set; }
-        public string _cssClass { get; set; }
+        public string _cssClass { get; set; } = "display nowrap dataTable dtr-inline collapsed";
 
         public List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         public List<FilterDefinition> _filters = new List<FilterDefinition>();
