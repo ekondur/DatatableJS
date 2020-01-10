@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDatatable.Net", "EFDatatable.Net\EFDatatable.Net.csproj", "{7FF58A69-4C2F-4417-B718-21D7C0315A13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDatatable.Web", "EFDatatable.Net\EFDatatable.Web.csproj", "{7FF58A69-4C2F-4417-B718-21D7C0315A13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDatatable", "EFDatatable\EFDatatable.csproj", "{822B6B5E-1F43-44BA-A1F6-67934FD909FC}"
 EndProject

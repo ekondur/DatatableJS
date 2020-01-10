@@ -1,8 +1,8 @@
-﻿using EFDatatable.Net.Models;
-using EFDatatable.Net.Sql;
+﻿using EFDatatable.Web.Models;
+using EFDatatable.Web.Sql;
 using System.Web.Mvc;
 
-namespace EFDatatable.Net.Controllers
+namespace EFDatatable.Web.Controllers
 {
     public class HomeController : Controller
     {

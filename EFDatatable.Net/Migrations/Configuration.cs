@@ -1,10 +1,10 @@
-using EFDatatable.Net.Models;
-using EFDatatable.Net.Sql;
+using EFDatatable.Web.Models;
+using EFDatatable.Web.Sql;
 using System.Data.Entity.Migrations;
 
-namespace EFDatatable.Net.Migrations
+namespace EFDatatable.Web.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<EFDatatable.Net.Sql.EFContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EFDatatable.Web.Sql.EFContext>
     {
         public Configuration()
         {

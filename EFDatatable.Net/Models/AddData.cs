@@ -1,4 +1,4 @@
-﻿namespace EFDatatable.Net.Models
+﻿namespace EFDatatable.Web.Models
 {
     public class AddData
     {

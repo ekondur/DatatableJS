@@ -1,7 +1,7 @@
-﻿using EFDatatable.Net.Models;
+﻿using EFDatatable.Web.Models;
 using System.Data.Entity;
 
-namespace EFDatatable.Net.Sql
+namespace EFDatatable.Web.Sql
 {
     public class EFContext : DbContext
     {
