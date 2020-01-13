@@ -2,6 +2,9 @@
 
 namespace EFDatatable.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DataRequest
     {
         public int draw { get; set; }

@@ -5,8 +5,18 @@ using System.Linq.Expressions;
 
 namespace EFDatatable.Data
 {
+    /// <summary>
+    /// Includes ToDataResult extension
+    /// </summary>
     public static class DatatableExtensions
     {
+        /// <summary>
+        /// Executes IQueryable list and returns DataResult includes data
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="request"></param>
+        /// <returns>DataResult</returns>
         public static DataResult<T> ToDataResult<T>(this IQueryable<T> query, DataRequest request) where T : class
         {
             var result = new DataResult<T>

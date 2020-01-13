@@ -12,7 +12,7 @@
         .Columns(cols =>
         {
             cols.Field(a => a.Id).Visible(true).Orderable(false).Searchable(true);
-            cols.Field(a => a.Name).Title("First Name");
+            cols.Field(a => a.Name).Title("First Name").Searchable(true);
             cols.Field(a => a.Age).Title("Age").Searchable(false);
             cols.Command(a => a.Id, "onClick", text: "Click").Title("");
         })

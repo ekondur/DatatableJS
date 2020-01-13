@@ -136,6 +136,17 @@ namespace EFDatatable.Data
                         exp = Expression.Or(exp, expin);
                     }
                 }
+                else
+                {
+                    if (exp != null)
+                    {
+                        exp = Expression.Or(exp, Expression.Constant(false));
+                    }
+                    else
+                    {
+                        exp = Expression.Or(Expression.Constant(false), Expression.Constant(false));
+                    }
+                }
             }
 
             return Expression.Lambda<Func<T, bool>>(exp, param);
