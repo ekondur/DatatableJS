@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace EFDatatable.Data
+namespace EFDatatable
 {
     public class FilterBuilder<T>
     {
@@ -105,25 +105,5 @@ namespace EFDatatable.Data
             _grid._filters.Add(_filter);
             return this;
         }
-    }
-
-    public class FilterDefinition
-    {
-        public string Field { get; set; }
-        public string Value { get; set; }
-        public Operand Operand { get; set; }
-    }
-
-    public enum Operand
-    {
-        Equal,
-        NotEqual,
-        GreaterThan,
-        LessThan,
-        GreaterThanOrEqual,
-        LessThanOrEqual,
-        Contains,
-        StartsWith,
-        EndsWith
     }
 }

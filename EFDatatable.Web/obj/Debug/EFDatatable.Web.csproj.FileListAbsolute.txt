@@ -77,6 +77,8 @@ C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\bin\System.Web.We
 C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\bin\System.Web.WebPages.Deployment.xml
 C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\bin\System.Web.WebPages.Razor.xml
 C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\obj\Debug\EFDatatable.Web.csprojAssemblyReference.cache
+C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\obj\Debug\EFDatatable.Web.Migrations.BirthDate.resources
+C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\obj\Debug\EFDatatable.Web.csproj.GenerateResource.cache
 C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\obj\Debug\EFDatatable.Web.csproj.CopyComplete
 C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\obj\Debug\EFDatatable.Net.dll
 C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable.Web\obj\Debug\EFDatatable.Net.pdb

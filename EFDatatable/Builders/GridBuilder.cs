@@ -1,25 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace EFDatatable.Data
+namespace EFDatatable
 {
     public class GridBuilder<T>
     {
-        public string _name { get; set; } = "DataGrid";
-        public string _url { get; set; }
-        public bool _ordering { get; set; } = true;
-        public bool _searching { get; set; } = true;
-        public int _leftColumns { get; set; }
-        public int _rightColumns { get; set; }
-        public bool _serverSide { get; set; }
-        public string _method { get; set; }
-        public string _data { get; set; }
-        public string _cssClass { get; set; } = "display nowrap dataTable dtr-inline collapsed";
+        internal string _name { get; private set; } = "DataGrid";
+        internal string _url { get; private set; }
+        internal bool _ordering { get; private set; } = true;
+        internal bool _searching { get; private set; } = true;
+        internal int _leftColumns { get; private set; }
+        internal int _rightColumns { get; private set; }
+        internal bool _serverSide { get; private set; }
+        internal string _method { get; private set; }
+        internal string _data { get; private set; }
+        internal string _cssClass { get; private set; } = "display nowrap dataTable dtr-inline collapsed";
+        internal string _captionTop { get; private set; }
+        internal  string _captionBottom { get; set; }
 
-        public List<ColumnDefinition> _columns = new List<ColumnDefinition>();
-        public List<FilterDefinition> _filters = new List<FilterDefinition>();
+        internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
+        internal List<FilterDefinition> _filters = new List<FilterDefinition>();
 
+        /// <summary>
+        /// Default name is "DataGrid"
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public GridBuilder<T> Name(string name)
         {
             _name = name;
@@ -81,6 +87,19 @@ namespace EFDatatable.Data
         public GridBuilder<T> Class(string cssClass)
         {
             _cssClass = cssClass;
+            return this;
+        }
+
+        /// <summary>
+        /// Define table top or bottom captions
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="bottom"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Captions(string top = null, string bottom = null)
+        {
+            _captionTop = top;
+            _captionBottom = bottom;
             return this;
         }
     }

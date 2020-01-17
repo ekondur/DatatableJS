@@ -44,11 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\ColumnBuilder.cs" />
     <Compile Include="Builders\ExpressionBuilder.cs" />
-    <Compile Include="Builders\FilterBuilder.cs" />
-    <Compile Include="Builders\GridBuilder.cs" />
     <Compile Include="DatatableExtensions.cs" />
+    <Compile Include="Definitions\ColumnDefinition.cs" />
+    <Compile Include="Definitions\FilterDefinition.cs" />
     <Compile Include="Models\DataRequest.cs" />
     <Compile Include="Models\DataResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

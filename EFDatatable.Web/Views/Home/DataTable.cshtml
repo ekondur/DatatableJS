@@ -8,12 +8,15 @@
 
 @(Html.EF().GridFor<Person>()
         .Name("PersonGrid")
+        .Captions("top caption")
         .Searching(true)
         .Columns(cols =>
         {
             cols.Field(a => a.Id).Visible(true).Orderable(false).Searchable(true);
             cols.Field(a => a.Name).Title("First Name").Searchable(true);
             cols.Field(a => a.Age).Title("Age").Searchable(true);
+            cols.Field(a => a.IsActive).Title("Active").Searchable(true);
+            cols.Field(a => a.BirthDate).Title("Birth Date").Searchable(true);
             cols.Command(a => a.Id, "onClick", text: "Click").Title("");
         })
         .Filters(filter =>

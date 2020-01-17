@@ -1,5 +1,4 @@
-﻿using EFDatatable.Data;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -77,6 +76,8 @@ namespace EFDatatable
                             }}"))}]
                         }});
                     }});
+                    {(string.IsNullOrEmpty(gridBuilder._captionTop) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:top\">{1}</caption>');", gridBuilder._name, gridBuilder._captionTop))}
+                    {(string.IsNullOrEmpty(gridBuilder._captionBottom) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:bottom\">{1}</caption>');", gridBuilder._name, gridBuilder._captionBottom))}
                     </script>";
 
             return new MvcHtmlString(html);
