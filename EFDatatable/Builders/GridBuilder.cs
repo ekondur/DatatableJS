@@ -16,7 +16,8 @@ namespace EFDatatable
         internal string _data { get; private set; }
         internal string _cssClass { get; private set; } = "display nowrap dataTable dtr-inline collapsed";
         internal string _captionTop { get; private set; }
-        internal  string _captionBottom { get; set; }
+        internal string _captionBottom { get; private set; }
+        internal bool _paging { get; private set; } = true;
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -32,6 +33,11 @@ namespace EFDatatable
             return this;
         }
 
+        /// <summary>
+        /// Define table columns
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
         public GridBuilder<T> Columns(Action<ColumnBuilder<T>> config)
         {
             var builder = new ColumnBuilder<T>(this);
@@ -39,6 +45,11 @@ namespace EFDatatable
             return this;
         }
 
+        /// <summary>
+        /// Filter data with request
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
         public GridBuilder<T> Filters(Action<FilterBuilder<T>> config)
         {
             var builder = new FilterBuilder<T>(this);
@@ -46,6 +57,12 @@ namespace EFDatatable
             return this;
         }
 
+        /// <summary>
+        /// Set the action url and type, default type is GET
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="method"></param>
+        /// <returns></returns>
         public GridBuilder<T> URL(string url, string method = "GET")
         {
             _url = url;
@@ -53,18 +70,34 @@ namespace EFDatatable
             return this;
         }
 
+        /// <summary>
+        /// Disable or enable ordering, default is true
+        /// </summary>
+        /// <param name="ordering"></param>
+        /// <returns></returns>
         public GridBuilder<T> Ordering(bool ordering)
         {
             _ordering = ordering;
             return this;
         }
 
+        /// <summary>
+        /// Disable or enable searching, default is true
+        /// </summary>
+        /// <param name="searching"></param>
+        /// <returns></returns>
         public GridBuilder<T> Searching(bool searching)
         {
             _searching = searching;
             return this;
         }
 
+        /// <summary>
+        /// Fix the table columns from left or right
+        /// </summary>
+        /// <param name="leftColumns"></param>
+        /// <param name="rightColums"></param>
+        /// <returns></returns>
         public GridBuilder<T> FixedColumns(int leftColumns = 0, int rightColums = 0)
         {
             _leftColumns = leftColumns;
@@ -72,18 +105,33 @@ namespace EFDatatable
             return this;
         }
 
+        /// <summary>
+        /// Proccessing data server side or client side, default is false
+        /// </summary>
+        /// <param name="serverSide"></param>
+        /// <returns></returns>
         public GridBuilder<T> ServerSide(bool serverSide)
         {
-            _serverSide = serverSide;
+            _serverSide = _paging ? serverSide : _paging;
             return this;
         }
 
+        /// <summary>
+        /// Passing additional data to action set name of javascript function
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public GridBuilder<T> Data(string data)
         {
             _data = data;
             return this;
         }
 
+        /// <summary>
+        /// Set css class of table
+        /// </summary>
+        /// <param name="cssClass"></param>
+        /// <returns></returns>
         public GridBuilder<T> Class(string cssClass)
         {
             _cssClass = cssClass;
@@ -100,6 +148,18 @@ namespace EFDatatable
         {
             _captionTop = top;
             _captionBottom = bottom;
+            return this;
+        }
+
+        /// <summary>
+        /// Disable or enable paging, default is true
+        /// </summary>
+        /// <param name="paging"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Paging(bool paging)
+        {
+            if(!paging) _serverSide = false;
+            _paging = paging;
             return this;
         }
     }

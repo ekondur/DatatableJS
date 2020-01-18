@@ -1,6 +1,7 @@
 using EFDatatable.Web.Models;
 using EFDatatable.Web.Sql;
 using System.Data.Entity.Migrations;
+using System;
 
 namespace EFDatatable.Web.Migrations
 {
@@ -16,7 +17,7 @@ namespace EFDatatable.Web.Migrations
             //  This method will be called after migrating to the latest version.
             using (var ctx = new EFContext())
             {
-                ctx.People.AddOrUpdate(new Person { Id = 1, Name = "Jon Snow" });
+                ctx.People.AddOrUpdate(new Person { Id = 1, Name = "Jon Snow", BirthDate = new DateTime(1980, 1, 1) });
                 ctx.People.AddOrUpdate(new Person { Id = 2, Name = "Arya Stark" });
                 ctx.People.AddOrUpdate(new Person { Id = 3, Name = "Daenerys Targaryen" });
                 ctx.People.AddOrUpdate(new Person { Id = 4, Name = "Cersei Lannister" });

@@ -28,36 +28,66 @@ namespace EFDatatable
             return this;
         }
 
+        /// <summary>
+        /// Set column title
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
         public ColumnBuilder<T> Title(string title)
         {
             _column.Title = title;
             return this;
         }
 
+        /// <summary>
+        /// Set column visible or hidden, default is true
+        /// </summary>
+        /// <param name="isVisible"></param>
+        /// <returns></returns>
         public ColumnBuilder<T> Visible(bool isVisible)
         {
             _column.Visible = isVisible;
             return this;
         }
 
+        /// <summary>
+        /// Set column orderable or not, default is true
+        /// </summary>
+        /// <param name="isOrderable"></param>
+        /// <returns></returns>
         public ColumnBuilder<T> Orderable(bool isOrderable)
         {
             _column.Orderable = isOrderable;
             return this;
         }
 
+        /// <summary>
+        /// Set column searchable or not, default is true
+        /// </summary>
+        /// <param name="isSearchable"></param>
+        /// <returns></returns>
         public ColumnBuilder<T> Searchable(bool isSearchable)
         {
             _column.Searchable = isSearchable;
             return this;
         }
 
+        /// <summary>
+        /// Set column width percentage
+        /// </summary>
+        /// <param name="width"></param>
+        /// <returns></returns>
         public ColumnBuilder<T> Width(int width)
         {
             _column.Width = width;
             return this;
         }
 
+        /// <summary>
+        /// Set css class of column
+        /// </summary>
+        /// <param name="className"></param>
+        /// <returns></returns>
         public ColumnBuilder<T> Class(string className)
         {
             _column.ClassName = className;
@@ -70,6 +100,16 @@ namespace EFDatatable
             return this;
         }
 
+        /// <summary>
+        /// Define a link or button
+        /// </summary>
+        /// <typeparam name="TProp"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="onClick"></param>
+        /// <param name="iconClass"></param>
+        /// <param name="btnClass"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public ColumnBuilder<T> Command<TProp>(Expression<Func<T, TProp>> property, string onClick, string iconClass = "", string btnClass = "", string text = "")
         {
             _column = new ColumnDefinition
