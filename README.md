@@ -12,7 +12,7 @@ EFDatatable is a helper to create a grid with Jquery Datatable and provides an e
             cols.Field(a => a.Id).Orderable(false).Searchable(true).Class("text-danger");
             cols.Field(a => a.Name).Title("First Name").Searchable(true);
             cols.Field(a => a.Age).Title("Age").Searchable(true);
-            cols.Field(a => a.IsActive).Title("Active").Searchable(true);
+            cols.Field(a => a.IsActive).Title("Active").Template("(data === true) ? '<span class=\"glyphicon glyphicon-ok\"></span>' : '<span class=\"glyphicon glyphicon-remove\"></span>'");
             cols.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
             cols.Command(a => a.Id, "onClick", text: "Click").Title("");
         })

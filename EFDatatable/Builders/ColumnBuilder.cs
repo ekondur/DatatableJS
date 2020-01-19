@@ -94,9 +94,25 @@ namespace EFDatatable
             return this;
         }
 
+        /// <summary>
+        /// Set a jquery datatable date format
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
         public ColumnBuilder<T> Format(string format)
         {
             _column.Render = $@"moment(data).format('{format}')";
+            return this;
+        }
+
+        /// <summary>
+        /// Customize column template using "data" for comparison
+        /// </summary>
+        /// <param name="template"></param>
+        /// <returns></returns>
+        public ColumnBuilder<T> Template(string template)
+        {
+            _column.Render = template;
             return this;
         }
 
