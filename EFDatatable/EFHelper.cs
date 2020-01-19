@@ -73,7 +73,7 @@ namespace EFDatatable
                                 'className': '{a.ClassName}',
                                 'visible': {a.Visible.ToLowString()},
                                 'width': '{a.Width}%',
-                                    {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ return {a.Render}; }}")}
+                                    {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ if (data == null) {{ return ''; }} else {{ return {a.Render}; }} }}")}
                             }}"))}]
                         }});
                     }});

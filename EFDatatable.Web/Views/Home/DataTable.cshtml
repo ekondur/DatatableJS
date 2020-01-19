@@ -16,12 +16,12 @@
             cols.Field(a => a.Name).Title("First Name").Searchable(true);
             cols.Field(a => a.Age).Title("Age").Searchable(true);
             cols.Field(a => a.IsActive).Title("Active").Searchable(true);
-            cols.Field(a => a.BirthDate).Title("Birth Date");
+            cols.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
             cols.Command(a => a.Id, "onClick", text: "Click").Title("");
         })
         .Filters(filter =>
         {
-            filter.Add(a => a.Id).Equal(1);
+            filter.Add(a => a.Id).GreaterThanOrEqual(1);
         })
         .Data("addParam")
         .URL(Url.Action("GetDataResult"), "POST")

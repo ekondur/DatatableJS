@@ -5,21 +5,38 @@ EFDatatable is a helper to create a grid with Jquery Datatable and provides an e
 ```csharp
 @(Html.EF().GridFor<Person>()
         .Name("PersonGrid")
-        .Searching(true)
-        .Class("table table-striped")
+        .Captions("top caption")
+        .Paging(true)
         .Columns(cols =>
         {
-            cols.Field(a => a.Id).Visible(true).Orderable(false).Searchable(true);
-            cols.Field(a => a.Name).Title("First Name");
+            cols.Field(a => a.Id).Orderable(false).Searchable(true).Class("text-danger");
+            cols.Field(a => a.Name).Title("First Name").Searchable(true);
+            cols.Field(a => a.Age).Title("Age").Searchable(true);
+            cols.Field(a => a.IsActive).Title("Active").Searchable(true);
+            cols.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
+            cols.Command(a => a.Id, "onClick", text: "Click").Title("");
         })
         .Filters(filter =>
         {
             filter.Add(a => a.Id).GreaterThanOrEqual(1);
         })
+        .Data("addParam")
         .URL(Url.Action("GetDataResult"), "POST")
         .ServerSide(true)
         .Render()
 )
+```
+Add additional data to send action.
+```javascript
+<script>
+    function addParam() {
+        return { Param1: "test1", Param2: true, Param3: 5 };
+    }
+
+    function onClick(e) {
+        alert(e);
+    }
+</script>
 ```
 With "ToDataResult(request)" extension function, data can get with server side pagination very simply.
 ```csharp
@@ -30,7 +47,7 @@ public JsonResult GetDataResult(DataRequest request)
     }
 ```
 ### Where can I get it?
-First, [install NuGet](http://docs.nuget.org/docs/start-here/installing-nuget). Then, install [EFDatatable](https://www.nuget.org/packages/EFDatatable/) from the package manager console:
+Install [EFDatatable](https://www.nuget.org/packages/EFDatatable/) from the package manager console:
 
 ```
 PM> Install-Package EFDatatable

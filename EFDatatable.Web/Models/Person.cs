@@ -9,8 +9,6 @@ namespace EFDatatable.Web.Models
         public string Name { get; set; }
         public short? Age { get; set; }
         public bool IsActive { get; set; }
-
-        [DisplayFormat(DataFormatString = "DD-MMM-Y")]
         public DateTime? BirthDate { get; set; }
     }
 }
