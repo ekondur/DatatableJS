@@ -61,6 +61,9 @@ namespace EFDatatable
                             orderdering: {gridBuilder._ordering.ToLowString()},
                             searching: {gridBuilder._searching.ToLowString()},
                             paging: {gridBuilder._paging.ToLowString()},
+                            language: {{
+                                'url': '{gridBuilder._langUrl}'
+                            }},
                             ajax: {{
                                 url: ""{gridBuilder._url}"",
                                 type: ""{gridBuilder._method}"",

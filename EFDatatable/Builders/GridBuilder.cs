@@ -18,6 +18,7 @@ namespace EFDatatable
         internal string _captionTop { get; private set; }
         internal string _captionBottom { get; private set; }
         internal bool _paging { get; private set; } = true;
+        internal string _langUrl { get; private set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -160,6 +161,17 @@ namespace EFDatatable
         {
             if(!paging) _serverSide = false;
             _paging = paging;
+            return this;
+        }
+
+        /// <summary>
+        /// Specify language json url from cdn or local
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Language(string url)
+        {
+            _langUrl = url;
             return this;
         }
     }
