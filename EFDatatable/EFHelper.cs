@@ -41,7 +41,7 @@ namespace EFDatatable
         public static MvcHtmlString Render<T>(this GridBuilder<T> gridBuilder)
         {
             var html = $@"
-                    <table id=""{gridBuilder._name}"" class=""{gridBuilder._cssClass}"">
+                    <table id=""{gridBuilder._name}"" class=""{gridBuilder._cssClass}"" style=""width:100%"">
                         <thead>
                             <tr>
                                 {string.Join(Environment.NewLine, gridBuilder._columns.Select(a => string.Format("<th>{0}</th>", a.Title)))}
