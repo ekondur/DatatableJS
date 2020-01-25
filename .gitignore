@@ -12,6 +12,10 @@
 /EFDatatable.Data/obj
 /EFDatatable.Data/bin/Release
 /EFDatatable.Data/obj/Release
+/EFDatatable.Shared/bin/Debug
+/EFDatatable.Shared/obj
+/EFDatatable.Shared/bin/Release
+/EFDatatable.Shared/obj/Release
 /.vs/EFDatatable/v15
 /.vs/EFDatatable/v16
 /.vs/EFDatatable/DesignTimeBuild

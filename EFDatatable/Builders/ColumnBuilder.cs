@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFDatatable.Shared;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Reflection;

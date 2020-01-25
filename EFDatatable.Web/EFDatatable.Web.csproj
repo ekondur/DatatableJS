@@ -188,6 +188,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001131338189_BirthDate.resx">
+      <DependentUpon>202001131338189_BirthDate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\EFDatatable.Data\EFDatatable.Data.csproj">
       <Project>{2566a360-3623-4e13-b107-646406d4b796}</Project>
       <Name>EFDatatable.Data</Name>
@@ -196,11 +201,6 @@
       <Project>{822b6b5e-1f43-44ba-a1f6-67934fd909fc}</Project>
       <Name>EFDatatable</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001131338189_BirthDate.resx">
-      <DependentUpon>202001131338189_BirthDate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

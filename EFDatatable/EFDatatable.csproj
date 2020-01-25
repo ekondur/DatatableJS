@@ -77,6 +77,10 @@
       <Project>{2566a360-3623-4e13-b107-646406d4b796}</Project>
       <Name>EFDatatable.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EFDatatable.Shared\EFDatatable.Shared.csproj">
+      <Project>{bf0f39bb-413c-480c-bdb7-44d774f60cb1}</Project>
+      <Name>EFDatatable.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

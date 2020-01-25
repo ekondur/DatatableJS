@@ -13,4 +13,8 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EFDatatable.Shared\EFDatatable.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

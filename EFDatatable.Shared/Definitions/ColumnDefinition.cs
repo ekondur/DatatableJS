@@ -1,4 +1,4 @@
-﻿namespace EFDatatable
+﻿namespace EFDatatable.Shared
 {
     public class ColumnDefinition
     {

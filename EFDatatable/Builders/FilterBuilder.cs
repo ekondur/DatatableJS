@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFDatatable.Shared;
+using System;
 using System.Linq.Expressions;
 
 namespace EFDatatable
