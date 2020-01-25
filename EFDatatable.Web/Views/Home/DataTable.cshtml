@@ -11,7 +11,7 @@
     .Name("PersonGrid")
     .Captions("top caption")
     .Paging(true)
-    //.Language("//cdn.datatables.net/plug-ins/1.10.20/i18n/English.json")
+    .Language(Url.Content("/Scripts/Turkish.json"))
     .Columns(cols =>
     {
         cols.Field(a => a.Id).Orderable(false).Searchable(true).Class("text-danger");
@@ -19,7 +19,8 @@
         cols.Field(a => a.Age).Title("Age").Searchable(true);
         cols.Field(a => a.IsActive).Title("Active").Template("(data === true) ? '<span class=\"glyphicon glyphicon-ok\"></span>' : '<span class=\"glyphicon glyphicon-remove\"></span>'");
         cols.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
-        cols.Command(a => a.Id, "onClick", text: "Click").Title("");
+        cols.Command(a => a.Id, "onClick", iconClass:"glyphicon glyphicon-edit").Title("");
+        cols.Command(a => a.Id, "onClick", iconClass:"glyphicon glyphicon-remove", btnClass:"btn btn-xs btn-danger").Title("");
     })
     .Filters(filter =>
     {
