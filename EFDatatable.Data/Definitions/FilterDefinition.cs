@@ -1,4 +1,4 @@
-﻿namespace EFDatatable.Shared
+﻿namespace EFDatatable.Data
 {
     public class FilterDefinition
     {
