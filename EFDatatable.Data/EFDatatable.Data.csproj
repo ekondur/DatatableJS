@@ -22,6 +22,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Release\EFDatatable.Data.xml</DocumentationFile>
     <OutputPath>bin\Release\</OutputPath>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
   </PropertyGroup>
 
 </Project>
