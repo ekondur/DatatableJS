@@ -160,7 +160,7 @@ namespace EFDatatable
         /// <returns></returns>
         public GridBuilder<T> Paging(bool paging)
         {
-            if(!paging) _serverSide = false;
+            if (!paging) _serverSide = false;
             _paging = paging;
             return this;
         }
