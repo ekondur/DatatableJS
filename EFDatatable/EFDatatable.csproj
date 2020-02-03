@@ -14,13 +14,10 @@
     <PackageTags>C#, Helper, Jquery, Datatable, Entity, Framework, Mvc</PackageTags>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
-    <DocumentationFile>C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable\EFDatatable.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
-    <DocumentationFile>C:\Users\emrah.kondur\source\repos\EFDatatable\EFDatatable\bin\Release\EFDatatable.xml</DocumentationFile>
+  <PropertyGroup>
+    <DocumentationFile>bin\Release\EFDatatable.xml</DocumentationFile>
     <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
