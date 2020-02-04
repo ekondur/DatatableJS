@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.5": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net45/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -77,19 +68,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.5.1": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net451/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net451/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -156,19 +148,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.5.2": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net452/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net452/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -235,19 +228,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.2",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.6": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net46/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net46/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -314,19 +308,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.6.1": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net461/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net461/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -393,19 +388,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.6.2": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net462/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net462/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -472,19 +468,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.2",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.7": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net47/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net47/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -551,19 +548,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.7.1": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net471/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net471/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -630,19 +628,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.1",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.7.2": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net472/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net472/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -709,19 +708,20 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.8": {
-      "EFDatatable.Data/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/net48/EFDatatable.Data.dll": {}
-        },
-        "runtime": {
-          "lib/net48/EFDatatable.Data.dll": {}
-        }
-      },
       "Microsoft.AspNet.Mvc/4.0.40804": {
         "type": "package",
         "dependencies": {
@@ -788,40 +788,21 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "EFDatatable.Data/1.1.3": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "compile": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFDatatable.Data.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "EFDatatable.Data/1.1.3": {
-      "sha512": "SsK9oY/5qN4SUOqO+25gfOi1n8ZuMQLVy0LAsXdeGTqQiJaJ8DlaeXtxs+WVI3YEvgTP/ZhJK1sUK+XI0/QBFw==",
-      "type": "package",
-      "path": "efdatatable.data/1.1.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "efdatatable.data.1.1.3.nupkg.sha512",
-        "efdatatable.data.nuspec",
-        "lib/net45/EFDatatable.Data.dll",
-        "lib/net451/EFDatatable.Data.dll",
-        "lib/net452/EFDatatable.Data.dll",
-        "lib/net46/EFDatatable.Data.dll",
-        "lib/net461/EFDatatable.Data.dll",
-        "lib/net462/EFDatatable.Data.dll",
-        "lib/net47/EFDatatable.Data.dll",
-        "lib/net471/EFDatatable.Data.dll",
-        "lib/net472/EFDatatable.Data.dll",
-        "lib/net48/EFDatatable.Data.dll",
-        "lib/netcoreapp2.0/EFDatatable.Data.dll",
-        "lib/netcoreapp2.1/EFDatatable.Data.dll",
-        "lib/netcoreapp2.2/EFDatatable.Data.dll",
-        "lib/netcoreapp3.0/EFDatatable.Data.dll",
-        "lib/netcoreapp3.1/EFDatatable.Data.dll",
-        "lib/netstandard2.0/EFDatatable.Data.dll",
-        "lib/netstandard2.0/EFDatatable.Data.xml",
-        "lib/netstandard2.1/EFDatatable.Data.dll"
-      ]
-    },
     "Microsoft.AspNet.Mvc/4.0.40804": {
       "sha512": "tQrw7I+Ol1Kr3kDKcA0XNT68ctjciLIUZqGtMBk7fNjEGUUVDifwlOJJXUBQxUayv4aHwB+OOiPFF3ZD6VXmRw==",
       "type": "package",
@@ -953,6 +934,11 @@
         "system.componentmodel.annotations.4.0.0.nupkg.sha512",
         "system.componentmodel.annotations.nuspec"
       ]
+    },
+    "EFDatatable.Data/1.1.3": {
+      "type": "project",
+      "path": "../EFDatatable.Data/EFDatatable.Data.csproj",
+      "msbuildProject": "../EFDatatable.Data/EFDatatable.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1056,34 +1042,74 @@
       },
       "frameworks": {
         "net45": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net451": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net452": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net46": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net461": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net462": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net47": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net471": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net472": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         },
         "net48": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
