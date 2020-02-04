@@ -6,16 +6,30 @@ using System.Reflection;
 
 namespace EFDatatable
 {
+    /// <summary>
+    /// Generic column builder class.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ColumnBuilder<T>
     {
         private readonly GridBuilder<T> _grid;
         private ColumnDefinition _column { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ColumnBuilder{T}"/> class.
+        /// </summary>
+        /// <param name="grid">The grid.</param>
         public ColumnBuilder(GridBuilder<T> grid)
         {
             _grid = grid;
         }
 
+        /// <summary>
+        /// Make a column with defined type properties.
+        /// </summary>
+        /// <typeparam name="TProp">The type of the property.</typeparam>
+        /// <param name="property">The property.</param>
+        /// <returns></returns>
         public ColumnBuilder<T> Field<TProp>(Expression<Func<T, TProp>> property)
         {
             var member = property.Body as MemberExpression;
@@ -30,7 +44,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set column title
+        /// Set column title.
         /// </summary>
         /// <param name="title"></param>
         /// <returns></returns>
@@ -41,7 +55,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set column visible or hidden, default is true
+        /// Set column visible or hidden, default is true.
         /// </summary>
         /// <param name="isVisible"></param>
         /// <returns></returns>
@@ -52,7 +66,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set column orderable or not, default is true
+        /// Set column orderable or not, default is true.
         /// </summary>
         /// <param name="isOrderable"></param>
         /// <returns></returns>
@@ -63,7 +77,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set column searchable or not, default is true
+        /// Set column searchable or not, default is true.
         /// </summary>
         /// <param name="isSearchable"></param>
         /// <returns></returns>
@@ -74,7 +88,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set column width percentage
+        /// Set column width percentage.
         /// </summary>
         /// <param name="width"></param>
         /// <returns></returns>
@@ -85,7 +99,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set css class of column
+        /// Set css class of column.
         /// </summary>
         /// <param name="className"></param>
         /// <returns></returns>
@@ -96,7 +110,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set a jquery datatable date format
+        /// Set a jquery datatable date format.
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
@@ -107,7 +121,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Customize column template using "data" for comparison
+        /// Customize column template using "data" for comparison.
         /// </summary>
         /// <param name="template"></param>
         /// <returns></returns>
@@ -118,7 +132,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Define a link or button
+        /// Define a link or button.
         /// </summary>
         /// <typeparam name="TProp"></typeparam>
         /// <param name="property"></param>

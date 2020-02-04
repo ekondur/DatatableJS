@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 namespace EFDatatable
 {
+    /// <summary>
+    /// Generic grid builder class.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class GridBuilder<T>
     {
         internal string _name { get; private set; } = "DataGrid";
@@ -25,7 +29,7 @@ namespace EFDatatable
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
 
         /// <summary>
-        /// Default name is "DataGrid"
+        /// Default name is "DataGrid".
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -36,7 +40,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Define table columns
+        /// Define table columns.
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
@@ -48,7 +52,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Filter data with request
+        /// Filter data with request.
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
@@ -60,7 +64,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set the action url and type, default type is GET
+        /// Set the action url and type, default type is GET.
         /// </summary>
         /// <param name="url"></param>
         /// <param name="method"></param>
@@ -73,7 +77,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Disable or enable ordering, default is true
+        /// Disable or enable ordering, default is true.
         /// </summary>
         /// <param name="ordering"></param>
         /// <returns></returns>
@@ -84,7 +88,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Disable or enable searching, default is true
+        /// Disable or enable searching, default is true.
         /// </summary>
         /// <param name="searching"></param>
         /// <returns></returns>
@@ -95,7 +99,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Fix the table columns from left or right
+        /// Fix the table columns from left or right.
         /// </summary>
         /// <param name="leftColumns"></param>
         /// <param name="rightColums"></param>
@@ -108,7 +112,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Proccessing data server side or client side, default is false
+        /// Proccessing data server side or client side, default is false.
         /// </summary>
         /// <param name="serverSide"></param>
         /// <returns></returns>
@@ -119,7 +123,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Passing additional data to action set name of javascript function
+        /// Passing additional data to action set name of javascript function.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -130,7 +134,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Set css class of table
+        /// Set css class of table.
         /// </summary>
         /// <param name="cssClass"></param>
         /// <returns></returns>
@@ -141,7 +145,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Define table top or bottom captions
+        /// Define table top or bottom captions.
         /// </summary>
         /// <param name="top"></param>
         /// <param name="bottom"></param>
@@ -154,7 +158,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Disable or enable paging, default is true
+        /// Disable or enable paging, default is true.
         /// </summary>
         /// <param name="paging"></param>
         /// <returns></returns>
@@ -166,7 +170,7 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Specify language json url from cdn or local
+        /// Specify language json url from cdn or local.
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>

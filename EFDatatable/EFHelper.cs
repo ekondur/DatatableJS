@@ -6,38 +6,59 @@ using System.Web.Mvc;
 
 namespace EFDatatable
 {
+    /// <summary>
+    /// EF() helper extenstions
+    /// </summary>
     public class EFHelper
     {
         private readonly HtmlHelper _htmlHelper;
+
+        /// <summary>
+        /// Call EF() helper extensions after
+        /// </summary>
+        /// <param name="helper"></param>
         public EFHelper(HtmlHelper helper)
         {
             _htmlHelper = helper;
         }
 
+        /// <summary>
+        /// Make a datatable with expression
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public GridBuilder<T> GridFor<T>() where T : class
         {
             return new GridBuilder<T>();
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public static class EFHelperExtension
     {
+        /// <summary>
+        /// Splitted html helpers extensions
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <returns></returns>
         public static EFHelper EF(this HtmlHelper helper)
         {
             return new EFHelper(helper);
         }
 
-        public static string ToLowString(this bool b)
+        private static string ToLowString(this bool b)
         {
             return b.ToString().ToLower();
         }
 
-        public static T GetAttribute<T>(this ICustomAttributeProvider provider) where T : Attribute
-        {
-            var attributes = provider.GetCustomAttributes(typeof(T), true);
-            return attributes.Length > 0 ? attributes[0] as T : null;
-        }
-
+        /// <summary>
+        /// Render datatable script for prepared grid builder
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="gridBuilder"></param>
+        /// <returns></returns>
         public static MvcHtmlString Render<T>(this GridBuilder<T> gridBuilder)
         {
             var html = $@"
@@ -87,7 +108,7 @@ namespace EFDatatable
             return new MvcHtmlString(html);
         }
 
-        public static string GetDataStr<T>(this GridBuilder<T> gridBuilder)
+        private static string GetDataStr<T>(this GridBuilder<T> gridBuilder)
         {
             var filters = string.Format("d.filters = {0}{1}", JsonConvert.SerializeObject(gridBuilder._filters), string.IsNullOrEmpty(gridBuilder._data) ? string.Empty : ",");
 
