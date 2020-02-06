@@ -1010,11 +1010,11 @@
   "project": {
     "version": "1.1.4",
     "restore": {
-      "projectUniqueName": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable\\EFDatatable.csproj",
+      "projectUniqueName": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable\\EFDatatable.csproj",
       "projectName": "EFDatatable",
-      "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable\\EFDatatable.csproj",
+      "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable\\EFDatatable.csproj",
       "packagesPath": "C:\\Users\\emrah.kondur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable\\obj\\",
+      "outputPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
@@ -1043,71 +1043,71 @@
       "frameworks": {
         "net45": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net451": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net452": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net46": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net461": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net462": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net47": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net471": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net472": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         },
         "net48": {
           "projectReferences": {
-            "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
-              "projectPath": "C:\\Users\\emrah.kondur\\Source\\Repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
+            "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj": {
+              "projectPath": "C:\\Users\\emrah.kondur\\source\\repos\\EFDatatable\\EFDatatable.Data\\EFDatatable.Data.csproj"
             }
           }
         }
