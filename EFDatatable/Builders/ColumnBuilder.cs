@@ -1,6 +1,7 @@
 ﻿using EFDatatable.Data;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -62,6 +63,8 @@ namespace EFDatatable
         public ColumnBuilder<T> Visible(bool isVisible)
         {
             _column.Visible = isVisible;
+            _column.Orderable = false;
+            _column.Searchable = false;
             return this;
         }
 
@@ -145,12 +148,43 @@ namespace EFDatatable
         {
             _column = new ColumnDefinition
             {
-                Width = _column.Width == 0 ? 1 : _column.Width,
+                Width = 1,
                 Data = PropertyName(property),
                 Orderable = false,
                 Searchable = false,
                 Render = $@"'<a href=""#"" class=""{(!string.IsNullOrEmpty(iconClass) && string.IsNullOrEmpty(btnClass) ? "btn btn-xs btn-primary" : btnClass)}"" onClick=""{onClick}(\''+data+'\')"">'+{(string.IsNullOrEmpty(text) ? (string.IsNullOrEmpty(iconClass) ? "data" : "''") : string.Format("'{0}'", text))}+'<i class=""{iconClass}""></i></a>'"
             };
+            _grid._columns.Add(_column);
+            return this;
+        }
+
+        /// <summary>
+        /// Add multiple command to define button group.
+        /// </summary>
+        /// <typeparam name="TProp"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="btnTitle"></param>
+        /// <param name="btnCss"></param>
+        /// <param name="commands"></param>
+        /// <returns></returns>
+        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, string btnTitle, string btnCss = null, params Command[] commands)
+        {
+            _column = new ColumnDefinition
+            {
+                Width = 1,
+                Data = PropertyName(property),
+                Orderable = false,
+                Searchable = false,
+            };
+            _column.Render = $@"'<div class=""btn-group"">'+
+                        '<button type=""button"" class=""btn {btnCss} dropdown-toggle"" data-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">'+
+                            '{btnTitle} <span class=""caret""></span>'+
+                        '</button>'+
+                        '<ul class=""dropdown-menu"">'+
+                        {string.Join(Environment.NewLine, 
+                        commands.Select(a => $@"'<li><a href=""#"" onclick=""{a.OnClick}('+data+');return false;"">{a.Title}</a></li>'+"))}
+                        '</ul>'+
+                    '</div>'";
             _grid._columns.Add(_column);
             return this;
         }

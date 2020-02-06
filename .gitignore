@@ -9,13 +9,11 @@
 /EFDatatable.Web/bin/Release
 /EFDatatable.Web/obj/Release
 
-/EFDatatable.Data/obj/Debug
-/EFDatatable.Data/obj/Release
+/EFDatatable.Data/obj
 /EFDatatable.Data/bin
 
 /EFDatatable/bin
-/EFDatatable/obj/Debug
-/EFDatatable/obj/Release
+/EFDatatable/obj
 
 /.vs/EFDatatable/v15
 /.vs/EFDatatable/v16
