@@ -167,7 +167,7 @@ namespace EFDatatable
         /// <param name="btnCss"></param>
         /// <param name="commands"></param>
         /// <returns></returns>
-        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, string btnTitle, string btnCss, params Command[] commands)
+        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, string btnTitle, string btnCss = null, params Command[] commands)
         {
             _column = new ColumnDefinition
             {
@@ -177,7 +177,7 @@ namespace EFDatatable
                 Searchable = false,
             };
             _column.Render = $@"'<div class=""btn-group"">'+
-                        '<button type=""button"" class=""btn btn-{btnCss} dropdown-toggle"" data-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">'+
+                        '<button type=""button"" class=""btn {btnCss} dropdown-toggle"" data-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">'+
                             '{btnTitle} <span class=""caret""></span>'+
                         '</button>'+
                         '<ul class=""dropdown-menu"">'+
