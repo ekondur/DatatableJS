@@ -14,7 +14,7 @@
     .Columns(cols =>
     {
         cols.Field(a => a.Id).Visible(false);
-        cols.Commands(a => a.Id, "Action", "d", new Command("Delete", "onClick"), new Command("Update", "onClick")).Title("Actions");
+        cols.Commands(a => a.Id, "Action", "default", new Command("Delete", "onDelete"), new Command("Update", "onUpdate")).Title("Actions");
         cols.Field(a => a.Name).Title("First Name").Searchable(true);
         cols.Field(a => a.Age).Title("Age").Searchable(true);
         cols.Field(a => a.IsActive).Title("Active").Template("(data === true) ? '<span class=\"glyphicon glyphicon-ok\"></span>' : '<span class=\"glyphicon glyphicon-remove\"></span>'");
