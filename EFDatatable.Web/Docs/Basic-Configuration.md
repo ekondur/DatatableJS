@@ -28,6 +28,6 @@ public JsonResult GetDataResult(DataRequest request)
     return Json(result);
 }
 ```
-```DataRequest``` ojbect includes datatable parameters like ```start,length,columns```
+```DataRequest``` ojbect includes datatable parameters like ```start, length, columns...```
 
 Previous: [Installation](https://github.com/ekondur/EFDatatable/blob/master/EFDatatable.Web/Docs/Installation.md)
