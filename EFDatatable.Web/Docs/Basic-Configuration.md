@@ -13,7 +13,7 @@ Define using EFDatatable in view or web config global for all views.
         cols.Field(a => a.Age).Title("Age");
     })
     .URL(Url.Action("GetDataResult"), "POST")
-	.ServerSide(true)
+    .ServerSide(true)
     .Render()
 )
 ```
@@ -22,8 +22,8 @@ Execute data server side with ```ToDataResult(request)``` method simply or manip
 ```csharp
 public JsonResult GetDataResult(DataRequest request)
 {
-    	DataResult<Person> result = ctx.People.ToDataResult(request);
-    	return Json(result);
+    DataResult<Person> result = ctx.People.ToDataResult(request);
+    return Json(result);
 }
 ```
 ```DataRequest``` ojbect includes datatable parameters like ```start,length,columns```
