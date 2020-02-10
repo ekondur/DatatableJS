@@ -6,6 +6,7 @@
 EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more:
 - [Installation](https://github.com/ekondur/EFDatatable/blob/master/EFDatatable.Web/Docs/Installation.md) 
 - [Basic Configuration](https://github.com/ekondur/EFDatatable/blob/master/EFDatatable.Web/Docs/Basic-Configuration.md)
+- [Table Settings](https://github.com/ekondur/EFDatatable/blob/master/EFDatatable.Web/Docs/Table-Settings.md)
 
 ```csharp
 @(Html.EF().GridFor<Person>()
