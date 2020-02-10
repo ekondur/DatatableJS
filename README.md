@@ -3,18 +3,18 @@
 [![NuGet](http://img.shields.io/nuget/v/EFDatatable.svg)](https://www.nuget.org/packages/EFDatatable/)
 [![Gitter](https://badges.gitter.im/EFDatatable/community.svg)](https://gitter.im/EFDatatable/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ### What is EFDatatable?
-EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options.
+EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more:
+- [Installation](https://github.com/ekondur/EFDatatable/blob/feature/documentation-files/EFDatatable.Web/Docs/Installation.md) 
+- [Basic Configuration](https://github.com/ekondur/EFDatatable/blob/feature/documentation-files/EFDatatable.Web/Docs/Basic-Configuration.md)
 
 ```csharp
 @(Html.EF().GridFor<Person>()
         .Name("PersonGrid")
-        .Captions("top caption")
-        .Paging(true)
         .Columns(cols =>
         {
-            cols.Field(a => a.Id).Orderable(false).Searchable(true).Class("text-danger");
-            cols.Field(a => a.Name).Title("First Name").Searchable(true);
-            cols.Field(a => a.Age).Title("Age").Searchable(true);
+            cols.Field(a => a.Id).Visible(false);
+            cols.Field(a => a.Name).Title("First Name").Class("text-danger");
+            cols.Field(a => a.Age).Title("Age").Searchable(false);
             cols.Field(a => a.IsActive).Title("Active").Template("(data === true) ? '<span class=\"glyphicon glyphicon-ok\"></span>' : '<span class=\"glyphicon glyphicon-remove\"></span>'");
             cols.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
             cols.Command(a => a.Id, "onClick", text: "Click").Title("");
@@ -23,24 +23,12 @@ EFDatatable is a helper to create a grid with Jquery Datatable and provides an e
         {
             filter.Add(a => a.Id).GreaterThanOrEqual(1);
         })
-        .Data("addParam")
         .URL(Url.Action("GetDataResult"), "POST")
         .ServerSide(true)
         .Render()
 )
 ```
-Add additional data to send action.
-```javascript
-<script>
-    function addParam() {
-        return { Param1: "test1", Param2: true, Param3: 5 };
-    }
 
-    function onClick(e) {
-        alert(e);
-    }
-</script>
-```
 With "ToDataResult(request)" extension function, data can get with server side pagination very simply.
 ```csharp
 public JsonResult GetDataResult(DataRequest request)
