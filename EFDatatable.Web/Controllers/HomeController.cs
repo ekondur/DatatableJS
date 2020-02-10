@@ -25,7 +25,7 @@ namespace EFDatatable.Web.Controllers
 
         public JsonResult GetDataResult(DataRequest request, AddData data)
         {
-            var result = ctx.People.ToDataResult(request);
+            DataResult<Person> result = ctx.People.ToDataResult(request);
             return Json(result);
         }
 
