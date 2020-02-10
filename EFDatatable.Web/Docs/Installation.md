@@ -14,4 +14,4 @@ To format DateTime columns also need to add moment scripts,
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
     <script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
 ```
-Next: [Basic Configuration](https://github.com/ekondur/EFDatatable/blob/feature/documentation-files/EFDatatable.Web/Docs/Basic-Configuration.md)
+Next: [Basic Configuration](https://github.com/ekondur/EFDatatable/blob/master/EFDatatable.Web/Docs/Basic-Configuration.md)
