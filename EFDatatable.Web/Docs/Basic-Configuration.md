@@ -2,7 +2,7 @@
 Define using EFDatatable in view or web config global for all views.
 
 ```Razor
-@using EFDatatable
+@using EFDatatable;
 
 @(Html.EF().GridFor<Person>()
     .Name("PersonGrid")
@@ -20,6 +20,8 @@ Define using EFDatatable in view or web config global for all views.
 Execute data server side with ```ToDataResult(request)``` method simply or manipulate your data and return ```DataResult<T>```  object includes data.
 
 ```csharp
+using EFDatatable.Data;
+
 public JsonResult GetDataResult(DataRequest request)
 {
     DataResult<Person> result = ctx.People.ToDataResult(request);
