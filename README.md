@@ -3,10 +3,7 @@
 [![NuGet](http://img.shields.io/nuget/v/EFDatatable.svg)](https://www.nuget.org/packages/EFDatatable/)
 [![Gitter](https://badges.gitter.im/EFDatatable/community.svg)](https://gitter.im/EFDatatable/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ### What is EFDatatable?
-EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more:
-- [Installation](https://github.com/ekondur/EFDatatable/blob/master/EFDatatable.Web/Docs/Installation.md) 
-- [Basic Configuration](https://github.com/ekondur/EFDatatable/blob/master/EFDatatable.Web/Docs/Basic-Configuration.md)
-- [Table Settings](https://github.com/ekondur/EFDatatable/blob/master/EFDatatable.Web/Docs/Table-Settings.md)
+EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more: [Wiki Documentation](https://github.com/ekondur/EFDatatable/wiki)
 
 ```csharp
 @(Html.EF().GridFor<Person>()
