@@ -27,7 +27,18 @@ namespace EFDatatable
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
+        [Obsolete("This method is deprecated, please use Datatable() instead.")]
         public GridBuilder<T> GridFor<T>() where T : class
+        {
+            return new GridBuilder<T>();
+        }
+
+        /// <summary>
+        /// Make a datatable with expression
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public GridBuilder<T> Datatable<T>() where T : class
         {
             return new GridBuilder<T>();
         }

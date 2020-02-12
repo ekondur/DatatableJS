@@ -164,10 +164,11 @@ namespace EFDatatable
         /// <typeparam name="TProp"></typeparam>
         /// <param name="property"></param>
         /// <param name="btnTitle"></param>
-        /// <param name="btnCss"></param>
+        /// <param name="btnClass"></param>
+        /// <param name="iconClass"></param>
         /// <param name="commands"></param>
         /// <returns></returns>
-        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, string btnTitle, string btnCss = null, params Command[] commands)
+        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, string btnTitle = null, string btnClass = "default", string iconClass = "caret", params Command[] commands)
         {
             _column = new ColumnDefinition
             {
@@ -177,8 +178,8 @@ namespace EFDatatable
                 Searchable = false,
             };
             _column.Render = $@"'<div class=""btn-group"">'+
-                        '<button type=""button"" class=""btn {btnCss} dropdown-toggle"" data-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">'+
-                            '{btnTitle} <span class=""caret""></span>'+
+                        '<button type=""button"" class=""btn {btnClass} dropdown-toggle"" data-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">'+
+                            '{btnTitle ?? ""} <span class=""{iconClass}""></span>'+
                         '</button>'+
                         '<ul class=""dropdown-menu"">'+
                         {string.Join(Environment.NewLine, 

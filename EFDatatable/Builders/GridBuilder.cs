@@ -102,12 +102,12 @@ namespace EFDatatable
         /// Fix the table columns from left or right.
         /// </summary>
         /// <param name="leftColumns"></param>
-        /// <param name="rightColums"></param>
+        /// <param name="rightColumns"></param>
         /// <returns></returns>
-        public GridBuilder<T> FixedColumns(int leftColumns = 0, int rightColums = 0)
+        public GridBuilder<T> FixedColumns(int leftColumns = 0, int rightColumns = 0)
         {
             _leftColumns = leftColumns;
-            _rightColumns = rightColums;
+            _rightColumns = rightColumns;
             return this;
         }
 
