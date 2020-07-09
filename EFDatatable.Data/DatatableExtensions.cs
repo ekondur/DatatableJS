@@ -40,7 +40,7 @@ namespace EFDatatable.Data
                     ParameterExpression param = Expression.Parameter(typeof(T), "t");
                     MemberExpression member = Expression.Property(param, item.data);
                     var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
-                    listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = request.search.value });
+                    listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = request.search.value, Operator = Operator.Or });
                 }
             }
 
@@ -49,15 +49,7 @@ namespace EFDatatable.Data
                 ParameterExpression param = Expression.Parameter(typeof(T), "t");
                 MemberExpression member = Expression.Property(param, item.data);
                 var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
-                //var oldItem = listExp.Where(a => a.Field == item.data).FirstOrDefault();
-                //if (oldItem != null)
-                //{
-                //    oldItem.Value = item.search.value;
-                //}
-                //else
-                //{
-                    listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = item.search.value });
-                //}
+                listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = item.search.value, Operator = Operator.And });
             }
 
             if (listExp.Any())

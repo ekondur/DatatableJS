@@ -74,7 +74,7 @@ namespace EFDatatable.Data
 
             foreach (var filter in filters)
             {
-                var mult = filters.Where(a => a.Field == filter.Field).Count() > 1;
+                var isAnd = filter.Operator == Operator.And;
                 var expin = GetExpression<T>(param, filter);
                 if (expin != null)
                 {
@@ -84,18 +84,18 @@ namespace EFDatatable.Data
                     }
                     else
                     {
-                        exp = mult ? Expression.And(exp, expin) : Expression.Or(exp, expin);
+                        exp = isAnd ? Expression.And(exp, expin) : Expression.Or(exp, expin);
                     }
                 }
                 else
                 {
                     if (exp != null)
                     {
-                        exp = mult ? Expression.And(exp, Expression.Constant(false)) : Expression.Or(exp, Expression.Constant(false));
+                        exp = isAnd ? Expression.And(exp, Expression.Constant(false)) : Expression.Or(exp, Expression.Constant(false));
                     }
                     else
                     {
-                        exp = mult ? Expression.And(Expression.Constant(false), Expression.Constant(false)) : Expression.Or(Expression.Constant(false), Expression.Constant(false));
+                        exp = isAnd ? Expression.And(Expression.Constant(false), Expression.Constant(false)) : Expression.Or(Expression.Constant(false), Expression.Constant(false));
                     }
                 }
             }
