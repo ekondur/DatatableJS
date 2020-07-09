@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -73,6 +74,7 @@ namespace EFDatatable.Data
 
             foreach (var filter in filters)
             {
+                var mult = filters.Where(a => a.Field == filter.Field).Count() > 1;
                 var expin = GetExpression<T>(param, filter);
                 if (expin != null)
                 {
@@ -82,18 +84,18 @@ namespace EFDatatable.Data
                     }
                     else
                     {
-                        exp = Expression.Or(exp, expin);
+                        exp = mult ? Expression.And(exp, expin) : Expression.Or(exp, expin);
                     }
                 }
                 else
                 {
                     if (exp != null)
                     {
-                        exp = Expression.Or(exp, Expression.Constant(false));
+                        exp = mult ? Expression.And(exp, Expression.Constant(false)) : Expression.Or(exp, Expression.Constant(false));
                     }
                     else
                     {
-                        exp = Expression.Or(Expression.Constant(false), Expression.Constant(false));
+                        exp = mult ? Expression.And(Expression.Constant(false), Expression.Constant(false)) : Expression.Or(Expression.Constant(false), Expression.Constant(false));
                     }
                 }
             }

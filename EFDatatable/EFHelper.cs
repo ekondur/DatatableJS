@@ -72,6 +72,28 @@ namespace EFDatatable
         /// <returns></returns>
         public static MvcHtmlString Render<T>(this GridBuilder<T> gridBuilder)
         {
+            var tfoot = gridBuilder._columnSearching ? 
+                        $@"<tfoot>
+                            <tr>
+                                {string.Join(Environment.NewLine, gridBuilder._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"text\" placeholder=\"{a.Title}\" />" : "")))}
+                            </tr>
+                        </tfoot>" 
+                        : string.Empty;
+
+            var tfootInit = gridBuilder._columnSearching ? 
+                                $@"initComplete: function () {{
+                                        this.api().columns().every(function() {{
+                                            var that = this;
+                                            $('input', this.footer()).on('keyup change clear', function () {{
+                                                if (that.search() !== this.value) {{
+                                                    that
+                                                        .search(this.value)
+                                                        .draw();
+                                                }}
+                                            }});
+                                        }});
+                                    }},"
+                                    : string.Empty;
             var html = $@"
                     <table id=""{gridBuilder._name}"" class=""{gridBuilder._cssClass}"" style=""width:100%"">
                         <thead>
@@ -79,10 +101,12 @@ namespace EFDatatable
                                 {string.Join(Environment.NewLine, gridBuilder._columns.Select(a => string.Format("<th>{0}</th>", a.Title)))}
                             </tr>
                         </thead>
+                        {tfoot}
                     </table>
                     <script>
                     $(document).ready(function () {{
                         $('#{gridBuilder._name}').DataTable( {{
+                            {tfootInit}
                             processing:true,
                             serverSide:{gridBuilder._serverSide.ToLowString()},
                             fixedColumns: {{ 

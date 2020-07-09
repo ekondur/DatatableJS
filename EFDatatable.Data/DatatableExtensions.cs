@@ -31,10 +31,10 @@ namespace EFDatatable.Data
                 if (exp != null) query = query.Where(exp);
             }
 
+            var listExp = new List<FilterDefinition>();
+
             if (!string.IsNullOrEmpty(request.search?.value))
             {
-                Expression<Func<T, bool>> exp = null;
-                var listExp = new List<FilterDefinition>();
                 foreach (var item in request.columns.Where(a => a.searchable))
                 {
                     ParameterExpression param = Expression.Parameter(typeof(T), "t");
@@ -42,11 +42,32 @@ namespace EFDatatable.Data
                     var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
                     listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = request.search.value });
                 }
+            }
+
+            foreach (var item in request.columns.Where(a => a.searchable == true && !string.IsNullOrEmpty(a.search.value)))
+            {
+                ParameterExpression param = Expression.Parameter(typeof(T), "t");
+                MemberExpression member = Expression.Property(param, item.data);
+                var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
+                //var oldItem = listExp.Where(a => a.Field == item.data).FirstOrDefault();
+                //if (oldItem != null)
+                //{
+                //    oldItem.Value = item.search.value;
+                //}
+                //else
+                //{
+                    listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = item.search.value });
+                //}
+            }
+
+            if (listExp.Any())
+            {
+                Expression<Func<T, bool>> exp = null;
                 exp = ExpressionBuilder.GetExpression<T>(listExp);
                 if (exp != null) query = query.Where(exp);
             }
 
-            if (!string.IsNullOrEmpty(request.search?.value) || request.filters.Any())
+            if (listExp.Any() || request.filters.Any())
             {
                 result.recordsFiltered = query.Count();
             }
