@@ -24,6 +24,7 @@ namespace EFDatatable
         internal string _captionBottom { get; private set; }
         internal bool _paging { get; private set; } = true;
         internal string _langUrl { get; private set; }
+        internal bool _columnSearching { get; private set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -177,6 +178,17 @@ namespace EFDatatable
         public GridBuilder<T> Language(string url)
         {
             _langUrl = url;
+            return this;
+        }
+
+        /// <summary>
+        /// Enable columns serach feature on footer.
+        /// </summary>
+        /// <param name="searching">if set to <c>true</c> [searching].</param>
+        /// <returns></returns>
+        public GridBuilder<T> ColumnSearching(bool searching)
+        {
+            _columnSearching = searching;
             return this;
         }
     }

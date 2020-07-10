@@ -5,6 +5,7 @@
         public string Field { get; set; }
         public string Value { get; set; }
         public Operand Operand { get; set; }
+        public Operator Operator { get; set; }
     }
 
     public enum Operand
@@ -18,5 +19,11 @@
         Contains,
         StartsWith,
         EndsWith
+    }
+
+    public enum Operator
+    {
+        And,
+        Or
     }
 }
