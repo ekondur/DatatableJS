@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48</TargetFrameworks>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <Authors>Emrah KONDUR</Authors>
     <Copyright>https://github.com/ekondur/EFDatatable</Copyright>
     <PackageProjectUrl>https://github.com/ekondur/EFDatatable</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ekondur/EFDatatable</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Individual column search enabled</PackageReleaseNotes>
+    <PackageReleaseNotes>Individual column search width size</PackageReleaseNotes>
     <Description>EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>C#, Helper, Jquery, Datatable, Entity, Framework, Mvc</PackageTags>
