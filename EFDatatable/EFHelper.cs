@@ -75,7 +75,7 @@ namespace EFDatatable
             var tfoot = gridBuilder._columnSearching ? 
                         $@"<tfoot>
                             <tr>
-                                {string.Join(Environment.NewLine, gridBuilder._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"text\" placeholder=\"{a.Title}\" />" : "")))}
+                                {string.Join(Environment.NewLine, gridBuilder._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"text\" style=\"width:100%\" placeholder=\"{a.Title}\" />" : "")))}
                             </tr>
                         </tfoot>" 
                         : string.Empty;
