@@ -38,7 +38,8 @@ namespace EFDatatable
             {
                 Data = PropertyName(property),
                 Title = member.Member.GetCustomAttribute<DisplayAttribute>()?.Name ?? PropertyName(property),
-                Render = member.Member.GetCustomAttribute<DisplayFormatAttribute>() != null ? $@"moment(data).format('{member.Member.GetCustomAttribute<DisplayFormatAttribute>().DataFormatString}')" : null
+                Render = member.Member.GetCustomAttribute<DisplayFormatAttribute>() != null ? $@"moment(data).format('{member.Member.GetCustomAttribute<DisplayFormatAttribute>().DataFormatString}')" : null,
+                Type = ((PropertyInfo)member.Member).PropertyType
             };
             _grid._columns.Add(_column);
             return this;
