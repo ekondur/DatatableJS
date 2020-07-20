@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -14,6 +15,8 @@ namespace EFDatatable.Data
         typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
         private static MethodInfo endsWithMethod =
         typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
+        private static MethodInfo dateNull = typeof(DbFunctions).GetMethod("TruncateTime", new Type[] { typeof(DateTime?) });
+
 
         public static Expression<Func<T, bool>> GetExpression<T>(FilterDefinition filter)
         {
@@ -32,9 +35,16 @@ namespace EFDatatable.Data
             if (!converter.IsValid(filter.Value)) return null;
             var propertyValue = converter.ConvertFromInvariantString(filter.Value);
             ConstantExpression constant = Expression.Constant(propertyValue, member.Type);
+
             switch (filter.Operand)
             {
                 case Operand.Equal:
+                    if (member.Type == typeof(DateTime?) || member.Type == typeof(DateTime))
+                    {
+                        var me = Expression.Convert(member, member.Type);
+                        var ex = Expression.Call(null, typeof(DbFunctions).GetMethod("TruncateTime", new Type[] { member.Type }), me);
+                        return Expression.Equal(ex, constant);
+                    }
                     return Expression.Equal(member, constant);
 
                 case Operand.NotEqual:
