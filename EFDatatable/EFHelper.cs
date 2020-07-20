@@ -75,7 +75,7 @@ namespace EFDatatable
             var tfoot = gridBuilder._columnSearching ? 
                         $@"<tfoot>
                             <tr>
-                                {string.Join(Environment.NewLine, gridBuilder._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"{((a.Type == typeof(DateTime?) || a.Type == typeof(DateTime)) && gridBuilder._serverSide ? "date" : "text")}\" style=\"width:100%\" placeholder=\"{a.Title}\" />" : "")))}
+                                {string.Join(Environment.NewLine, gridBuilder._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"{((a.Type == typeof(DateTime?) || a.Type == typeof(DateTime)) && gridBuilder._serverSide ? "date" : "text")}\" style=\"width:100%\" placeholder=\"{a.Title}\" class=\"{gridBuilder._columnSearchingCss}\" />" : "")))}
                             </tr>
                         </tfoot>" 
                         : string.Empty;
