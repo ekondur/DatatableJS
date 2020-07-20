@@ -11,7 +11,7 @@
     .Captions("top caption")
     .Paging(true)
     //.Language(Url.Content("/Scripts/Turkish.json"))
-    .ColumnSearching(true)
+    .ColumnSearching(true, "form-control")
     .Columns(cols =>
     {
         cols.Field(a => a.Id).Visible(false);
