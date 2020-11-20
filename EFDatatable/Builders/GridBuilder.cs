@@ -71,11 +71,21 @@ namespace EFDatatable
         /// <param name="url"></param>
         /// <param name="method"></param>
         /// <returns></returns>
-        public GridBuilder<T> URL(string url, string method = "GET")
+        public GridBuilder<T> URL(string url, string method)
         {
             _url = url;
             _method = method;
             return this;
+        }
+
+        /// <summary>
+        /// Set the action url and type, default type is GET.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public GridBuilder<T> URL(string url)
+        {
+            return URL(url, "GET");
         }
 
         /// <summary>
@@ -106,11 +116,21 @@ namespace EFDatatable
         /// <param name="leftColumns"></param>
         /// <param name="rightColumns"></param>
         /// <returns></returns>
-        public GridBuilder<T> FixedColumns(int leftColumns = 0, int rightColumns = 0)
+        public GridBuilder<T> FixedColumns(int leftColumns, int rightColumns)
         {
             _leftColumns = leftColumns;
             _rightColumns = rightColumns;
             return this;
+        }
+
+        /// <summary>
+        /// Fix the table columns from left.
+        /// </summary>
+        /// <param name="leftColumns"></param>
+        /// <returns></returns>
+        public GridBuilder<T> FixedColumns(int leftColumns)
+        {
+            return FixedColumns(leftColumns, 0);
         }
 
         /// <summary>
@@ -152,11 +172,21 @@ namespace EFDatatable
         /// <param name="top"></param>
         /// <param name="bottom"></param>
         /// <returns></returns>
-        public GridBuilder<T> Captions(string top = null, string bottom = null)
+        public GridBuilder<T> Captions(string top, string bottom)
         {
             _captionTop = top;
             _captionBottom = bottom;
             return this;
+        }
+
+        /// <summary>
+        /// Define table top caption.
+        /// </summary>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Captions(string top)
+        {
+            return Captions(top, null);
         }
 
         /// <summary>
@@ -166,7 +196,10 @@ namespace EFDatatable
         /// <returns></returns>
         public GridBuilder<T> Paging(bool paging)
         {
-            if (!paging) _serverSide = false;
+            if (!paging)
+            {
+                _serverSide = false;
+            }
             _paging = paging;
             return this;
         }
@@ -183,16 +216,26 @@ namespace EFDatatable
         }
 
         /// <summary>
-        /// Enable columns serach feature on footer.
+        /// Enable columns search feature on footer.
         /// </summary>
         /// <param name="searching">if set to <c>true</c> [searching].</param>
         /// <param name="css"></param>
         /// <returns></returns>
-        public GridBuilder<T> ColumnSearching(bool searching, string css = "")
+        public GridBuilder<T> ColumnSearching(bool searching, string css)
         {
             _columnSearching = searching;
             _columnSearchingCss = css;
             return this;
+        }
+
+        /// <summary>
+        /// Enable columns search feature on footer.
+        /// </summary>
+        /// <param name="searching"></param>
+        /// <returns></returns>
+        public GridBuilder<T> ColumnSearching(bool searching)
+        {
+            return ColumnSearching(searching, "");
         }
     }
 }

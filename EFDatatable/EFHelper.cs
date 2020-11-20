@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Web.Mvc;
 
 namespace EFDatatable
@@ -61,7 +61,7 @@ namespace EFDatatable
 
         private static string ToLowString(this bool b)
         {
-            return b.ToString().ToLower();
+            return b.ToString().ToLower(CultureInfo.InvariantCulture);
         }
 
         /// <summary>

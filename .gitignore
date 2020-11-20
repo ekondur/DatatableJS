@@ -23,3 +23,6 @@
 /EFDatatable/nuget.exe
 /EFDatatable/EFDatatable.nuspec
 /EFDatatable/EFDatatable.1.0.0.nupkg
+
+/.vs
+/.vs/EFDatatable/config

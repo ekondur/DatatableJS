@@ -28,7 +28,10 @@ namespace EFDatatable.Data
             foreach (var item in request.filters)
             {
                 var exp = GetExpression<T>((Operand)item.Operand, item.Field, item.Value);
-                if (exp != null) query = query.Where(exp);
+                if (exp != null)
+                {
+                    query = query.Where(exp);
+                }
             }
 
             var listExp = new List<FilterDefinition>();

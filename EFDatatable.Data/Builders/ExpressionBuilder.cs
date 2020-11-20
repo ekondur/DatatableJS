@@ -8,31 +8,37 @@ using System.Reflection;
 
 namespace EFDatatable.Data
 {
-    public class ExpressionBuilder
+    public static class ExpressionBuilder
     {
-        private static MethodInfo containsMethod = typeof(string).GetMethod("Contains");
-        private static MethodInfo startsWithMethod =
-        typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
-        private static MethodInfo endsWithMethod =
-        typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
-        private static MethodInfo dateNull = typeof(DbFunctions).GetMethod("TruncateTime", new Type[] { typeof(DateTime?) });
+        private static readonly MethodInfo containsMethod = typeof(string).GetMethod("Contains");
+        private static readonly MethodInfo startsWithMethod = typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
+        private static readonly MethodInfo endsWithMethod = typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
 
 
         public static Expression<Func<T, bool>> GetExpression<T>(FilterDefinition filter)
         {
-            if (filter == null) return null;
+            if (filter == null)
+            {
+                return null;
+            }
 
             ParameterExpression param = Expression.Parameter(typeof(T), "t");
-            var exp = GetExpression<T>(param, filter);
-            if (exp == null) return null;
+            var exp = GetExpression(param, filter);
+            if (exp == null)
+            {
+                return null;
+            }
             return Expression.Lambda<Func<T, bool>>(exp, param);
         }
 
-        private static Expression GetExpression<T>(ParameterExpression param, FilterDefinition filter)
+        private static Expression GetExpression(ParameterExpression param, FilterDefinition filter)
         {
             MemberExpression member = Expression.Property(param, filter.Field);
             var converter = TypeDescriptor.GetConverter(member.Type);
-            if (!converter.IsValid(filter.Value)) return null;
+            if (!converter.IsValid(filter.Value))
+            {
+                return null;
+            }
             var propertyValue = converter.ConvertFromInvariantString(filter.Value);
             ConstantExpression constant = Expression.Constant(propertyValue, member.Type);
 
@@ -70,14 +76,17 @@ namespace EFDatatable.Data
 
                 case Operand.EndsWith:
                     return Expression.Call(member, endsWithMethod, constant);
+                default:
+                    return null;
             }
-            return null;
         }
 
         public static Expression<Func<T, bool>> GetExpression<T>(IList<FilterDefinition> filters)
         {
             if (filters.Count == 0)
+            {
                 return null;
+            }
 
             ParameterExpression param = Expression.Parameter(typeof(T), "t");
             Expression exp = null;
@@ -85,7 +94,7 @@ namespace EFDatatable.Data
             foreach (var filter in filters)
             {
                 var isAnd = filter.Operator == Operator.And;
-                var expin = GetExpression<T>(param, filter);
+                var expin = GetExpression(param, filter);
                 if (expin != null)
                 {
                     if (exp == null)

@@ -1,5 +1,6 @@
 ﻿using EFDatatable.Data;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
@@ -145,7 +146,7 @@ namespace EFDatatable
         /// <param name="btnClass"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public ColumnBuilder<T> Command<TProp>(Expression<Func<T, TProp>> property, string onClick, string iconClass = "", string btnClass = "", string text = "")
+        public ColumnBuilder<T> Command<TProp>(Expression<Func<T, TProp>> property, string onClick, string iconClass, string btnClass, string text)
         {
             _column = new ColumnDefinition
             {
@@ -160,16 +161,55 @@ namespace EFDatatable
         }
 
         /// <summary>
+        /// Define a link or button.
+        /// </summary>
+        /// <typeparam name="TProp"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="onClick"></param>
+        /// <param name="iconClass"></param>
+        /// <param name="btnClass"></param>
+        /// <returns></returns>
+        public ColumnBuilder<T> Command<TProp>(Expression<Func<T, TProp>> property, string onClick, string iconClass, string btnClass)
+        {
+            return Command(property, onClick, iconClass, btnClass, "");
+        }
+
+        /// <summary>
+        /// Define a link or button.
+        /// </summary>
+        /// <typeparam name="TProp"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="onClick"></param>
+        /// <param name="iconClass"></param>
+        /// <returns></returns>
+        public ColumnBuilder<T> Command<TProp>(Expression<Func<T, TProp>> property, string onClick, string iconClass)
+        {
+            return Command(property, onClick, iconClass, "", "");
+        }
+
+        /// <summary>
+        /// Define a link or button.
+        /// </summary>
+        /// <typeparam name="TProp"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="onClick"></param>
+        /// <returns></returns>
+        public ColumnBuilder<T> Command<TProp>(Expression<Func<T, TProp>> property, string onClick)
+        {
+            return Command(property, onClick, "", "", "");
+        }
+
+        /// <summary>
         /// Add multiple command to define button group.
         /// </summary>
         /// <typeparam name="TProp"></typeparam>
         /// <param name="property"></param>
-        /// <param name="btnTitle"></param>
+        /// <param name="btnText"></param>
         /// <param name="btnClass"></param>
         /// <param name="iconClass"></param>
         /// <param name="commands"></param>
         /// <returns></returns>
-        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, string btnTitle = null, string btnClass = "default", string iconClass = "caret", params Command[] commands)
+        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, IEnumerable<Command> commands, string btnText, string btnClass, string iconClass)
         {
             _column = new ColumnDefinition
             {
@@ -180,7 +220,7 @@ namespace EFDatatable
             };
             _column.Render = $@"'<div class=""btn-group"">'+
                         '<button type=""button"" class=""btn {btnClass} dropdown-toggle"" data-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">'+
-                            '{btnTitle ?? ""} <span class=""{iconClass}""></span>'+
+                            '{btnText ?? ""} <span class=""{iconClass}""></span>'+
                         '</button>'+
                         '<ul class=""dropdown-menu"">'+
                         {string.Join(Environment.NewLine, 
@@ -189,6 +229,45 @@ namespace EFDatatable
                     '</div>'";
             _grid._columns.Add(_column);
             return this;
+        }
+
+        /// <summary>
+        /// Add multiple command to define button group.
+        /// </summary>
+        /// <typeparam name="TProp"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="commands"></param>
+        /// <returns></returns>
+        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, IEnumerable<Command> commands)
+        {
+            return Commands(property, commands, null, "default", "caret");
+        }
+
+        /// <summary>
+        /// Add multiple command to define button group.
+        /// </summary>
+        /// <typeparam name="TProp"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="commands"></param>
+        /// <param name="btnText"></param>
+        /// <returns></returns>
+        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, IEnumerable<Command> commands, string btnText)
+        {
+            return Commands(property, commands, btnText, "default", "caret");
+        }
+
+        /// <summary>
+        /// Add multiple command to define button group.
+        /// </summary>
+        /// <typeparam name="TProp"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="commands"></param>
+        /// <param name="btnText"></param>
+        /// <param name="btnClass"></param>
+        /// <returns></returns>
+        public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, IEnumerable<Command> commands, string btnText, string btnClass)
+        {
+            return Commands(property, commands, btnText, btnClass, "caret");
         }
 
         private static string PropertyName<TProp>(Expression<Func<T, TProp>> expression)
