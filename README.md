@@ -1,4 +1,5 @@
 # EFDatatable
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/82fb18925fdd49a7bac10a18019c254f)](https://app.codacy.com/gh/ekondur/EFDatatable?utm_source=github.com&utm_medium=referral&utm_content=ekondur/EFDatatable&utm_campaign=Badge_Grade)
 [![Build status](https://ci.appveyor.com/api/projects/status/jbdovlrhbm7041jd/branch/master?svg=true)](https://ci.appveyor.com/project/ekondur/efdatatable/branch/master)
 [![NuGet](http://img.shields.io/nuget/v/EFDatatable.svg)](https://www.nuget.org/packages/EFDatatable/)
 [![Gitter](https://badges.gitter.im/EFDatatable/community.svg)](https://gitter.im/EFDatatable/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
