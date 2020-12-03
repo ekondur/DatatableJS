@@ -17,7 +17,7 @@ namespace EFDatatable.Data
         private static readonly MethodInfo endsWithMethod = typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
 
 
-        public static Expression<Func<T, bool>> GetExpression<T>(FilterDefinition filter)
+        public static Expression<Func<T, bool>> GetExpression<T>(FilterDef filter)
         {
             if (filter == null)
             {
@@ -33,7 +33,7 @@ namespace EFDatatable.Data
             return Expression.Lambda<Func<T, bool>>(exp, param);
         }
 
-        private static Expression GetExpression(ParameterExpression param, FilterDefinition filter)
+        private static Expression GetExpression(ParameterExpression param, FilterDef filter)
         {
             MemberExpression member = Expression.Property(param, filter.Field);
             var converter = TypeDescriptor.GetConverter(member.Type);
@@ -85,7 +85,7 @@ namespace EFDatatable.Data
             }
         }
 
-        public static Expression<Func<T, bool>> GetExpression<T>(IList<FilterDefinition> filters)
+        public static Expression<Func<T, bool>> GetExpression<T>(IList<FilterDef> filters)
         {
             if (filters.Count == 0)
             {

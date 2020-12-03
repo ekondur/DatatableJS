@@ -27,14 +27,14 @@ namespace EFDatatable.Data
 
             foreach (var item in request.filters)
             {
-                var exp = GetExpression<T>((Operand)item.Operand, item.Field, item.Value);
+                var exp = GetExpression<T>(item.Operand, item.Field, item.Value);
                 if (exp != null)
                 {
                     query = query.Where(exp);
                 }
             }
 
-            var listExp = new List<FilterDefinition>();
+            var listExp = new List<FilterDef>();
 
             if (!string.IsNullOrEmpty(request.search?.value))
             {
@@ -43,7 +43,7 @@ namespace EFDatatable.Data
                     ParameterExpression param = Expression.Parameter(typeof(T), "t");
                     MemberExpression member = Expression.Property(param, item.data);
                     var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
-                    listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = request.search.value, Operator = Operator.Or });
+                    listExp.Add(new FilterDef { Operand = operand, Field = item.data, Value = request.search.value, Operator = Operator.Or });
                 }
             }
 
@@ -52,7 +52,7 @@ namespace EFDatatable.Data
                 ParameterExpression param = Expression.Parameter(typeof(T), "t");
                 MemberExpression member = Expression.Property(param, item.data);
                 var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
-                listExp.Add(new FilterDefinition { Operand = operand, Field = item.data, Value = item.search.value, Operator = Operator.And });
+                listExp.Add(new FilterDef { Operand = operand, Field = item.data, Value = item.search.value, Operator = Operator.And });
             }
 
             if (listExp.Any())
@@ -97,7 +97,7 @@ namespace EFDatatable.Data
         private static Expression<Func<T, bool>> GetExpression<T>(Operand operand, string field, string value)
         {
             return ExpressionBuilder
-                .GetExpression<T>(new FilterDefinition
+                .GetExpression<T>(new FilterDef
                 {
                     Operand = operand,
                     Field = field,
