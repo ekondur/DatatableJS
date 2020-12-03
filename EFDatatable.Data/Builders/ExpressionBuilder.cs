@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+#if NETFRAMEWORK
 using System.Data.Entity;
+#endif
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -45,12 +47,14 @@ namespace EFDatatable.Data
             switch (filter.Operand)
             {
                 case Operand.Equal:
+#if NETFRAMEWORK
                     if (member.Type == typeof(DateTime?) || member.Type == typeof(DateTime))
                     {
                         var me = Expression.Convert(member, member.Type);
                         var ex = Expression.Call(null, typeof(DbFunctions).GetMethod("TruncateTime", new Type[] { member.Type }), me);
                         return Expression.Equal(ex, constant);
                     }
+#endif
                     return Expression.Equal(member, constant);
 
                 case Operand.NotEqual:

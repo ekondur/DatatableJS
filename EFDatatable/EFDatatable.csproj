@@ -31,7 +31,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EFDatatable.Data" Version="1.1.3" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="4.0.40804" />
     <PackageReference Include="Newtonsoft.Json" Version="6.0.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.0.0" />
