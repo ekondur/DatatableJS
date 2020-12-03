@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Reflection;
 
-namespace EFDatatable.Data
+namespace EFDatatable
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ColumnDefinition
     {
         public string Data { get; set; }

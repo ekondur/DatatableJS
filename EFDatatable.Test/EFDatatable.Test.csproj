@@ -154,10 +154,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001131338189_BirthDate.cs" />
-    <Compile Include="Migrations\202001131338189_BirthDate.Designer.cs">
-      <DependentUpon>202001131338189_BirthDate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddData.cs" />
     <Compile Include="Models\Person.cs" />
@@ -203,11 +199,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001131338189_BirthDate.resx">
-      <DependentUpon>202001131338189_BirthDate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EFDatatable.Data\EFDatatable.Data.csproj">

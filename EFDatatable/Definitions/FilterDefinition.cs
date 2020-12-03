@@ -1,11 +1,11 @@
-﻿namespace EFDatatable.Data
+﻿namespace EFDatatable
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class FilterDefinition
     {
         public string Field { get; set; }
         public string Value { get; set; }
         public Operand Operand { get; set; }
-        public Operator Operator { get; set; }
     }
 
     public enum Operand
@@ -19,11 +19,5 @@
         Contains,
         StartsWith,
         EndsWith
-    }
-
-    public enum Operator
-    {
-        And,
-        Or
     }
 }

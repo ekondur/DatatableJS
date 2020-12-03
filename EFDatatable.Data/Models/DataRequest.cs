@@ -27,7 +27,7 @@ namespace EFDatatable.Data
     {
         public string Field { get; set; }
         public string Value { get; set; }
-        public int Operand { get; set; }
+        public Operand Operand { get; set; }
     }
 
     public class Column
