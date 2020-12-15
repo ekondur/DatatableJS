@@ -34,8 +34,8 @@ PM> Install-Package EFDatatable
 )
 ```
 
-With "ToDataResult(request)" extension function, data can get with server side pagination very simply. 
-Install [EFDatatable.Data](https://www.nuget.org/packages/EFDatatable.Data/) from the package manager console:
+With "ToDataResult(request)" extension function, data can get with server side pagination very simply. To use this feature
+install [EFDatatable.Data](https://www.nuget.org/packages/EFDatatable.Data/) from the package manager console:
 ```
 PM> Install-Package EFDatatable.Data
 ```
