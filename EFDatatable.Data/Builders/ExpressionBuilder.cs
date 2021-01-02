@@ -12,10 +12,9 @@ namespace EFDatatable.Data
 {
     public static class ExpressionBuilder
     {
-        private static readonly MethodInfo containsMethod = typeof(string).GetMethod("Contains");
+        private static readonly MethodInfo containsMethod = typeof(string).GetMethod("Contains", new Type[] { typeof(string) });
         private static readonly MethodInfo startsWithMethod = typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
         private static readonly MethodInfo endsWithMethod = typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
-
 
         public static Expression<Func<T, bool>> GetExpression<T>(FilterDef filter)
         {
@@ -46,6 +45,7 @@ namespace EFDatatable.Data
 
             switch (filter.Operand)
             {
+
                 case Operand.Equal:
 #if NETFRAMEWORK
                     if (member.Type == typeof(DateTime?) || member.Type == typeof(DateTime))
