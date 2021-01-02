@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var list = new List<Person>();
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://github.com/ekondur/EFDatatable/wiki">building Datatable with ASP.NET Core</a>.</p>
+</div>
+
+<datatable name="PersonGrid">
+    <columns>
+        <column field="Id" visible="false" />
+        <column field="Name" width="50" />
+        <column field="Age" width="50" />
+    </columns>
+    <data-source url="@Url.Action("GetDataResult")" method="POST" server-side="true" data="addParam"/>
+    <language url="//cdn.datatables.net/plug-ins/1.10.22/i18n/Turkish.json"/>
+    <filters>
+        <add field="Id" value="1" operand="GreaterThanOrEqual"/>
+    </filters>
+    <captions top="top caption here" bottom="bottom caption here"/>
+    <render />
+</datatable>
+
+<script>
+    function addParam() {
+        return { Param1: "test1", Param2: true, Param3: 5 };
+    }
+
+    function onClick(e) {
+        alert(e);
+    }
+</script>

@@ -114,7 +114,7 @@ namespace EFDatatable
                                 rightColumns: {gridBuilder._rightColumns}
                             }},
                             order:[],
-                            orderdering: {gridBuilder._ordering.ToLowString()},
+                            ordering: {gridBuilder._ordering.ToLowString()},
                             searching: {gridBuilder._searching.ToLowString()},
                             paging: {gridBuilder._paging.ToLowString()},
                             language: {{
