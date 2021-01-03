@@ -153,7 +153,7 @@ namespace EFDatatable
                 Data = PropertyName(property),
                 Orderable = false,
                 Searchable = false,
-                Render = $@"'<a href=""#"" class=""{(!string.IsNullOrEmpty(iconClass) && string.IsNullOrEmpty(btnClass) ? "btn btn-xs btn-primary" : btnClass)}"" onClick=""{onClick}(\''+data+'\')"">'+{(string.IsNullOrEmpty(text) ? (string.IsNullOrEmpty(iconClass) ? "data" : "''") : string.Format("'{0}'", text))}+'<i class=""{iconClass}""></i></a>'"
+                Render = $@"'<a href=""#"" class=""{(!string.IsNullOrEmpty(iconClass) && string.IsNullOrEmpty(btnClass) ? "btn btn-primary" : btnClass)}"" onClick=""{onClick}(\''+data+'\')""><i class=""{iconClass}""></i>'+{(string.IsNullOrEmpty(text) ? (string.IsNullOrEmpty(iconClass) ? "data" : "''") : string.Format("' {0}'", text))}+'</a>'"
             };
             _grid._columns.Add(_column);
             return this;
@@ -239,7 +239,7 @@ namespace EFDatatable
         /// <returns></returns>
         public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, IEnumerable<Command> commands)
         {
-            return Commands(property, commands, null, "default", "caret");
+            return Commands(property, commands, null, "btn-default", "caret");
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace EFDatatable
         /// <returns></returns>
         public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, IEnumerable<Command> commands, string btnText)
         {
-            return Commands(property, commands, btnText, "default", "caret");
+            return Commands(property, commands, btnText, "btn-default", "caret");
         }
 
         /// <summary>

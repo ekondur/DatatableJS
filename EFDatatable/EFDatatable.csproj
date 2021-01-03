@@ -2,16 +2,16 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48</TargetFrameworks>
-    <Version>1.3.3</Version>
+    <Version>2.0.0</Version>
     <Authors>Emrah KONDUR</Authors>
     <Copyright>https://github.com/ekondur/EFDatatable</Copyright>
     <PackageProjectUrl>https://github.com/ekondur/EFDatatable</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ekondur/EFDatatable</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>individual column search input css</PackageReleaseNotes>
-    <Description>EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options.</Description>
+    <PackageReleaseNotes>some theme bugs fixed</PackageReleaseNotes>
+    <Description>EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html Helper. It gives serverside or client side options.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageTags>C#, Helper, Jquery, Datatable, Entity, Framework, Mvc</PackageTags>
+    <PackageTags>C#, Helper, Jquery, Datatable, Entity Framework, Mvc</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -28,6 +28,8 @@
     <OutputPath>bin\Release\</OutputPath>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageIcon>EFDatatable.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +40,17 @@
 
   <ItemGroup>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\EFDatatable.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

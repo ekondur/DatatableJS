@@ -35,7 +35,6 @@ namespace EFDatatable.Core
             grid.Columns.Add(new ColumnModel
             {
                 Data = Field,
-                Title = Title ?? Field,
                 Visible = Visible,
                 Searchable = Searchable,
                 Orderable = Orderable,

@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    var list = new List<Person>();
 }
+
+@using EFDatatable.Core
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -11,8 +12,10 @@
 <datatable name="PersonGrid">
     <columns>
         <column field="Id" visible="false" />
-        <column field="Name" width="50" />
-        <column field="Age" width="50" />
+        <column field="Name" width="50" title="Full Name" />
+        <column field="Age" />
+        <command-item field="Id" on-click="onClick" btn-class="btn btn-info" text="Edit" icon-class="fa fa-edit"/>
+        <commands field="Id" text="Actions" items='new [] { new Command("Update", "onClick"), new Command("Delete", "onClick") }'/>
     </columns>
     <data-source url="@Url.Action("GetDataResult")" method="POST" server-side="true" data="addParam"/>
     <language url="//cdn.datatables.net/plug-ins/1.10.22/i18n/Turkish.json"/>
