@@ -11,11 +11,13 @@
     <RepositoryUrl>https://github.com/ekondur/EFDatatable</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>C#, Datatable, Entity Framework, Query, Linq</PackageTags>
-    <NeutralLanguage></NeutralLanguage>
+    <NeutralLanguage>English (United States)</NeutralLanguage>
     <PackageReleaseNotes>.netcore helper integrated</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageIcon>EFDatatable.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^net\d'))">
@@ -38,6 +40,17 @@
 
   <ItemGroup>
     <Folder Include="Definitions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\EFDatatable.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">

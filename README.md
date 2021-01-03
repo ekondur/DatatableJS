@@ -33,6 +33,30 @@ PM> Install-Package EFDatatable
         .Render()
 )
 ```
+Or, Install [EFDatatable.Core](https://www.nuget.org/packages/EFDatatable.Core/) for .Net Core and use tag helpers.
+
+```
+PM> Install-Package EFDatatable.Core
+```
+
+```html
+<datatable name="PersonGrid">
+    <columns>
+        <column field="Id" visible="false" />
+        <column field="Name" width="50" title="Full Name" />
+        <column field="Age" />
+        <command-item field="Id" on-click="onClick" btn-class="btn btn-info" text="Edit" icon-class="fa fa-edit"/>
+        <commands field="Id" text="Actions" items='new [] { new Command("Update", "onClick"), new Command("Delete", "onClick") }'/>
+    </columns>
+    <data-source url="@Url.Action("GetDataResult")" method="POST" server-side="true" data="addParam"/>
+    <language url="//cdn.datatables.net/plug-ins/1.10.22/i18n/Turkish.json"/>
+    <filters>
+        <add field="Id" value="1" operand="GreaterThanOrEqual"/>
+    </filters>
+    <captions top="top caption here" bottom="bottom caption here"/>
+    <render />
+</datatable>
+```
 
 With "ToDataResult(request)" extension function, data can get with server side pagination very simply. To use this feature
 install [EFDatatable.Data](https://www.nuget.org/packages/EFDatatable.Data/) from the package manager console:

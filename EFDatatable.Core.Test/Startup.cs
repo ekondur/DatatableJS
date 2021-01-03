@@ -30,6 +30,9 @@ namespace EFDatatable.Core.Test
                     options.UseSqlServer(Configuration.GetConnectionString("EFDatabase")));
             services.AddMvc()
                 .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
