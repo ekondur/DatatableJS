@@ -7,10 +7,10 @@
 DatatableJS is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more: [Wiki Documentation](https://github.com/ekondur/DatatableJS/wiki)
 
 ### Where can I get it?
-Install [DatatableJS.Net](https://www.nuget.org/packages/DatatableJS.Net/) from the package manager console:
+Install [DatatableJS.Net](https://www.nuget.org/packages/DatatableJS.Net/) for .Net Frameworks (4.5...4.8) from the package manager console:
 
 ```
-PM> Install-Package DatatableJS
+PM> Install-Package DatatableJS.Net
 ```
 
 ```csharp
@@ -36,7 +36,7 @@ PM> Install-Package DatatableJS
 Or, Install [DatatableJS](https://www.nuget.org/packages/DatatableJS/) for .Net Core, .Net 5, .Net 6 and use tag helpers.
 
 ```
-PM> Install-Package EFDatatable.Core
+PM> Install-Package DatatableJS
 ```
 
 ```html
