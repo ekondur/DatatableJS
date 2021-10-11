@@ -6,6 +6,8 @@
 ### What is DatatableJS?
 DatatableJS is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more: [Wiki Documentation](https://github.com/ekondur/DatatableJS/wiki)
 
+![Ekran Alıntısı](https://user-images.githubusercontent.com/4971326/87161335-0f5c1a80-c2cd-11ea-8e19-ed43087bbbe5.PNG)
+
 ### Where can I get it?
 Install [DatatableJS.Net](https://www.nuget.org/packages/DatatableJS.Net/) for .Net Frameworks (4.5 ... 4.8) from the package manager console:
 
