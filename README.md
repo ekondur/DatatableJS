@@ -1,20 +1,20 @@
-# EFDatatable
+# DatatableJS
 [![Build status](https://ci.appveyor.com/api/projects/status/jbdovlrhbm7041jd/branch/master?svg=true)](https://ci.appveyor.com/project/ekondur/efdatatable/branch/master)
 [![NuGet](http://img.shields.io/nuget/v/EFDatatable.svg)](https://www.nuget.org/packages/EFDatatable/)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d794ab84939f4ddc96fffebd6ddf6ff7)](https://www.codacy.com/gh/ekondur/EFDatatable/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ekondur/EFDatatable&amp;utm_campaign=Badge_Grade)
 [![Gitter](https://badges.gitter.im/EFDatatable/community.svg)](https://gitter.im/EFDatatable/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-### What is EFDatatable?
-EFDatatable is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more: [Wiki Documentation](https://github.com/ekondur/EFDatatable/wiki)
+### What is DatatableJS?
+DatatableJS is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more: [Wiki Documentation](https://github.com/ekondur/DatatableJS/wiki)
 
 ### Where can I get it?
-Install [EFDatatable](https://www.nuget.org/packages/EFDatatable/) from the package manager console:
+Install [DatatableJS.Net](https://www.nuget.org/packages/DatatableJS.Net/) from the package manager console:
 
 ```
-PM> Install-Package EFDatatable
+PM> Install-Package DatatableJS
 ```
 
 ```csharp
-@(Html.EF().Datatable<Person>()
+@(Html.JS().Datatable<Person>()
         .Name("PersonGrid")
         .Columns(cols =>
         {
@@ -33,7 +33,7 @@ PM> Install-Package EFDatatable
         .Render()
 )
 ```
-Or, Install [EFDatatable.Core](https://www.nuget.org/packages/EFDatatable.Core/) for .Net Core and use tag helpers.
+Or, Install [DatatableJS](https://www.nuget.org/packages/DatatableJS/) for .Net Core, .Net 5, .Net 6 and use tag helpers.
 
 ```
 PM> Install-Package EFDatatable.Core
@@ -59,12 +59,12 @@ PM> Install-Package EFDatatable.Core
 ```
 
 With "ToDataResult(request)" extension function, data can get with server side pagination very simply. To use this feature
-install [EFDatatable.Data](https://www.nuget.org/packages/EFDatatable.Data/) from the package manager console:
+install [DatatableJS.Data](https://www.nuget.org/packages/DatatableJS.Data/) from the package manager console:
 ```
-PM> Install-Package EFDatatable.Data
+PM> Install-Package DatatableJS.Data
 ```
 ```csharp
-using EFDatatable.Data
+using DatatableJS.Data
 
 public JsonResult GetDataResult(DataRequest request)
 {

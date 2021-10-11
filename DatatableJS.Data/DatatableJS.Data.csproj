@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>    
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>    
+    <Authors>Emrah KONDUR</Authors>    
+    <Company>Emrah KONDUR</Company>    
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
+    <Description>Executing IQueryable list objects server side in Entity Framework for Datatables request.</Description>    
+    <Copyright>https://github.com/ekondur/DatatableJS</Copyright>    
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>    
+    <PackageProjectUrl>https://github.com/ekondur/DatatableJS</PackageProjectUrl>    
+    <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>    
+    <RepositoryType>git</RepositoryType>    
+    <PackageTags>C#, Jquery Datatables, Entity Framework, Query, Linq</PackageTags>    
+    <PackageReleaseNotes>.netcore and .net5 helper integrated</PackageReleaseNotes>    
+    <NeutralLanguage>English (United States)</NeutralLanguage>    
+    <Version>3.0.0</Version>    
+    <PackageIcon>datatable-js.png</PackageIcon>    
+    <PackageIconUrl />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\datatable-js.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
