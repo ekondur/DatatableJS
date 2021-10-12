@@ -60,7 +60,7 @@ PM> Install-Package DatatableJS
 </datatable>
 ```
 
-With "ToDataResult(request)" extension function, data can get with server side pagination very simply. To use this feature
+Using `.ToDataResult(request)` extension function with IQueryable collection, provides data can get with server side pagination very simply. To use this feature
 install [DatatableJS.Data](https://www.nuget.org/packages/DatatableJS.Data/) from the package manager console:
 ```
 PM> Install-Package DatatableJS.Data
