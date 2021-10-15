@@ -18,13 +18,13 @@ PM> Install-Package DatatableJS.Net
 ```csharp
 @(Html.JS().Datatable<Person>()
         .Name("PersonGrid")
-        .Columns(cols =>
+        .Columns(col =>
         {
-            cols.Field(a => a.Id).Visible(false);
-            cols.Field(a => a.Name).Title("First Name").Class("text-danger");
-            cols.Field(a => a.Age).Title("Age").Searchable(false);
-            cols.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
-            cols.Command(a => a.Id, "onClick", text: "Click").Title("");
+            col.Field(a => a.Id).Visible(false);
+            col.Field(a => a.Name).Title("First Name").Class("text-danger");
+            col.Field(a => a.Age).Title("Age").Searchable(false);
+            col.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
+            col.Command(a => a.Id, "onClick", text: "Click").Title("");
         })
         .Filters(filter =>
         {
