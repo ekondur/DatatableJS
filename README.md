@@ -9,7 +9,31 @@ DatatableJS is a helper to create a grid with Jquery Datatable and provides an e
 ![Ekran Alıntısı](https://user-images.githubusercontent.com/4971326/87161335-0f5c1a80-c2cd-11ea-8e19-ed43087bbbe5.PNG)
 
 ### Where can I get it?
-Install [DatatableJS.Net](https://www.nuget.org/packages/DatatableJS.Net/) for .Net Frameworks (4.5 ... 4.8) from the package manager console:
+Install [DatatableJS](https://www.nuget.org/packages/DatatableJS/) for .Net Core, .Net 5, .Net 6 and use tag helpers.
+
+```
+PM> Install-Package DatatableJS
+```
+
+```html
+<datatable name="PersonGrid">
+    <columns>
+        <column field="Id" visible="false" />
+        <column field="Name" width="50" title="Full Name" />
+        <column field="Age" />
+        <command-item field="Id" on-click="onClick" btn-class="btn btn-info" text="Edit" icon-class="fa fa-edit"/>
+        <commands field="Id" text="Actions" items='new [] { new Command("Update", "onClick"), new Command("Delete", "onClick") }'/>
+    </columns>
+    <data-source url="@Url.Action("GetDataResult")" method="POST" server-side="true" data="addParam"/>
+    <language url="//cdn.datatables.net/plug-ins/1.10.22/i18n/Turkish.json"/>
+    <filters>
+        <add field="Id" value="1" operand="GreaterThanOrEqual"/>
+    </filters>
+    <captions top="top caption here" bottom="bottom caption here"/>
+    <render />
+</datatable>
+```
+Or, Install [DatatableJS.Net](https://www.nuget.org/packages/DatatableJS.Net/) for .Net Frameworks (4.5 ... 4.8) from the package manager console:
 
 ```
 PM> Install-Package DatatableJS.Net
@@ -34,30 +58,6 @@ PM> Install-Package DatatableJS.Net
         .ServerSide(true)
         .Render()
 )
-```
-Or, Install [DatatableJS](https://www.nuget.org/packages/DatatableJS/) for .Net Core, .Net 5, .Net 6 and use tag helpers.
-
-```
-PM> Install-Package DatatableJS
-```
-
-```html
-<datatable name="PersonGrid">
-    <columns>
-        <column field="Id" visible="false" />
-        <column field="Name" width="50" title="Full Name" />
-        <column field="Age" />
-        <command-item field="Id" on-click="onClick" btn-class="btn btn-info" text="Edit" icon-class="fa fa-edit"/>
-        <commands field="Id" text="Actions" items='new [] { new Command("Update", "onClick"), new Command("Delete", "onClick") }'/>
-    </columns>
-    <data-source url="@Url.Action("GetDataResult")" method="POST" server-side="true" data="addParam"/>
-    <language url="//cdn.datatables.net/plug-ins/1.10.22/i18n/Turkish.json"/>
-    <filters>
-        <add field="Id" value="1" operand="GreaterThanOrEqual"/>
-    </filters>
-    <captions top="top caption here" bottom="bottom caption here"/>
-    <render />
-</datatable>
 ```
 
 Using `.ToDataResult(request)` extension function with IQueryable collection, provides data can get with server side pagination very simply. To use this feature
