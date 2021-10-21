@@ -9,33 +9,7 @@ DatatableJS is a helper to create a grid with Jquery Datatable and provides an e
 ![Ekran Alıntısı](https://user-images.githubusercontent.com/4971326/87161335-0f5c1a80-c2cd-11ea-8e19-ed43087bbbe5.PNG)
 
 ### Where can I get it?
-Install [DatatableJS.Net](https://www.nuget.org/packages/DatatableJS.Net/) for .Net Frameworks (4.5 ... 4.8) from the package manager console:
-
-```
-PM> Install-Package DatatableJS.Net
-```
-
-```csharp
-@(Html.JS().Datatable<Person>()
-        .Name("PersonGrid")
-        .Columns(cols =>
-        {
-            cols.Field(a => a.Id).Visible(false);
-            cols.Field(a => a.Name).Title("First Name").Class("text-danger");
-            cols.Field(a => a.Age).Title("Age").Searchable(false);
-            cols.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
-            cols.Command(a => a.Id, "onClick", text: "Click").Title("");
-        })
-        .Filters(filter =>
-        {
-            filter.Add(a => a.Id).GreaterThanOrEqual(1);
-        })
-        .URL(Url.Action("GetDataResult"), "POST")
-        .ServerSide(true)
-        .Render()
-)
-```
-Or, Install [DatatableJS](https://www.nuget.org/packages/DatatableJS/) for .Net Core, .Net 5, .Net 6 and use tag helpers.
+Install [DatatableJS](https://www.nuget.org/packages/DatatableJS/) for .Net Core, .Net 5, .Net 6 and use tag helpers.
 
 ```
 PM> Install-Package DatatableJS
@@ -59,8 +33,34 @@ PM> Install-Package DatatableJS
     <render />
 </datatable>
 ```
+Or, Install [DatatableJS.Net](https://www.nuget.org/packages/DatatableJS.Net/) for .Net Frameworks (4.5 ... 4.8) from the package manager console:
 
-With "ToDataResult(request)" extension function, data can get with server side pagination very simply. To use this feature
+```
+PM> Install-Package DatatableJS.Net
+```
+
+```csharp
+@(Html.JS().Datatable<Person>()
+        .Name("PersonGrid")
+        .Columns(col =>
+        {
+            col.Field(a => a.Id).Visible(false);
+            col.Field(a => a.Name).Title("First Name").Class("text-danger");
+            col.Field(a => a.Age).Title("Age").Searchable(false);
+            col.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
+            col.Command(a => a.Id, "onClick", text: "Click").Title("");
+        })
+        .Filters(filter =>
+        {
+            filter.Add(a => a.Id).GreaterThanOrEqual(1);
+        })
+        .URL(Url.Action("GetDataResult"), "POST")
+        .ServerSide(true)
+        .Render()
+)
+```
+
+Using `.ToDataResult(request)` extension function with IQueryable collection, provides data can get with server side pagination very simply. To use this feature
 install [DatatableJS.Data](https://www.nuget.org/packages/DatatableJS.Data/) from the package manager console:
 ```
 PM> Install-Package DatatableJS.Data
