@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace DatatableJS
 {
+    /// <summary>
+    /// Add multiple command to define button group.
+    /// </summary>
     [HtmlTargetElement("commands", ParentTag = "columns")]
     public class CommandsHelper : TagHelper
     {
@@ -17,6 +20,11 @@ namespace DatatableJS
 
         public IEnumerable<Command> Items { get; set; } = new List<Command>();
 
+        /// <summary>
+        /// Process
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="output"></param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "th";

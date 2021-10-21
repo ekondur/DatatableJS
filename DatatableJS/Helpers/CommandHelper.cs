@@ -2,6 +2,9 @@
 
 namespace DatatableJS
 {
+    /// <summary>
+    /// Add a command to define button.
+    /// </summary>
     [HtmlTargetElement("command-item", ParentTag = "columns")]
     public class CommandHelper : TagHelper
     {
@@ -13,6 +16,11 @@ namespace DatatableJS
         public string BtnClass { get; set; }
         public int Width { get; set; } = 1;
 
+        /// <summary>
+        /// Process
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="output"></param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "th";

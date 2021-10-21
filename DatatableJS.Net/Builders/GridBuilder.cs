@@ -15,7 +15,7 @@ namespace DatatableJS.Net
         internal bool _searching { get; private set; } = true;
         internal int _leftColumns { get; private set; }
         internal int _rightColumns { get; private set; }
-        internal bool _serverSide { get; private set; }
+        internal bool _serverSide { get; private set; } = true;
         internal string _method { get; private set; }
         internal string _data { get; private set; }
         internal string _cssClass { get; private set; } = "display nowrap dataTable dtr-inline collapsed";

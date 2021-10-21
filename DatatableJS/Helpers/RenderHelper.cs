@@ -4,9 +4,17 @@ using System.Linq;
 
 namespace DatatableJS
 {
+    /// <summary>
+    /// Render datatable to create
+    /// </summary>
     [HtmlTargetElement("render", ParentTag = "datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class RenderHelper : TagHelper
     {
+        /// <summary>
+        /// Process
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="output"></param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "script";

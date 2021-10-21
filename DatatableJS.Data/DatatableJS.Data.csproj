@@ -12,11 +12,12 @@
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>    
     <RepositoryType>git</RepositoryType>    
     <PackageTags>C#, Jquery Datatables, Entity Framework, Query, Linq</PackageTags>    
-    <PackageReleaseNotes>.netcore and .net5 helper integrated</PackageReleaseNotes>    
+    <PackageReleaseNotes>enabled summaries</PackageReleaseNotes>    
     <NeutralLanguage>English (United States)</NeutralLanguage>    
-    <Version>3.0.0</Version>    
+    <Version>3.0.1</Version>    
     <PackageIcon>datatable-js.png</PackageIcon>    
     <PackageIconUrl />
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
