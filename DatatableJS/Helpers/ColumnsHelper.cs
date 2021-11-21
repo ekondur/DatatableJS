@@ -5,7 +5,7 @@ namespace DatatableJS
     /// <summary>
     /// Columns builder.
     /// </summary>
-    [HtmlTargetElement("columns", ParentTag = "datatable")]
+    [HtmlTargetElement("columns", ParentTag = "js-datatable")]
     public class ColumnsHelper : TagHelper
     {
         /// <summary>

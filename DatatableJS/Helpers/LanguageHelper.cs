@@ -5,7 +5,7 @@ namespace DatatableJS
     /// <summary>
     /// Specify language json url from cdn or local.
     /// </summary>
-    [HtmlTargetElement("language", ParentTag = "datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("language", ParentTag = "js-datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class LanguageHelper : TagHelper
     {
         /// <summary>

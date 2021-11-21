@@ -7,7 +7,7 @@ namespace DatatableJS
     /// <summary>
     /// Render datatable to create
     /// </summary>
-    [HtmlTargetElement("render", ParentTag = "datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("render", ParentTag = "js-datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class RenderHelper : TagHelper
     {
         /// <summary>

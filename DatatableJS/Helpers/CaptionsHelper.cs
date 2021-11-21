@@ -5,7 +5,7 @@ namespace DatatableJS
     /// <summary>
     /// Define table top or bottom captions.
     /// </summary>
-    [HtmlTargetElement("captions", ParentTag = "datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("captions", ParentTag = "js-datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class CaptionsHelper : TagHelper
     {
         /// <summary>

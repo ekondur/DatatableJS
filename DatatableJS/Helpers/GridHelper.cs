@@ -5,7 +5,7 @@ namespace DatatableJS
     /// <summary>
     /// Generic grid builder class.
     /// </summary>
-    [HtmlTargetElement("datatable")]
+    [HtmlTargetElement("js-datatable")]
     public class GridHelper : TagHelper
     {
         /// <summary>

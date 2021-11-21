@@ -5,7 +5,7 @@ namespace DatatableJS
     /// <summary>
     /// Set datasource properties
     /// </summary>
-    [HtmlTargetElement("data-source", ParentTag = "datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("data-source", ParentTag = "js-datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class DataSourceHelper : TagHelper
     {
         /// <summary>

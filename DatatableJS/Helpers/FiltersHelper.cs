@@ -5,7 +5,7 @@ namespace DatatableJS
     /// <summary>
     /// Filter data with request.
     /// </summary>
-    [HtmlTargetElement("filters", ParentTag = "datatable")]
+    [HtmlTargetElement("filters", ParentTag = "js-datatable")]
     public class FiltersHelper : TagHelper
     {
         /// <summary>
