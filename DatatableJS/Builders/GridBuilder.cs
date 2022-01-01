@@ -268,11 +268,11 @@ namespace DatatableJS
         /// <summary>
         /// Define table page length.
         /// </summary>
-        /// <param name="pageLength"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
-        public GridBuilder<T> PageLength(int pageLength)
+        public GridBuilder<T> PageLength(int value)
         {
-            _pageLength = pageLength;
+            _pageLength = value;
             return this;
         }
     }
