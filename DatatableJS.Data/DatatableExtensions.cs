@@ -87,7 +87,11 @@ namespace DatatableJS.Data
                         }
                     }
                 }
-                query = query.Skip(request.start).Take(request.length);
+
+                if (request.length != -1)
+                {
+                    query = query.Skip(request.start).Take(request.length);
+                }
             }
 
             result.data = query.ToList();
