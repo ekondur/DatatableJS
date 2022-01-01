@@ -28,6 +28,7 @@ namespace DatatableJS
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterModel> _filters = new List<FilterModel>();
+        internal List<OrderModel> _defaultOrders = new List<OrderModel>();
 
         /// <summary>
         /// Default name is "DataGrid".
@@ -95,6 +96,19 @@ namespace DatatableJS
         public GridBuilder<T> Ordering(bool ordering)
         {
             _ordering = ordering;
+            return this;
+        }
+
+        /// <summary>
+        /// Enable ordering and set default.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Ordering(Action<OrderBuilder<T>> config)
+        {
+            var builder = new OrderBuilder<T>(this);
+            config(builder);
+            _ordering = true;
             return this;
         }
 
