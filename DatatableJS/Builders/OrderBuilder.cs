@@ -34,7 +34,7 @@ namespace DatatableJS
                 Column = column,
                 Order = order
             };
-            _grid._defaultOrders.Add(_order);
+            _grid._orders.Add(_order);
 
             return this;
         }
