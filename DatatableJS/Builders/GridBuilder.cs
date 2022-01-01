@@ -25,6 +25,7 @@ namespace DatatableJS
         internal string _langUrl { get; private set; }
         internal bool _columnSearching { get; private set; }
         internal string _columnSearchingCss { get; private set; }
+        internal int? _pageLength { get; private set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterModel> _filters = new List<FilterModel>();
@@ -235,6 +236,17 @@ namespace DatatableJS
         public GridBuilder<T> ColumnSearching(bool searching)
         {
             return ColumnSearching(searching, "");
+        }
+
+        /// <summary>
+        /// Define table page length.
+        /// </summary>
+        /// <param name="pageLength"></param>
+        /// <returns></returns>
+        public GridBuilder<T> PageLength(int pageLength)
+        {
+            _pageLength = pageLength;
+            return this;
         }
     }
 }

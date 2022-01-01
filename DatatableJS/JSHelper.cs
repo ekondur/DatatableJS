@@ -101,6 +101,7 @@ namespace DatatableJS
                             ordering: {gridBuilder._ordering.ToLowString()},
                             searching: {gridBuilder._searching.ToLowString()},
                             paging: {gridBuilder._paging.ToLowString()},
+                            {(!gridBuilder._pageLength.HasValue ? string.Empty : $"pageLength: {gridBuilder._pageLength.Value},")}
                             language: {{
                                 'url': '{gridBuilder._langUrl}'
                             }},
