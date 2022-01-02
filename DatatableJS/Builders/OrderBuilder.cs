@@ -32,7 +32,7 @@ namespace DatatableJS
         /// <returns></returns>
         public OrderBuilder<T> Add<TProp>(Expression<Func<T, TProp>> property, Order order)
         {
-            var propertyName = PropertyName(property);
+            var propertyName = ExpressionHelpers<T>.PropertyName(property);
 
             var column = _grid._columns
                 .Where(c => c.Data.Equals(propertyName))
@@ -54,18 +54,6 @@ namespace DatatableJS
             _grid._orders.Add(_order);
 
             return this;
-        }
-
-        private static string PropertyName<TProp>(Expression<Func<T, TProp>> expression)
-        {
-            var body = expression.Body as MemberExpression;
-
-            if (body == null)
-            {
-                body = ((UnaryExpression) expression.Body).Operand as MemberExpression;
-            }
-
-            return body.Member.Name;
         }
     }
 }
