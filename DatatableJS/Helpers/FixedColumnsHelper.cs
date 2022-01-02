@@ -5,7 +5,7 @@ namespace DatatableJS
     /// <summary>
     /// Fix the table columns from left or right.
     /// </summary>
-    [HtmlTargetElement("fixed-columns", ParentTag = "js-datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("fixed-columns", ParentTag = "js-datatable", TagStructure = TagStructure.WithoutEndTag)]
     public class FixedColumnsHelper : TagHelper
     {
         public int LeftColumns { get; set; }

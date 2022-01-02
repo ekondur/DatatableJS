@@ -7,7 +7,7 @@ namespace DatatableJS
     /// <summary>
     /// Render datatable to create
     /// </summary>
-    [HtmlTargetElement("render", ParentTag = "js-datatable", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("render", ParentTag = "js-datatable", TagStructure = TagStructure.WithoutEndTag)]
     public class RenderHelper : TagHelper
     {
         /// <summary>
@@ -22,6 +22,10 @@ namespace DatatableJS
             output.Content.Clear();
             var grid = CommonHelpers.GetGrid(context);
 
+            var lengthMenu = (grid.LengthMenu._lengthMenuValues.Count == 0) ? string.Empty :
+                        $"lengthMenu: {string.Format("[[{0}], [{1}]]", string.Join(", ", grid.LengthMenu._lengthMenuValues), string.Join(", ", grid.LengthMenu._lengthMenuDisplayedTexts.Select(a => string.Concat(@"""", a, @""""))))},"
+                        ;
+
             var script = $@"
             $(document).ready(function () {{
                 $('#{grid.Name}').DataTable( {{
@@ -31,10 +35,12 @@ namespace DatatableJS
                         leftColumns: {grid.FixedColumns?.LeftColumns},
                         rightColumns: {grid.FixedColumns?.RightColumns}
                     }},
-                    order:[],
+                    order: [{(!grid.Ordering ? string.Empty : string.Join(", ", grid.Orders.Select(a => $@"[{ a.Column}, '{(a.OrderBy == OrderBy.Ascending ? "asc" : "desc")}']")))}],
                     ordering: {grid.Ordering.ToLowString()},
                     searching: {grid.Searching.ToLowString()},
                     paging: {grid.DataSource.Paging.ToLowString()},
+                    {lengthMenu}
+                    {(!grid.DataSource.PageLength.HasValue ? string.Empty : $"pageLength: {grid.DataSource.PageLength.Value},")}
                     language: {{
                         'url': '{grid.Language.URL}'
                     }},

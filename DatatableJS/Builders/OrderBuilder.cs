@@ -28,9 +28,9 @@ namespace DatatableJS
         /// </summary>
         /// <typeparam name="TProp">The type of the property.</typeparam>
         /// <param name="property">The property.</param>
-        /// <param name="order">The order.</param>
+        /// <param name="orderBy">The order.</param>
         /// <returns></returns>
-        public OrderBuilder<T> Add<TProp>(Expression<Func<T, TProp>> property, Order order)
+        public OrderBuilder<T> Add<TProp>(Expression<Func<T, TProp>> property, OrderBy orderBy)
         {
             var propertyName = ExpressionHelpers<T>.PropertyName(property);
 
@@ -49,7 +49,7 @@ namespace DatatableJS
             {
                 Field = propertyName,
                 Column = columnIndex,
-                Order = order
+                OrderBy = orderBy
             };
             _grid._orders.Add(_order);
 

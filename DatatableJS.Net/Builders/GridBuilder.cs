@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DatatableJS.Net
 {
@@ -25,6 +26,9 @@ namespace DatatableJS.Net
         internal string _langUrl { get; private set; }
         internal bool _columnSearching { get; private set; }
         internal string _columnSearchingCss { get; private set; }
+        internal List<int> _lengthMenuValues { get; private set; } = new List<int>();
+        internal List<string> _lengthMenuDisplayedTexts { get; private set; } = new List<string>();
+        internal int? _pageLength { get; private set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -100,7 +104,7 @@ namespace DatatableJS.Net
         }
 
         /// <summary>
-        /// Enable ordering and set default order.
+        /// Enable ordering and set default orders.
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
@@ -249,6 +253,68 @@ namespace DatatableJS.Net
         public GridBuilder<T> ColumnSearching(bool searching)
         {
             return ColumnSearching(searching, "");
+        }
+
+        /// <summary>
+        /// Define table length menu.
+        /// </summary>
+        /// <param name="values"></param>
+        /// <param name="hasAll"></param>
+        /// <param name="allText"></param>
+        /// <returns></returns>
+        public GridBuilder<T> LengthMenu(int[] values, bool hasAll, string allText)
+        {
+            _lengthMenuValues = values.ToList();
+            _lengthMenuDisplayedTexts = values.Select(x => x.ToString()).ToList();
+
+            if (!_pageLength.HasValue)
+                _pageLength = _lengthMenuValues.FirstOrDefault();
+
+            if (hasAll)
+            {
+                _lengthMenuValues.Add(-1);
+                _lengthMenuDisplayedTexts.Add(allText);
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        /// Define table length menu.
+        /// </summary>
+        /// <param name="values"></param>
+        /// <param name="hasAll"></param>
+        /// <returns></returns>
+        public GridBuilder<T> LengthMenu(int[] values, bool hasAll)
+        {
+            return LengthMenu(values, hasAll, "All");
+        }
+
+        /// <summary>
+        /// Define table length menu.
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public GridBuilder<T> LengthMenu(int[] values)
+        {
+            return LengthMenu(values, false, "All");
+        }
+
+        /// <summary>
+        /// Define table page length.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public GridBuilder<T> PageLength(int value)
+        {
+            _pageLength = value;
+
+            if (!_lengthMenuValues.Any())
+            {
+                _lengthMenuValues = new List<int> { value, value * 2, value * 3, value * 4, value * 5 };
+                _lengthMenuDisplayedTexts = _lengthMenuValues.Select(x => x.ToString()).ToList();
+            }
+            return this;
         }
     }
 }

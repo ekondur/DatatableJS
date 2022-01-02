@@ -16,7 +16,7 @@ Rename datatable taghelper name to js-datatable to avoid conflicts,
 Fixed button group html output</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English (United States)</NeutralLanguage>
-    <Version>3.1.0</Version>
+    <Version>3.2.0</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
