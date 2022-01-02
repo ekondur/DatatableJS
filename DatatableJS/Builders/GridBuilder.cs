@@ -267,8 +267,10 @@ namespace DatatableJS
             _lengthMenuValues = values.ToList();
             _lengthMenuDisplayedTexts = values.Select(x => x.ToString()).ToList();
 
-            if (!_pageLength.HasValue) 
+            if (!_pageLength.HasValue)
+            {
                 _pageLength = _lengthMenuValues.FirstOrDefault();
+            }
 
             if (hasAll)
             {

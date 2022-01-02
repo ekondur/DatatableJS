@@ -17,7 +17,7 @@ namespace DatatableJS.Helpers
         /// <summary>
         /// Add All option on LengthMenu
         /// </summary>
-        public bool HasAll { get; set; } = false;
+        public bool HasAll { get; set; }
 
         /// <summary>
         /// Set a text for LengtMenu All option, default is "All"
@@ -38,7 +38,9 @@ namespace DatatableJS.Helpers
             lengthMenu._lengthMenuDisplayedTexts = Values.Select(x => x.ToString()).ToList();
 
             if (!lengthMenu._pageLength.HasValue)
+            {
                 lengthMenu._pageLength = lengthMenu._lengthMenuValues.FirstOrDefault();
+            }
 
             if (HasAll)
             {
