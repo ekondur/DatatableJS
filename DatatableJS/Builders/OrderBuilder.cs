@@ -1,7 +1,7 @@
-﻿using DatatableJS.Exceptions;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using DatatableJS.Exceptions;
 
 namespace DatatableJS
 {
