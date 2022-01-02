@@ -7,11 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8710F623-E6C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8699CFCC-A4E2-4DE0-90F5-A960ACD2E67F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatatableJS", "DatatableJS\DatatableJS.csproj", "{C9FEF38B-7625-4E71-8DD5-3FBD6BBF31CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatatableJS", "DatatableJS\DatatableJS.csproj", "{C9FEF38B-7625-4E71-8DD5-3FBD6BBF31CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatatableJS.Net", "DatatableJS.Net\DatatableJS.Net.csproj", "{ACC1D84C-4261-498F-8E55-EF043F5F3D19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatatableJS.Net", "DatatableJS.Net\DatatableJS.Net.csproj", "{ACC1D84C-4261-498F-8E55-EF043F5F3D19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatatableJS.Data", "DatatableJS.Data\DatatableJS.Data.csproj", "{3583D1B8-6C7C-4EE3-8F10-1ACDB6B0ABC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatatableJS.Data", "DatatableJS.Data\DatatableJS.Data.csproj", "{3583D1B8-6C7C-4EE3-8F10-1ACDB6B0ABC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatatableJS.Data.UnitTest", "DatatableJS.Data.UnitTest\DatatableJS.Data.UnitTest.csproj", "{679C32BF-AA18-4576-A315-C1E8FED63240}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{3583D1B8-6C7C-4EE3-8F10-1ACDB6B0ABC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3583D1B8-6C7C-4EE3-8F10-1ACDB6B0ABC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3583D1B8-6C7C-4EE3-8F10-1ACDB6B0ABC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{679C32BF-AA18-4576-A315-C1E8FED63240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{679C32BF-AA18-4576-A315-C1E8FED63240}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{679C32BF-AA18-4576-A315-C1E8FED63240}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{679C32BF-AA18-4576-A315-C1E8FED63240}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{C9FEF38B-7625-4E71-8DD5-3FBD6BBF31CE} = {8710F623-E6C7-4EF9-9DAA-F6D0CE5E6EED}
 		{ACC1D84C-4261-498F-8E55-EF043F5F3D19} = {8710F623-E6C7-4EF9-9DAA-F6D0CE5E6EED}
 		{3583D1B8-6C7C-4EE3-8F10-1ACDB6B0ABC9} = {8710F623-E6C7-4EF9-9DAA-F6D0CE5E6EED}
+		{679C32BF-AA18-4576-A315-C1E8FED63240} = {8699CFCC-A4E2-4DE0-90F5-A960ACD2E67F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE95672B-C0C8-4A6A-9AB6-A650A832CEE2}
