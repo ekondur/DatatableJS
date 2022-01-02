@@ -25,6 +25,9 @@ namespace DatatableJS.Net
         internal string _langUrl { get; private set; }
         internal bool _columnSearching { get; private set; }
         internal string _columnSearchingCss { get; private set; }
+        internal int[] _lengthMenuValues { get; private set; } = new int[0];
+        internal string[] _lengthMenuDisplayedTexts { get; private set; } = new string[0];
+        internal int? _pageLength { get; private set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -249,6 +252,42 @@ namespace DatatableJS.Net
         public GridBuilder<T> ColumnSearching(bool searching)
         {
             return ColumnSearching(searching, "");
+        }
+
+        /// <summary>
+        /// Define table length menu.
+        /// </summary>
+        /// <param name="values"></param>
+        /// <param name="displayedTexts"></param>
+        /// <returns></returns>
+        public GridBuilder<T> LengthMenu(int[] values, string[] displayedTexts)
+        {
+            _lengthMenuValues = values;
+            _lengthMenuDisplayedTexts = displayedTexts;
+            return this;
+        }
+
+        /// <summary>
+        /// Define table length menu.
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public GridBuilder<T> LengthMenu(int[] values)
+        {
+            var displayedTexts = Array.ConvertAll(values, x => x.ToString());
+
+            return LengthMenu(values, displayedTexts);
+        }
+
+        /// <summary>
+        /// Define table page length.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public GridBuilder<T> PageLength(int value)
+        {
+            _pageLength = value;
+            return this;
         }
     }
 }

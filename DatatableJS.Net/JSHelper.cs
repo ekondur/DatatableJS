@@ -83,6 +83,15 @@ namespace DatatableJS.Net
                                         }});
                                     }},"
                                     : string.Empty;
+
+            var lengthMenu = (
+                    gridBuilder._lengthMenuValues.Length == 0 ||
+                    gridBuilder._lengthMenuDisplayedTexts.Length == 0 ||
+                    gridBuilder._lengthMenuValues.Length != gridBuilder._lengthMenuDisplayedTexts.Length
+                ) ? string.Empty : (
+                    $"lengthMenu: {string.Format("[[{0}], [{1}]]", string.Join(", ", gridBuilder._lengthMenuValues), string.Join(", ", gridBuilder._lengthMenuDisplayedTexts.Select(a => string.Concat(@"""", a, @""""))))},"
+                );
+
             var html = $@"
                     <table id=""{gridBuilder._name}"" class=""{gridBuilder._cssClass}"" style=""width:100%"">
                         <thead>
@@ -106,6 +115,8 @@ namespace DatatableJS.Net
                             ordering: {gridBuilder._ordering.ToLowString()},
                             searching: {gridBuilder._searching.ToLowString()},
                             paging: {gridBuilder._paging.ToLowString()},
+                            {lengthMenu}
+                            {(!gridBuilder._pageLength.HasValue ? string.Empty : $"pageLength: {gridBuilder._pageLength.Value},")}
                             language: {{
                                 'url': '{gridBuilder._langUrl}'
                             }},
