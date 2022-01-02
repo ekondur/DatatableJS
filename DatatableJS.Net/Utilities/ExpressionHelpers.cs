@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace DatatableJS.Net
 {
-    internal class ExpressionHelpers<T>
+    internal static class ExpressionHelpers<T>
     {
         public static string PropertyName<TProp>(Expression<Func<T, TProp>> expression)
         {
