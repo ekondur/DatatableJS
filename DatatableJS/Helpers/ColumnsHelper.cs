@@ -25,7 +25,7 @@ namespace DatatableJS
     /// <summary>
     /// Column builder.
     /// </summary>
-    [HtmlTargetElement("column", ParentTag = "columns")]
+    [HtmlTargetElement("add", ParentTag = "columns", TagStructure = TagStructure.WithoutEndTag)]
     public class ColumnHelper : TagHelper
     {
         /// <summary>

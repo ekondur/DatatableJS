@@ -10,11 +10,13 @@ namespace DatatableJS
 
         public List<ColumnModel> Columns { get; set; }
         public List<FilterModel> Filters { get; set; }
+        public List<OrderModel> Orders { get; set; }
 
         public DataSourceModel DataSource { get; set; }
         public FixedColumnsModel FixedColumns { get; set; }
         public LanguageModel Language { get; set; }
         public CaptionsModel Captions { get; set; }
+        public LengthMenuModel LengthMenu { get; set; }
 
         public GridModel()
         {
@@ -24,6 +26,8 @@ namespace DatatableJS
             FixedColumns = new FixedColumnsModel();
             Language = new LanguageModel();
             Captions = new CaptionsModel();
+            Orders = new List<OrderModel>();
+            LengthMenu = new LengthMenuModel();
         }
     }
 }

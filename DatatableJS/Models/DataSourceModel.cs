@@ -7,6 +7,7 @@
         public bool Paging { get; set; }
         public string Data { get; set; }
         public bool ServerSide { get; set; }
+        public int? PageLength { get; set; }
     }
 
     public enum HttpMethodType

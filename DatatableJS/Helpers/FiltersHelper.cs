@@ -22,7 +22,7 @@ namespace DatatableJS
     /// <summary>
     /// Add a filter to request.
     /// </summary>
-    [HtmlTargetElement("add", ParentTag = "filters")]
+    [HtmlTargetElement("add", ParentTag = "filters", TagStructure = TagStructure.WithoutEndTag)]
     public class FilterHelper : TagHelper
     {
         public string Field { get; set; }

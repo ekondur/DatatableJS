@@ -80,12 +80,10 @@ namespace DatatableJS
                                     : string.Empty;
 
             var lengthMenu = (
-                    gridBuilder._lengthMenuValues.Length == 0 ||
-                    gridBuilder._lengthMenuDisplayedTexts.Length == 0 ||
-                    gridBuilder._lengthMenuValues.Length != gridBuilder._lengthMenuDisplayedTexts.Length
-                ) ? string.Empty : (
+                    gridBuilder._lengthMenuValues.Count == 0
+                ) ? string.Empty : 
                     $"lengthMenu: {string.Format("[[{0}], [{1}]]", string.Join(", ", gridBuilder._lengthMenuValues), string.Join(", ", gridBuilder._lengthMenuDisplayedTexts.Select(a => string.Concat(@"""", a, @""""))))},"
-                );
+                ;
 
             var html = $@"
                     <table id=""{gridBuilder._name}"" class=""{gridBuilder._cssClass}"" style=""width:100%"">
@@ -106,7 +104,7 @@ namespace DatatableJS
                                 lJStColumns: {gridBuilder._leftColumns},
                                 rightColumns: {gridBuilder._rightColumns}
                             }},
-                            order: [{(!gridBuilder._ordering ? string.Empty : string.Join(", ", gridBuilder._orders.Select(a => $@"[{ a.Column}, '{(a.Order == Order.Ascending ? "asc" : "desc")}']")))}],
+                            order: [{(!gridBuilder._ordering ? string.Empty : string.Join(", ", gridBuilder._orders.Select(a => $@"[{ a.Column}, '{(a.OrderBy == OrderBy.Ascending ? "asc" : "desc")}']")))}],
                             ordering: {gridBuilder._ordering.ToLowString()},
                             searching: {gridBuilder._searching.ToLowString()},
                             paging: {gridBuilder._paging.ToLowString()},

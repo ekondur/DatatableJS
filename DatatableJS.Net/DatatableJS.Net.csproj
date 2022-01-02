@@ -14,7 +14,7 @@
     <PackageReleaseNotes>enabled summaries, setted serverside operation is true.</PackageReleaseNotes>
     <AssemblyVersion>3.0.1.0</AssemblyVersion>
     <FileVersion>3.0.1.0</FileVersion>
-    <Version>3.0.1</Version>
+    <Version>3.2.0</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

@@ -5,10 +5,10 @@
     {
         public string Field { get; set; }
         public int Column { get; set; }
-        public Order Order { get; set; }
+        public OrderBy OrderBy { get; set; }
     }
 
-    public enum Order
+    public enum OrderBy
     {
         Ascending,
         Descending
