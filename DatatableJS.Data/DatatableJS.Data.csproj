@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>    
     <RepositoryType>git</RepositoryType>    
     <PackageTags>C#, Jquery Datatables, Entity Framework, Query, Linq</PackageTags>    
-    <PackageReleaseNotes>enabled summaries</PackageReleaseNotes>    
+    <PackageReleaseNotes>Some changes for Orders support</PackageReleaseNotes>    
     <NeutralLanguage>English (United States)</NeutralLanguage>    
     <Version>3.2.0</Version>    
     <PackageIcon>datatable-js.png</PackageIcon>    
