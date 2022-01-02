@@ -36,8 +36,8 @@ namespace DatatableJS.Net
             var member = property.Body as MemberExpression;
             _column = new ColumnDefinition
             {
-                Data = PropertyName(property),
-                Title = member.Member.GetCustomAttribute<DisplayAttribute>()?.Name ?? PropertyName(property),
+                Data = ExpressionHelpers<T>.PropertyName(property),
+                Title = member.Member.GetCustomAttribute<DisplayAttribute>()?.Name ?? ExpressionHelpers<T>.PropertyName(property),
                 Render = member.Member.GetCustomAttribute<DisplayFormatAttribute>() != null ? $@"moment(data).format('{member.Member.GetCustomAttribute<DisplayFormatAttribute>().DataFormatString}')" : null,
                 Type = ((PropertyInfo)member.Member).PropertyType
             };
@@ -161,7 +161,7 @@ namespace DatatableJS.Net
             _column = new ColumnDefinition
             {
                 Width = 1,
-                Data = PropertyName(property),
+                Data = ExpressionHelpers<T>.PropertyName(property),
                 Orderable = false,
                 Searchable = false,
                 Render = $@"'<a href=""#"" class=""{(!string.IsNullOrEmpty(iconClass) && string.IsNullOrEmpty(btnClass) ? "btn btn-primary" : btnClass)}"" onClick=""{onClick}(\''+data+'\')""><i class=""{iconClass}""></i>'+{(string.IsNullOrEmpty(text) ? (string.IsNullOrEmpty(iconClass) ? "data" : "''") : string.Format("' {0}'", text))}+'</a>'"
@@ -224,7 +224,7 @@ namespace DatatableJS.Net
             _column = new ColumnDefinition
             {
                 Width = 1,
-                Data = PropertyName(property),
+                Data = ExpressionHelpers<T>.PropertyName(property),
                 Orderable = false,
                 Searchable = false,
             };
@@ -278,18 +278,6 @@ namespace DatatableJS.Net
         public ColumnBuilder<T> Commands<TProp>(Expression<Func<T, TProp>> property, IEnumerable<Command> commands, string btnText, string btnClass)
         {
             return Commands(property, commands, btnText, btnClass, "caret");
-        }
-
-        private static string PropertyName<TProp>(Expression<Func<T, TProp>> expression)
-        {
-            var body = expression.Body as MemberExpression;
-
-            if (body == null)
-            {
-                body = ((UnaryExpression)expression.Body).Operand as MemberExpression;
-            }
-
-            return body.Member.Name;
         }
     }
 }

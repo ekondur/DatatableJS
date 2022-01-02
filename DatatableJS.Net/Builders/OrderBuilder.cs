@@ -1,4 +1,4 @@
-﻿namespace DatatableJS
+﻿namespace DatatableJS.Net
 {
     /// <summary>
     /// Generic order builder class.
@@ -7,7 +7,7 @@
     public class OrderBuilder<T>
     {
         private readonly GridBuilder<T> _grid;
-        private OrderModel _order { get; set; }
+        private OrderDefinition _order { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderBuilder{T}"/> class.
@@ -26,7 +26,7 @@
         /// <returns></returns>
         public OrderBuilder<T> Add(int column, Order order)
         {
-            _order = new OrderModel
+            _order = new OrderDefinition
             {
                 Column = column,
                 Order = order
@@ -36,4 +36,5 @@
             return this;
         }
     }
+
 }

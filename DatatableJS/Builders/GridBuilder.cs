@@ -107,12 +107,9 @@ namespace DatatableJS
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        public GridBuilder<T> Order(Action<OrderBuilder<T>> config)
+        public GridBuilder<T> Orders(Action<OrderBuilder<T>> config)
         {
-            if (!_ordering)
-            {
-                _ordering = true;
-            }
+            _ordering = true;
             var builder = new OrderBuilder<T>(this);
             config(builder);
             return this;
