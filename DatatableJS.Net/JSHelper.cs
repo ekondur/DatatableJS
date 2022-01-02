@@ -102,7 +102,7 @@ namespace DatatableJS.Net
                                 lJStColumns: {gridBuilder._leftColumns},
                                 rightColumns: {gridBuilder._rightColumns}
                             }},
-                            order:[],
+                            order: [{(!gridBuilder._ordering ? string.Empty : string.Join(", ", gridBuilder._orders.Select(a => $@"[{ a.Column}, '{(a.Order == Order.Ascending ? "asc" : "desc")}']")))}],
                             ordering: {gridBuilder._ordering.ToLowString()},
                             searching: {gridBuilder._searching.ToLowString()},
                             paging: {gridBuilder._paging.ToLowString()},

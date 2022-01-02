@@ -31,21 +31,9 @@ namespace DatatableJS.Net
         {
             _filter = new FilterDefinition
             {
-                Field = PropertyName(property),
+                Field = ExpressionHelpers<T>.PropertyName(property),
             };
             return this;
-        }
-
-        private static string PropertyName<TProp>(Expression<Func<T, TProp>> expression)
-        {
-            var body = expression.Body as MemberExpression;
-
-            if (body == null)
-            {
-                body = ((UnaryExpression)expression.Body).Operand as MemberExpression;
-            }
-
-            return body.Member.Name;
         }
 
         /// <summary>
