@@ -40,9 +40,9 @@ Or, use tag helper:
 ```html
 <js-datatable name="PersonGrid">
     <columns>
-        <column field="Id" visible="false" />
-        <column field="Name" width="50" title="Full Name" />
-        <column field="Age" />
+        <add field="Id" visible="false" />
+        <add field="Name" width="50" title="Full Name" />
+        <add field="Age" />
         <command-item field="Id" on-click="onClick" btn-class="btn btn-info" text="Edit" icon-class="fa fa-edit"/>
         <commands field="Id" text="Actions" items='new [] { new Command("Update", "onClick"), new Command("Delete", "onClick") }'/>
     </columns>
