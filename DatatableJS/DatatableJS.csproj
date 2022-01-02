@@ -14,7 +14,7 @@
     <PackageReleaseNotes>Added LengtMenu, PageLength and Orders support</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English (United States)</NeutralLanguage>
-    <Version>3.2.0</Version>
+    <Version>3.2.1</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
