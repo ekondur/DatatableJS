@@ -11,7 +11,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageTags>C#, Helper, Jquery Datatables, Entity Framework, Mvc</PackageTags>
-    <PackageReleaseNotes>enabled summaries, setted serverside operation is true.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added LengtMenu, PageLength and Orders support</PackageReleaseNotes>
     <AssemblyVersion>3.0.1.0</AssemblyVersion>
     <FileVersion>3.0.1.0</FileVersion>
     <Version>3.2.0</Version>
