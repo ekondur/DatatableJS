@@ -1,4 +1,9 @@
-﻿namespace DatatableJS.Net
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
+using DatatableJS.Net.Exceptions;
+
+namespace DatatableJS.Net
 {
     /// <summary>
     /// Generic order builder class.
@@ -19,16 +24,31 @@
         }
 
         /// <summary>
-        /// Adds the specified column for default ordering.
+        /// Adds the specified property for default ordering.
         /// </summary>
-        /// <param name="column">The column number.</param>
+        /// <typeparam name="TProp">The type of the property.</typeparam>
+        /// <param name="property">The property.</param>
         /// <param name="order">The order.</param>
         /// <returns></returns>
-        public OrderBuilder<T> Add(int column, Order order)
+        public OrderBuilder<T> Add<TProp>(Expression<Func<T, TProp>> property, Order order)
         {
+            var propertyName = ExpressionHelpers<T>.PropertyName(property);
+
+            var column = _grid._columns
+                .Where(c => c.Data.Equals(propertyName))
+                .FirstOrDefault();
+
+            if (column == null)
+            {
+                throw new ColumnNotFoundException(string.Format("Column not found for property {0}", propertyName));
+            }
+
+            var columnIndex = _grid._columns.IndexOf(column);
+
             _order = new OrderDefinition
             {
-                Column = column,
+                Field = propertyName,
+                Column = columnIndex,
                 Order = order
             };
             _grid._orders.Add(_order);
@@ -36,5 +56,4 @@
             return this;
         }
     }
-
 }
