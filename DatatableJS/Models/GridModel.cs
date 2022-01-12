@@ -7,6 +7,7 @@ namespace DatatableJS
         public string Name { get; set; }
         public bool Ordering { get; set; }
         public bool Searching { get; set; }
+        public bool Processing { get; set; }
 
         public List<ColumnModel> Columns { get; set; }
         public List<FilterModel> Filters { get; set; }
