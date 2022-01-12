@@ -24,6 +24,11 @@ namespace DatatableJS
         public bool Searching { get; set; } = true;
 
         /// <summary>
+        /// Enable or disable the display of a 'processing' indicator when the table is being processed, Default is true.
+        /// </summary>
+        public bool Processing { get; set; } = true;
+
+        /// <summary>
         /// Process
         /// </summary>
         /// <param name="context"></param>
@@ -41,6 +46,7 @@ namespace DatatableJS
                 Name = Name,
                 Ordering = Ordering,
                 Searching = Searching,
+                Processing = Processing
             };
             
             context.Items.Add("DataGrid", grid);

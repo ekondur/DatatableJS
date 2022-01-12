@@ -98,10 +98,10 @@ namespace DatatableJS
                     $(document).ready(function () {{
                         $('#{gridBuilder._name}').DataTable( {{
                             {tfootInit}
-                            processing:true,
+                            processing:{gridBuilder._processing.ToLowString()},
                             serverSide:{gridBuilder._serverSide.ToLowString()},
                             fixedColumns: {{ 
-                                lJStColumns: {gridBuilder._leftColumns},
+                                leftColumns: {gridBuilder._leftColumns},
                                 rightColumns: {gridBuilder._rightColumns}
                             }},
                             order: [{(!gridBuilder._ordering ? string.Empty : string.Join(", ", gridBuilder._orders.Select(a => $@"[{ a.Column}, '{(a.OrderBy == OrderBy.Ascending ? "asc" : "desc")}']")))}],

@@ -29,7 +29,7 @@ namespace DatatableJS
             var script = $@"
             $(document).ready(function () {{
                 $('#{grid.Name}').DataTable( {{
-                    processing:true,
+                    processing:{grid.Processing.ToLowString()},
                     serverSide:{grid.DataSource.ServerSide.ToLowString()},
                     fixedColumns: {{ 
                         leftColumns: {grid.FixedColumns?.LeftColumns},
