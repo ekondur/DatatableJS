@@ -29,6 +29,7 @@ namespace DatatableJS
         internal List<int> _lengthMenuValues { get; private set; } = new List<int>();
         internal List<string> _lengthMenuDisplayedTexts { get; private set; } = new List<string>();
         internal int? _pageLength { get; private set; }
+        internal bool _processing { get; private set; } = true;
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterModel> _filters = new List<FilterModel>();
@@ -316,6 +317,17 @@ namespace DatatableJS
                 _lengthMenuValues = new List<int> { value, value * 2, value * 3, value * 4, value * 5 };
                 _lengthMenuDisplayedTexts = _lengthMenuValues.Select(x => x.ToString()).ToList();
             }
+            return this;
+        }
+
+        /// <summary>
+        /// Enable or disable the display of a 'processing' indicator when the table is being processed, Default is true.
+        /// </summary>
+        /// <param name="processing"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Processing(bool processing)
+        {
+            _processing = processing;
             return this;
         }
     }
