@@ -26,9 +26,9 @@ namespace DatatableJS
         public bool Paging { get; set; } = true;
 
         /// <summary>
-        /// Proccessing data server side or client side, default is false.
+        /// Enable server-side processing mode.
         /// </summary>
-        public bool ServerSide { get; set; } = true;
+        public bool ServerSide { get; set; }
 
         /// <summary>
         /// Passing additional data to action set name of javascript function.

@@ -1,18 +1,30 @@
 ﻿namespace DatatableJS
 {
+    /// <summary>
+    /// DataSourceModel
+    /// </summary>
     public class DataSourceModel
     {
-        public string URL { get; set; }
-        public HttpMethodType Method { get; set; }
-        public bool Paging { get; set; }
-        public string Data { get; set; }
-        public bool ServerSide { get; set; }
-        public int? PageLength { get; set; }
+        internal string URL { get; set; }
+        internal HttpMethodType Method { get; set; }
+        internal bool Paging { get; set; }
+        internal string Data { get; set; }
+        internal bool ServerSide { get; set; }
+        internal int? PageLength { get; set; }
     }
 
+    /// <summary>
+    /// HttpMethodType
+    /// </summary>
     public enum HttpMethodType
     {
+        /// <summary>
+        /// GET
+        /// </summary>
         GET,
+        /// <summary>
+        /// POST
+        /// </summary>
         POST
     }
 }

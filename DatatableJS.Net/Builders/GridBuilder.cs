@@ -16,7 +16,7 @@ namespace DatatableJS.Net
         internal bool _searching { get; private set; } = true;
         internal int _leftColumns { get; private set; }
         internal int _rightColumns { get; private set; }
-        internal bool _serverSide { get; private set; } = true;
+        internal bool _serverSide { get; private set; }
         internal string _method { get; private set; }
         internal string _data { get; private set; }
         internal string _cssClass { get; private set; } = "display nowrap dataTable dtr-inline collapsed";
@@ -30,6 +30,7 @@ namespace DatatableJS.Net
         internal List<string> _lengthMenuDisplayedTexts { get; private set; } = new List<string>();
         internal int? _pageLength { get; private set; }
         internal bool _processing { get; private set; } = true;
+        internal bool _scrollX { get; private set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
@@ -152,7 +153,7 @@ namespace DatatableJS.Net
         }
 
         /// <summary>
-        /// Proccessing data server side or client side, default is false.
+        /// Enable server-side processing mode.
         /// </summary>
         /// <param name="serverSide"></param>
         /// <returns></returns>
@@ -328,6 +329,17 @@ namespace DatatableJS.Net
         public GridBuilder<T> Processing(bool processing)
         {
             _processing = processing;
+            return this;
+        }
+
+        /// <summary>
+        /// Enable horizontal scrolling. When a table is too wide to fit into a certain layout, or you have a large number of columns in the table, you can enable horizontal (x) scrolling to show the table in a viewport, which can be scrolled.
+        /// </summary>
+        /// <param name="scrollX"></param>
+        /// <returns></returns>
+        public GridBuilder<T> ScrollX(bool scrollX)
+        {
+            _scrollX = scrollX;
             return this;
         }
     }

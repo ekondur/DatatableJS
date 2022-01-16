@@ -30,6 +30,7 @@ namespace DatatableJS
             $(document).ready(function () {{
                 $('#{grid.Name}').DataTable( {{
                     processing:{grid.Processing.ToLowString()},
+                    scrollX:{grid.ScrollX.ToLowString()},
                     serverSide:{grid.DataSource.ServerSide.ToLowString()},
                     fixedColumns: {{ 
                         leftColumns: {grid.FixedColumns?.LeftColumns},
