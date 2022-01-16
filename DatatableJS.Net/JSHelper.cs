@@ -104,6 +104,7 @@ namespace DatatableJS.Net
                         $('#{gridBuilder._name}').DataTable( {{
                             {tfootInit}
                             processing:{gridBuilder._processing.ToLowString()},
+                            scrollX:{gridBuilder._scrollX.ToLowString()},
                             serverSide:{gridBuilder._serverSide.ToLowString()},
                             fixedColumns: {{ 
                                 leftColumns: {gridBuilder._leftColumns},
