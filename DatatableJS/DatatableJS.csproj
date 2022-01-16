@@ -11,10 +11,10 @@
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>C#, Tag Helper, Jquery Datatables, Entity Framework, Mvc, Net Core</PackageTags>
-    <PackageReleaseNotes>Added capability of proccesing disable or enable, FixedColumns leftColumns error fixed.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added ScrollX support, fixed default ServerSide value to false</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English (United States)</NeutralLanguage>
-    <Version>3.2.2</Version>
+    <Version>3.2.3</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
