@@ -39,7 +39,8 @@ namespace DatatableJS
                 Data = ExpressionHelpers<T>.PropertyName(property),
                 Title = member.Member.GetCustomAttribute<DisplayAttribute>()?.Name ?? ExpressionHelpers<T>.PropertyName(property),
                 Render = member.Member.GetCustomAttribute<DisplayFormatAttribute>() != null ? $@"moment(data).format('{member.Member.GetCustomAttribute<DisplayFormatAttribute>().DataFormatString}')" : null,
-                Type = ((PropertyInfo)member.Member).PropertyType
+                Type = ((PropertyInfo)member.Member).PropertyType,
+                PropertyExp = member.ToString().Substring(member.ToString().IndexOf('.') + 1)
             };
             _grid._columns.Add(_column);
             return this;

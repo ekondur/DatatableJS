@@ -120,7 +120,7 @@ namespace DatatableJS
                                 data: {gridBuilder.GetDataStr()}
                             }},
                             columns: [{string.Join(", ", gridBuilder._columns.Select(a => $@"{{ 
-                                'data': '{a.Data}',
+                                'data': '{a.PropertyExp}',
                                 'name': '{a.Data}',
                                 'defaultContent': '{a.DefaultContent}',
                                 'orderable': {a.Orderable.ToLowString()},
