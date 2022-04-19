@@ -40,12 +40,12 @@ namespace DatatableJS.Data.UnitTest
         [Test]
         public void ToDataResult_WhenSortingByNameAndAge()
         {
-            _request.order.Add(new Order()
+            _request.order.Add(new Order
             {
                 column = 0,
                 dir = "asc"
             });
-            _request.order.Add(new Order()
+            _request.order.Add(new Order
             {
                 column = 1,
                 dir = "asc"
