@@ -75,16 +75,15 @@ namespace DatatableJS.Data
                 }
                 else
                 {
-                    foreach (var item in request.order)
+                    query = request.order[0].dir != "asc"
+                        ? (IQueryable<T>)query.OrderByDescending<T>(request.columns[request.order[0].column].data)
+                        : (IQueryable<T>)query.OrderBy<T>(request.columns[request.order[0].column].data);
+
+                    for (var i = 1; i < request.order.Count(); i++)
                     {
-                        if (item.dir == "asc")
-                        {
-                            query = query.OrderBy(request.columns[item.column].data);
-                        }
-                        else
-                        {
-                            query = query.OrderByDescending(request.columns[item.column].data);
-                        }
+                        query = request.order[i].dir != "asc"
+                            ? (IQueryable<T>)query.ThenByDescending<T>(request.columns[request.order[i].column].data)
+                            : (IQueryable<T>)query.ThenBy<T>(request.columns[request.order[i].column].data);
                     }
                 }
 
@@ -109,14 +108,32 @@ namespace DatatableJS.Data
                 });
         }
 
-        private static IOrderedQueryable<T> OrderBy<T>(this IQueryable<T> query, string memberName)
+        private static IOrderedQueryable<T> OrderBy<T>(
+            this IQueryable<T> query,
+            string memberName)
         {
-            return OrderByCreate(query, memberName, "OrderBy");
+            return query.OrderByCreate<T>(memberName, nameof(OrderBy));
         }
 
-        private static IOrderedQueryable<T> OrderByDescending<T>(this IQueryable<T> query, string memberName)
+        private static IOrderedQueryable<T> ThenBy<T>(
+            this IQueryable<T> query,
+            string memberName)
         {
-            return OrderByCreate(query, memberName, "OrderByDescending");
+            return query.OrderByCreate<T>(memberName, nameof(ThenBy));
+        }
+
+        private static IOrderedQueryable<T> OrderByDescending<T>(
+            this IQueryable<T> query,
+            string memberName)
+        {
+            return query.OrderByCreate<T>(memberName, nameof(OrderByDescending));
+        }
+
+        private static IOrderedQueryable<T> ThenByDescending<T>(
+            this IQueryable<T> query,
+            string memberName)
+        {
+            return query.OrderByCreate<T>(memberName, nameof(ThenByDescending));
         }
 
         private static IOrderedQueryable<T> OrderByCreate<T>(this IQueryable<T> query, string memberName, string direction)
