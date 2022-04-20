@@ -6,7 +6,6 @@ namespace DatatableJS
     public class ColumnDefinition
     {
         public string Data { get; set; }
-        public string PropertyExp { get; set; }
         public string Title { get; set; }
         public bool Visible { get; set; } = true;
         public bool Searchable { get; set; } = true;
