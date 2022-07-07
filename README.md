@@ -1,5 +1,5 @@
 # DatatableJS
-[![Build status](https://ci.appveyor.com/api/projects/status/jquswi3vnm0kd9n9/branch/master?svg=true)](https://ci.appveyor.com/project/ekondur/datatablejs/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/jquswi3vnm0kd9n9/branch/main?svg=true)](https://ci.appveyor.com/project/ekondur/datatablejs/branch/main)
 [![NuGet](http://img.shields.io/nuget/v/DatatableJS.svg)](https://www.nuget.org/packages/DatatableJS/)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d794ab84939f4ddc96fffebd6ddf6ff7)](https://www.codacy.com/gh/ekondur/DatatableJS/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ekondur/DatatableJS&amp;utm_campaign=Badge_Grade)
 [![Gitter](https://badges.gitter.im/DatatableJS/community.svg)](https://gitter.im/DatatableJS/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
