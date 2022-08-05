@@ -11,10 +11,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageTags>C#, Helper, Jquery Datatables, Entity Framework, Mvc</PackageTags>
-    <PackageReleaseNotes>Upgraded some packages to fix security vulnerabilities.</PackageReleaseNotes>
-    <AssemblyVersion>3.2.4.0</AssemblyVersion>
-    <FileVersion>3.2.4.0</FileVersion>
-    <Version>3.2.4</Version>
+    <PackageReleaseNotes>Fixed dropdown button issue for bootstrap 5.* versions</PackageReleaseNotes>
+    <AssemblyVersion>3.2.5.0</AssemblyVersion>
+    <FileVersion>3.2.5.0</FileVersion>
+    <Version>3.2.5</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

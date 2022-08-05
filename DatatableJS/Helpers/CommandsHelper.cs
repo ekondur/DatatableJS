@@ -40,7 +40,7 @@ namespace DatatableJS
                 Orderable = false,
                 Width = Width,
                 Render = $@"'<div class=""btn-group"" role=""group"">'+
-                        '<button id=""{BtnId}"" type=""button"" class=""{BtnClass} dropdown-toggle"" data-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">' +
+                        '<button id=""{BtnId}"" type=""button"" class=""{BtnClass} dropdown-toggle"" data-toggle=""dropdown"" data-bs-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">' +
                             '{Text ?? ""}'+
                         '</button>'+
                         '<div class=""dropdown-menu"" aria-labelledby=""{BtnId}"">'+
