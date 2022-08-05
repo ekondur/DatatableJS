@@ -38,7 +38,7 @@ namespace DatatableJS
         /// <summary>
         /// Define table page length.
         /// </summary>
-        public int PageLength { get; set; }
+        public int PageLength { get; set; } = 10;
 
         /// <summary>
         /// Process

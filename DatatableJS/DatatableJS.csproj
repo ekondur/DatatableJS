@@ -11,10 +11,10 @@
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>C#, Tag Helper, Jquery Datatables, Entity Framework, Mvc, Net Core</PackageTags>
-    <PackageReleaseNotes>Upgraded some packages to fix security vulnerabilities.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed dropdown button issue for bootstrap 5.* versions</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English (United States)</NeutralLanguage>
-    <Version>3.2.4</Version>
+    <Version>3.2.5</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

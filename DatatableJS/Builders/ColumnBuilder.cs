@@ -229,7 +229,7 @@ namespace DatatableJS
                 Searchable = false,
             };
             _column.Render = $@"'<div class=""btn-group"">'+
-                        '<button type=""button"" class=""btn {btnClass} dropdown-toggle"" data-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">'+
+                        '<button type=""button"" class=""btn {btnClass} dropdown-toggle"" data-toggle=""dropdown"" data-bs-toggle=""dropdown"" aria-haspopup=""true"" aria-expanded=""false"">'+
                             '{btnText ?? ""} <span class=""{iconClass}""></span>'+
                         '</button>'+
                         '<div class=""dropdown-menu"">'+
