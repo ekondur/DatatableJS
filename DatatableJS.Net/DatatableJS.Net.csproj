@@ -6,15 +6,15 @@
     <Authors>Emrah KONDUR</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>https://github.com/ekondur/DatatableJS</Copyright>
-    <PackageProjectUrl>https://github.com/ekondur/DatatableJS</PackageProjectUrl>
+    <PackageProjectUrl>https://www.datatablejs.net/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageTags>C#, Helper, Jquery Datatables, Entity Framework, Mvc</PackageTags>
-    <PackageReleaseNotes>Fixed dropdown button issue for bootstrap 5.* versions</PackageReleaseNotes>
-    <AssemblyVersion>3.2.5.0</AssemblyVersion>
-    <FileVersion>3.2.5.0</FileVersion>
-    <Version>3.2.5</Version>
+    <PackageReleaseNotes>Added selecting behaviour. It supports also checkbox selection.</PackageReleaseNotes>
+    <AssemblyVersion>3.3.0.0</AssemblyVersion>
+    <FileVersion>3.3.0.0</FileVersion>
+    <Version>3.3.0</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

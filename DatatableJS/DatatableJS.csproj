@@ -4,17 +4,17 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Emrah KONDUR</Authors>
     <Company>Emrah KONDUR</Company>
-    <Description>DatatableJS is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many Jquery Datatables features with Tag Helper. It gives serverside or client side options.</Description>
+    <Description>DatatableJS is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from any IQueryable list. It possible to use many Jquery Datatables features with Tag Helper. It gives serverside or client side options.</Description>
     <Copyright>https://github.com/ekondur/DatatableJS</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/ekondur/DatatableJS</PackageProjectUrl>
+    <PackageProjectUrl>https://www.datatablejs.net/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>C#, Tag Helper, Jquery Datatables, Entity Framework, Mvc, Net Core</PackageTags>
-    <PackageReleaseNotes>Fixed dropdown button issue for bootstrap 5.* versions</PackageReleaseNotes>
+    <PackageReleaseNotes>Added selecting behaviour. It supports also checkbox selection.</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English (United States)</NeutralLanguage>
-    <Version>3.2.5</Version>
+    <Version>3.3.0</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

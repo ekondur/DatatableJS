@@ -5,16 +5,16 @@
     <Authors>Emrah KONDUR</Authors>    
     <Company>Emrah KONDUR</Company>    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
-    <Description>Executing IQueryable list objects server side in Entity Framework for Datatables request.</Description>    
+    <Description>Executing IQueryable list objects server side in Entity Framework or any IQueryable list for Datatables request.</Description>    
     <Copyright>https://github.com/ekondur/DatatableJS</Copyright>    
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>    
-    <PackageProjectUrl>https://github.com/ekondur/DatatableJS</PackageProjectUrl>    
+    <PackageProjectUrl>https://www.datatablejs.net/</PackageProjectUrl>    
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>    
     <RepositoryType>git</RepositoryType>    
     <PackageTags>C#, Jquery Datatables, Entity Framework, Query, Linq</PackageTags>    
-    <PackageReleaseNotes>Upgraded some packages to fix security vulnerabilities.</PackageReleaseNotes>    
+    <PackageReleaseNotes>Added selecting behaviour. It supports also checkbox selection.</PackageReleaseNotes>    
     <NeutralLanguage>English (United States)</NeutralLanguage>    
-    <Version>3.2.4</Version>    
+    <Version>3.3.0</Version>    
     <PackageIcon>datatable-js.png</PackageIcon>    
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
