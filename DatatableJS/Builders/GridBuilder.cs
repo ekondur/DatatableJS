@@ -32,6 +32,12 @@ namespace DatatableJS
         internal bool _processing { get; private set; } = true;
         internal bool _scrollX { get; private set; }
 
+        internal bool _selectEnable { get; private set; }
+        internal SelectStyle _selectStyle { get; private set; }
+        internal SelectItems _selectItems { get; private set; }
+        internal bool _selectInfo { get; private set; }
+        internal bool _selectToggleable { get; private set; }
+
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterModel> _filters = new List<FilterModel>();
         internal List<OrderModel> _orders = new List<OrderModel>();
@@ -341,6 +347,85 @@ namespace DatatableJS
         {
             _scrollX = scrollX;
             return this;
+        }
+
+        /// <summary>
+        /// Enable selection and set properties
+        /// </summary>
+        /// <param name="enable">Enable the selectable grid, default is false.</param>
+        /// <param name="items">Set the selection behaviour.</param>
+        /// <param name="style">Set the selection style.</param>
+        /// <param name="info">Disable the visibility of selected row info on grid, default is true.</param>
+        /// <param name="toggleable">Disable the toggleable selection, default is true.</param>
+        /// <returns></returns>
+        public GridBuilder<T> Selecting(bool enable, SelectItems items, SelectStyle style, bool info, bool toggleable)
+        {
+            _selectEnable = enable;
+            _selectItems = items;
+            _selectStyle = style;
+            _selectInfo = info;
+            _selectToggleable = toggleable;
+
+            if (items == SelectItems.Checkbox)
+            {
+                var column = new ColumnDefinition
+                {
+                    ClassName = "select-checkbox",
+                    Orderable = false,
+                    Searchable = false,
+                    Width = 5,
+                    Render = null
+                };
+                _columns.Insert(0, column);
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        /// Enable selection and set properties
+        /// </summary>
+        /// <param name="enable"></param>
+        /// <param name="items"></param>
+        /// <param name="style"></param>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Selecting(bool enable, SelectItems items, SelectStyle style, bool info)
+        {
+            return Selecting(enable, items, style, info, true);
+        }
+
+        /// <summary>
+        /// Enable selection and set properties
+        /// </summary>
+        /// <param name="enable"></param>
+        /// <param name="items"></param>
+        /// <param name="style"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Selecting(bool enable, SelectItems items, SelectStyle style)
+        {
+            return Selecting(enable, items, style, true, true);
+        }
+
+        /// <summary>
+        /// Enable selection and set properties
+        /// </summary>
+        /// <param name="enable"></param>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Selecting(bool enable, SelectItems items)
+        {
+            return Selecting(enable, items, SelectStyle.Default, true, true);
+        }
+
+        /// <summary>
+        /// Enable selection and set properties
+        /// </summary>
+        /// <param name="enable"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Selecting(bool enable)
+        {
+            return Selecting(enable, SelectItems.Row, SelectStyle.Default, true, true);
         }
     }
 }

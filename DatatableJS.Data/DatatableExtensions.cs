@@ -71,7 +71,7 @@ namespace DatatableJS.Data
             {
                 if (!request.order.Any())
                 {
-                    query = query.OrderBy(request.columns[0].data);
+                    query = query.OrderBy(request.columns[0].data ?? request.columns[1].data);
                 }
                 else
                 {
