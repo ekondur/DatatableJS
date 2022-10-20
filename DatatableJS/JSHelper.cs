@@ -79,6 +79,17 @@ namespace DatatableJS
                                     }},"
                                     : string.Empty;
 
+            var selectInit = gridBuilder._selectEnable ?
+                                $@"select: {{
+                                        info: {gridBuilder._selectInfo.ToLowString()},
+                                        style: '{gridBuilder._selectStyle.GetEnumDescription()}',
+                                        items: '{gridBuilder._selectItems.GetEnumDescription()}',
+                                        toggleable: {gridBuilder._selectToggleable.ToLowString()},
+                                        selector: '{(gridBuilder._selectItems == SelectItems.Checkbox ? "td:first-child" : string.Empty)}',
+                                        blurable: true
+                                    }},"
+                                    : string.Empty;
+
             var lengthMenu = (
                     gridBuilder._lengthMenuValues.Count == 0
                 ) ? string.Empty : 
@@ -101,6 +112,7 @@ namespace DatatableJS
                             processing:{gridBuilder._processing.ToLowString()},
                             scrollX:{gridBuilder._scrollX.ToLowString()},
                             serverSide:{gridBuilder._serverSide.ToLowString()},
+                            {selectInit}
                             fixedColumns: {{ 
                                 leftColumns: {gridBuilder._leftColumns},
                                 rightColumns: {gridBuilder._rightColumns}
@@ -127,7 +139,7 @@ namespace DatatableJS
                                 'searchable': {a.Searchable.ToLowString()},
                                 'className': '{a.ClassName}',
                                 'visible': {a.Visible.ToLowString()},
-                                'width': '{a.Width}%',
+                                'width': '{(a.Width > 0 ? $"{a.Width}%" : string.Empty)}',
                                     {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ if (data == null) {{ return ''; }} else {{ return {a.Render}; }} }}")}
                             }}"))}]
                         }});
