@@ -3,7 +3,7 @@
 namespace DatatableJS
 {
     /// <summary>
-    /// Set which items are selectable (row, cell, checkbox). Default is row.
+    /// Set which items are selectable (row, column, cell, row with checkbox). Default is row.
     /// </summary>
     public enum SelectItems
     {
@@ -14,13 +14,19 @@ namespace DatatableJS
         Row,
 
         /// <summary>
+        /// Enable column selection.
+        /// </summary>
+        [Description("column")]
+        Column,
+
+        /// <summary>
         /// Enable cell selection.
         /// </summary>
         [Description("cell")]
         Cell,
 
         /// <summary>
-        /// Enable checkbox selection.
+        /// Enable row selection with checkbox.
         /// </summary>
         [Description("row")]
         Checkbox
