@@ -175,6 +175,13 @@ DataTables can split the rows in tables into individual pages, which is an effic
 ```csharp
 .Paging(false)
 ```
+## Selecting
+Select adds item selection capabilities to a DataTable. Items can be rows, columns or cells, which can be selected independently, or together.  [Reference:](https://datatables.net/extensions/select/)
+```csharp
+.Selecting(true)
+.Selecting(true, SelectItems.Checkbox)
+.Selecting(true, SelectItems.Cell, SelectStyle.Single)
+```
 ## Processing
 Enable or disable the display of a 'processing' indicator when the table is being processed. Default is true. [Reference:](https://datatables.net/reference/option/processing)
 ```csharp
