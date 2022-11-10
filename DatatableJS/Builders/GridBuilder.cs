@@ -46,11 +46,11 @@ namespace DatatableJS
         /// <summary>
         /// Default value is string.empty
         /// </summary>
-        /// <param name="functionAfterLoad"></param>
+        /// <param name="_functionAfterLoad"></param>
         /// <returns>string</returns>
-        public GridBuilder<T> FunctionAfterLoad(string functionAfterLoad)
+        public GridBuilder<T> FunctionAfterLoad(string _functionAfterLoad)
         {
-            _FunctionAfterLoad = functionAfterLoad;
+            _FunctionAfterLoad = _functionAfterLoad;
             return this;
         }
 
