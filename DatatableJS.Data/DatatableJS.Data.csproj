@@ -13,7 +13,7 @@
     <RepositoryType>git</RepositoryType>    
     <PackageTags>C#, Jquery Datatables, Entity Framework, Query, Linq</PackageTags>    
     <PackageReleaseNotes>Added selecting behaviour. It supports also checkbox selection.</PackageReleaseNotes>    
-    <NeutralLanguage>English (United States)</NeutralLanguage>    
+    <NeutralLanguage>en</NeutralLanguage>    
     <Version>3.3.0</Version>    
     <PackageIcon>datatable-js.png</PackageIcon>    
     <PackageIconUrl />
