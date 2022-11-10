@@ -41,6 +41,18 @@ namespace DatatableJS
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterModel> _filters = new List<FilterModel>();
         internal List<OrderModel> _orders = new List<OrderModel>();
+        internal string _FunctionAfterLoad { get; set; }
+
+        /// <summary>
+        /// Default value is string.empty
+        /// </summary>
+        /// <param name="functionAfterLoad"></param>
+        /// <returns>string</returns>
+        public GridBuilder<T> FunctionAfterLoad(string functionAfterLoad)
+        {
+            _FunctionAfterLoad = functionAfterLoad;
+            return this;
+        }
 
         /// <summary>
         /// Default name is "DataGrid".

@@ -32,6 +32,11 @@ namespace DatatableJS
         /// Enable horizontal scrolling. When a table is too wide to fit into a certain layout, or you have a large number of columns in the table, you can enable horizontal (x) scrolling to show the table in a viewport, which can be scrolled.
         /// </summary>
         public bool ScrollX { get; set; }
+        /// <summary>
+        /// property to old a function name that is called after grid is loaded
+        /// </summary>
+        /// <value></value>
+        public string FunctionAfterLoad {get; set;} = string.Empty;
 
         /// <summary>
         /// Process
@@ -52,7 +57,8 @@ namespace DatatableJS
                 Ordering = Ordering,
                 Searching = Searching,
                 Processing = Processing,
-                ScrollX = ScrollX
+                ScrollX = ScrollX,
+                FunctionAfterLoad = FunctionAfterLoad
             };
             
             context.Items.Add("DataGrid", grid);

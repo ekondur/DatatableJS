@@ -64,7 +64,35 @@ namespace DatatableJS
                         </tfoot>"
                         : string.Empty;
 
-            var tfootInit = gridBuilder._columnSearching ?
+            var tfootInit = string.Empty;
+
+            if (!String.IsNullOrEmpty(gridBuilder._FunctionAfterLoad) && gridBuilder._columnSearching == false)
+            {
+                tfootInit = "initComplete: function () {{";
+                tfootInit += gridBuilder._FunctionAfterLoad + "();";
+                tfootInit += "}},";
+            }
+            else if (!String.IsNullOrEmpty(gridBuilder._FunctionAfterLoad) && gridBuilder._columnSearching == true)
+            {
+                tfootInit = gridBuilder._columnSearching ?
+                                $@"initComplete: function () {{
+                                        " + gridBuilder._FunctionAfterLoad + $@"
+                                        this.api().columns().every(function() {{
+                                            var that = this;
+                                            $('input', this.footer()).on('keyup change clear', function () {{
+                                                if (that.search() !== this.value) {{
+                                                    that
+                                                        .search(this.value)
+                                                        .draw();
+                                                }}
+                                            }});
+                                        }});
+                                    }},"
+                                    : string.Empty;
+            }
+            else if (String.IsNullOrEmpty(gridBuilder._FunctionAfterLoad) && gridBuilder._columnSearching == true)
+            {
+                tfootInit = gridBuilder._columnSearching ?
                                 $@"initComplete: function () {{
                                         this.api().columns().every(function() {{
                                             var that = this;
@@ -78,6 +106,7 @@ namespace DatatableJS
                                         }});
                                     }},"
                                     : string.Empty;
+            }
 
             var selectInit = gridBuilder._selectEnable ?
                                 $@"select: {{
