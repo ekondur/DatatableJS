@@ -155,7 +155,7 @@ namespace DatatableJS.Net
                                 'className': '{a.ClassName}',
                                 'visible': {a.Visible.ToLowString()},
                                 'width': '{(a.Width > 0 ? $"{a.Width}%" : string.Empty)}',
-                                    {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ if (data == null) {{ return ''; }} else {{ return {a.Render}; }} }}")}
+                                    {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ return {a.Render}; }}")}
                             }}"))}]
                         }});
                     }});
