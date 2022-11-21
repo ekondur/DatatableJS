@@ -11,10 +11,9 @@
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>C#, Tag Helper, Jquery Datatables, Entity Framework, Mvc, Net Core</PackageTags>
-    <PackageReleaseNotes>Added column selection</PackageReleaseNotes>
+    <PackageReleaseNotes>Added multi+shift column selection and some improvements</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <NeutralLanguage>English (United States)</NeutralLanguage>
-    <Version>3.3.1</Version>
+    <Version>3.3.2</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
