@@ -53,6 +53,12 @@ namespace DatatableJS.Net
         /// Multiple selectable with one click 
         /// </summary>
         [Description("multi")]
-        Multi
+        Multi,
+
+        /// <summary>
+        /// Multi-item with rangle selection 
+        /// </summary>
+        [Description("multi+shift")]
+        MultiShift
     }
 }
