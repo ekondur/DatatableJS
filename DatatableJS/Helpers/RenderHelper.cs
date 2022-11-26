@@ -29,6 +29,7 @@ namespace DatatableJS
             var script = $@"
             $(document).ready(function () {{
                 $('#{grid.Name}').DataTable( {{
+                    initComplete: function () {grid.FunctionAfterLoad + "();"}
                     processing:{grid.Processing.ToLowString()},
                     scrollX:{grid.ScrollX.ToLowString()},
                     serverSide:{grid.DataSource.ServerSide.ToLowString()},

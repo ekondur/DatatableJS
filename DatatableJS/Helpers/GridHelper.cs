@@ -9,6 +9,11 @@ namespace DatatableJS
     public class GridHelper : TagHelper
     {
         /// <summary>
+        /// default is string.emtpy
+        /// </summary>
+        /// <value></value>
+        public string FunctionAfterLoad { get; set; } = string.Empty;
+        /// <summary>
         /// Default name is "DataGrid".
         /// </summary>
         public string Name { get; set; } = "DataGrid";
@@ -52,7 +57,8 @@ namespace DatatableJS
                 Ordering = Ordering,
                 Searching = Searching,
                 Processing = Processing,
-                ScrollX = ScrollX
+                ScrollX = ScrollX,
+                FunctionAfterLoad = FunctionAfterLoad
             };
             
             context.Items.Add("DataGrid", grid);
