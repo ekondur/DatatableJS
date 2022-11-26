@@ -37,10 +37,22 @@ namespace DatatableJS
         internal SelectItems _selectItems { get; private set; }
         internal bool _selectInfo { get; private set; }
         internal bool _selectToggleable { get; private set; }
+        internal string _FunctionAfterLoad { get; set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterModel> _filters = new List<FilterModel>();
         internal List<OrderModel> _orders = new List<OrderModel>();
+
+        /// <summary>
+        /// Default name is "".
+        /// </summary>
+        /// <param name="functionAfterLoad"></param>
+        /// <returns></returns>
+        public GridBuilder<T> FunctionAfterLoad(string functionAfterLoad)
+        {
+            _FunctionAfterLoad = functionAfterLoad;
+            return this;
+        }
 
         /// <summary>
         /// Default name is "DataGrid".

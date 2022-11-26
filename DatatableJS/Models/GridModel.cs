@@ -22,6 +22,7 @@ namespace DatatableJS
         internal LanguageModel Language { get; set; }
         internal CaptionsModel Captions { get; set; }
         internal LengthMenuModel LengthMenu { get; set; }
+        public string FunctionAfterLoad { get; set; }
 
         /// <summary>
         /// GridModel()
