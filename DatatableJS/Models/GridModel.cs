@@ -12,6 +12,7 @@ namespace DatatableJS
         internal bool Searching { get; set; }
         internal bool Processing { get; set; }
         internal bool ScrollX { get; set; }
+        internal bool StateSave { get; set; }
 
         internal List<ColumnModel> Columns { get; set; }
         internal List<FilterModel> Filters { get; set; }
@@ -22,7 +23,7 @@ namespace DatatableJS
         internal LanguageModel Language { get; set; }
         internal CaptionsModel Captions { get; set; }
         internal LengthMenuModel LengthMenu { get; set; }
-        public string FunctionAfterLoad { get; set; }
+        public CallbackModel Callback { get; set; }
 
         /// <summary>
         /// GridModel()
@@ -37,6 +38,7 @@ namespace DatatableJS
             Captions = new CaptionsModel();
             Orders = new List<OrderModel>();
             LengthMenu = new LengthMenuModel();
+            Callback = new CallbackModel();
         }
     }
 }
