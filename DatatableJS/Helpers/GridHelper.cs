@@ -9,11 +9,6 @@ namespace DatatableJS
     public class GridHelper : TagHelper
     {
         /// <summary>
-        /// default is string.emtpy
-        /// </summary>
-        /// <value></value>
-        public string FunctionAfterLoad { get; set; } = string.Empty;
-        /// <summary>
         /// Default name is "DataGrid".
         /// </summary>
         public string Name { get; set; } = "DataGrid";
@@ -39,6 +34,11 @@ namespace DatatableJS
         public bool ScrollX { get; set; }
 
         /// <summary>
+        /// Enable or disable state saving such as pagination position, display length, filtering and sorting information.
+        /// </summary>
+        public bool StateSave { get; set; }
+
+        /// <summary>
         /// Process
         /// </summary>
         /// <param name="context"></param>
@@ -58,7 +58,7 @@ namespace DatatableJS
                 Searching = Searching,
                 Processing = Processing,
                 ScrollX = ScrollX,
-                FunctionAfterLoad = FunctionAfterLoad
+                StateSave = StateSave
             };
             
             context.Items.Add("DataGrid", grid);

@@ -81,45 +81,47 @@ namespace DatatableJS.Net
 
             var tfootInit = string.Empty;
 
-                            if(!String.IsNullOrEmpty(gridBuilder._FunctionAfterLoad) && gridBuilder._columnSearching==false)
-                            {
-                                tfootInit = "initComplete: function () {";
-                                tfootInit += gridBuilder._FunctionAfterLoad + "();";
-                                tfootInit += "},";
-                            } else if(!String.IsNullOrEmpty(gridBuilder._FunctionAfterLoad) && gridBuilder._columnSearching == true)
-                            {
-                                tfootInit = gridBuilder._columnSearching ?
-                                                $@"initComplete: function () {{
-                                                        " + gridBuilder._FunctionAfterLoad + $@"
-                                                        this.api().columns().every(function() {{
-                                                            var that = this;
-                                                            $('input', this.footer()).on('keyup change clear', function () {{
-                                                                if (that.search() !== this.value) {{
-                                                                    that
-                                                                        .search(this.value)
-                                                                        .draw();
-                                                                }}
-                                                            }});
-                                                        }});
-                                                    }},"
-                                                    : string.Empty;
-                            } else if(String.IsNullOrEmpty(gridBuilder._FunctionAfterLoad) && gridBuilder._columnSearching == true)
-                            {
-                                tfootInit = gridBuilder._columnSearching ?
-                                                $@"initComplete: function () {{
-                                                        this.api().columns().every(function() {{
-                                                            var that = this;
-                                                            $('input', this.footer()).on('keyup change clear', function () {{
-                                                                if (that.search() !== this.value) {{
-                                                                    that
-                                                                        .search(this.value)
-                                                                        .draw();
-                                                                }}
-                                                            }});
-                                                        }});
-                                                    }},"
-                                                    : string.Empty;
-                            }
+            if (!String.IsNullOrEmpty(gridBuilder._callBack.InitComplete) && gridBuilder._columnSearching == false)
+            {
+                tfootInit = "initComplete: function (settings, json) {";
+                tfootInit += gridBuilder._callBack.InitComplete + "(settings, json);";
+                tfootInit += "},";
+            }
+            else if (!String.IsNullOrEmpty(gridBuilder._callBack.InitComplete) && gridBuilder._columnSearching == true)
+            {
+                tfootInit = gridBuilder._columnSearching ?
+                                $@"initComplete: function () {{
+                                        {gridBuilder._callBack.InitComplete}(settings, json);
+                                        this.api().columns().every(function() {{
+                                            var that = this;
+                                            $('input', this.footer()).on('keyup change clear', function () {{
+                                                if (that.search() !== this.value) {{
+                                                    that
+                                                        .search(this.value)
+                                                        .draw();
+                                                }}
+                                            }});
+                                        }});
+                                    }},"
+                                    : string.Empty;
+            }
+            else if (String.IsNullOrEmpty(gridBuilder._callBack.InitComplete) && gridBuilder._columnSearching == true)
+            {
+                tfootInit = gridBuilder._columnSearching ?
+                                $@"initComplete: function () {{
+                                        this.api().columns().every(function() {{
+                                            var that = this;
+                                            $('input', this.footer()).on('keyup change clear', function () {{
+                                                if (that.search() !== this.value) {{
+                                                    that
+                                                        .search(this.value)
+                                                        .draw();
+                                                }}
+                                            }});
+                                        }});
+                                    }},"
+                                    : string.Empty;
+            }
 
             var selectInit = gridBuilder._selectEnable ?
                                 $@"select: {{
@@ -153,6 +155,7 @@ namespace DatatableJS.Net
                             {tfootInit}
                             processing:{gridBuilder._processing.ToLowString()},
                             scrollX:{gridBuilder._scrollX.ToLowString()},
+                            stateSave:{gridBuilder._stateSave.ToLowString()},
                             serverSide:{gridBuilder._serverSide.ToLowString()},
                             {selectInit}
                             fixedColumns: {{ 
@@ -164,6 +167,19 @@ namespace DatatableJS.Net
                             searching: {gridBuilder._searching.ToLowString()},
                             paging: {gridBuilder._paging.ToLowString()},
                             {lengthMenu}
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.CreatedRow) ? $"createdRow: function (row, data, dataIndex, cells) {{ {gridBuilder._callBack.CreatedRow}(row, data, dataIndex, cells); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.DrawCallback) ? $"drawCallback: function (settings) {{ {gridBuilder._callBack.DrawCallback}(settings); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.FooterCallback) ? $"footerCallback: function (tfoot, data, start, end, display) {{ {gridBuilder._callBack.FooterCallback}(tfoot, data, start, end, display); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.FormatNumber) ? $"formatNumber: function (toFormat) {{ {gridBuilder._callBack.FormatNumber}(toFormat); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.HeaderCallback) ? $"headerCallback: function (thead, data, start, end, display) {{ {gridBuilder._callBack.HeaderCallback}(thead, data, start, end, display); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.InfoCallback) ? $"infoCallback: function (settings, start, end, max, total, pre) {{ {gridBuilder._callBack.InfoCallback}(settings, start, end, max, total, pre); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.PreDrawCallback) ? $"preDrawCallback: function (settings) {{ {gridBuilder._callBack.PreDrawCallback}(settings); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.RowCallback) ? $"rowCallback: function (row, data, displayNum, displayIndex, dataIndex) {{ {gridBuilder._callBack.RowCallback}(row, data, displayNum, displayIndex, dataIndex); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.StateLoadCallback) ? $"stateLoadCallback: function (settings, callback) {{ {gridBuilder._callBack.StateLoadCallback}(settings, callback); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.StateLoadParams) ? $"stateLoadParams: function (settings, data) {{ {gridBuilder._callBack.StateLoadParams}(settings, data); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.StateLoaded) ? $"stateLoaded: function (settings, data) {{ {gridBuilder._callBack.StateLoaded}(settings, data); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.StateSaveCallback) ? $"stateSaveCallback: function (settings, data) {{ {gridBuilder._callBack.StateSaveCallback}(settings, data); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(gridBuilder._callBack.StateSaveParams) ? $"stateSaveParams: function (settings, data) {{ {gridBuilder._callBack.StateSaveParams}(settings, data); }}," : string.Empty) }
                             {(!gridBuilder._pageLength.HasValue ? string.Empty : $"pageLength: {gridBuilder._pageLength.Value},")}
                             language: {{
                                 'url': '{gridBuilder._langUrl}'

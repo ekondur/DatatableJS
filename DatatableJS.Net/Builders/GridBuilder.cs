@@ -31,28 +31,19 @@ namespace DatatableJS.Net
         internal int? _pageLength { get; private set; }
         internal bool _processing { get; private set; } = true;
         internal bool _scrollX { get; private set; }
+        internal bool _stateSave { get; set; }
 
         internal bool _selectEnable { get; private set; }
         internal SelectStyle _selectStyle { get; private set; }
         internal SelectItems _selectItems { get; private set; }
         internal bool _selectInfo { get; private set; }
         internal bool _selectToggleable { get; private set; }
-        internal string _FunctionAfterLoad { get; set; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterDefinition> _filters = new List<FilterDefinition>();
         internal List<OrderDefinition> _orders = new List<OrderDefinition>();
 
-        /// <summary>
-        /// Default name is "".
-        /// </summary>
-        /// <param name="functionAfterLoad"></param>
-        /// <returns></returns>
-        public GridBuilder<T> FunctionAfterLoad(string functionAfterLoad)
-        {
-            _FunctionAfterLoad = functionAfterLoad;
-            return this;
-        }
+        internal CallbackModel _callBack = new CallbackModel();
 
         /// <summary>
         /// Default name is "DataGrid".
@@ -90,6 +81,31 @@ namespace DatatableJS.Net
         }
 
         /// <summary>
+        /// Enable ordering and set default orders.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Orders(Action<OrderBuilder<T>> config)
+        {
+            _ordering = true;
+            var builder = new OrderBuilder<T>(this);
+            config(builder);
+            return this;
+        }
+
+        /// <summary>
+        /// Set callback functions. <see href="https://datatables.net/reference/option/">Reference:</see>
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Callbacks(Action<CallbackBuilder<T>> config)
+        {
+            var builder = new CallbackBuilder<T>(this);
+            config(builder);
+            return this;
+        }
+
+        /// <summary>
         /// Set the action url and type, default type is GET.
         /// </summary>
         /// <param name="url"></param>
@@ -120,19 +136,6 @@ namespace DatatableJS.Net
         public GridBuilder<T> Ordering(bool ordering)
         {
             _ordering = ordering;
-            return this;
-        }
-
-        /// <summary>
-        /// Enable ordering and set default orders.
-        /// </summary>
-        /// <param name="config"></param>
-        /// <returns></returns>
-        public GridBuilder<T> Orders(Action<OrderBuilder<T>> config)
-        {
-            _ordering = true;
-            var builder = new OrderBuilder<T>(this);
-            config(builder);
             return this;
         }
 
@@ -358,6 +361,17 @@ namespace DatatableJS.Net
         public GridBuilder<T> ScrollX(bool scrollX)
         {
             _scrollX = scrollX;
+            return this;
+        }
+
+        /// <summary>
+        /// Enable or disable state saving such as pagination position, display length, filtering and sorting information.
+        /// </summary>
+        /// <param name="stateSave"></param>
+        /// <returns></returns>
+        public GridBuilder<T> StateSave(bool stateSave)
+        {
+            _stateSave = stateSave;
             return this;
         }
 

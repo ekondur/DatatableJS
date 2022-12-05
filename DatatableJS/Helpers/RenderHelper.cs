@@ -29,9 +29,9 @@ namespace DatatableJS
             var script = $@"
             $(document).ready(function () {{
                 $('#{grid.Name}').DataTable( {{
-                    initComplete: function () {grid.FunctionAfterLoad + "();"}
                     processing:{grid.Processing.ToLowString()},
                     scrollX:{grid.ScrollX.ToLowString()},
+                    stateSave:{grid.StateSave.ToLowString()},
                     serverSide:{grid.DataSource.ServerSide.ToLowString()},
                     fixedColumns: {{ 
                         leftColumns: {grid.FixedColumns?.LeftColumns},
@@ -42,6 +42,20 @@ namespace DatatableJS
                     searching: {grid.Searching.ToLowString()},
                     paging: {grid.DataSource.Paging.ToLowString()},
                     {lengthMenu}
+                    {(!string.IsNullOrEmpty(grid.Callback.CreatedRow) ? $"createdRow: function (row, data, dataIndex, cells) {{ {grid.Callback.CreatedRow}(row, data, dataIndex, cells); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.DrawCallback) ? $"drawCallback: function (settings) {{ {grid.Callback.DrawCallback}(settings); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.FooterCallback) ? $"footerCallback: function (tfoot, data, start, end, display) {{ {grid.Callback.FooterCallback}(tfoot, data, start, end, display); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.FormatNumber) ? $"formatNumber: function (toFormat) {{ {grid.Callback.FormatNumber}(toFormat); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.HeaderCallback) ? $"headerCallback: function (thead, data, start, end, display) {{ {grid.Callback.HeaderCallback}(thead, data, start, end, display); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.InfoCallback) ? $"infoCallback: function (settings, start, end, max, total, pre) {{ {grid.Callback.InfoCallback}(settings, start, end, max, total, pre); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.InitComplete) ? $"initComplete: function (settings, json) {{ {grid.Callback.InitComplete}(settings, json); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.PreDrawCallback) ? $"preDrawCallback: function (settings) {{ {grid.Callback.PreDrawCallback}(settings); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.RowCallback) ? $"rowCallback: function (row, data, displayNum, displayIndex, dataIndex) {{ {grid.Callback.RowCallback}(row, data, displayNum, displayIndex, dataIndex); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.StateLoadCallback) ? $"stateLoadCallback: function (settings, callback) {{ {grid.Callback.StateLoadCallback}(settings, callback); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.StateLoadParams) ? $"stateLoadParams: function (settings, data) {{ {grid.Callback.StateLoadParams}(settings, data); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.StateLoaded) ? $"stateLoaded: function (settings, data) {{ {grid.Callback.StateLoaded}(settings, data); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.StateSaveCallback) ? $"stateSaveCallback: function (settings, data) {{ {grid.Callback.StateSaveCallback}(settings, data); }}," : string.Empty) }
+                    {(!string.IsNullOrEmpty(grid.Callback.StateSaveParams) ? $"stateSaveParams: function (settings, data) {{ {grid.Callback.StateSaveParams}(settings, data); }}," : string.Empty) }
                     {(!grid.DataSource.PageLength.HasValue ? string.Empty : $"pageLength: {grid.DataSource.PageLength.Value},")}
                     language: {{
                         'url': '{grid.Language.URL}'
@@ -64,8 +78,8 @@ namespace DatatableJS
                             }}"))}]
                 }});
             }});
-                {(string.IsNullOrEmpty(grid.Captions.Top) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:top\">{1}</caption>');", grid.Name, grid.Captions.Top))}
-                {(string.IsNullOrEmpty(grid.Captions.Bottom) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:bottom\">{1}</caption>');", grid.Name, grid.Captions.Bottom))}";
+            {(string.IsNullOrEmpty(grid.Captions.Top) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:top\">{1}</caption>');", grid.Name, grid.Captions.Top))}
+            {(string.IsNullOrEmpty(grid.Captions.Bottom) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:bottom\">{1}</caption>');", grid.Name, grid.Captions.Bottom))}";
 
             output.Content.AppendHtml(script);
         }
