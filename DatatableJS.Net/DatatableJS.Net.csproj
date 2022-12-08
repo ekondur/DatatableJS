@@ -7,14 +7,15 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>https://github.com/ekondur/DatatableJS</Copyright>
     <PackageProjectUrl>https://www.datatablejs.net/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageTags>C#, Helper, Jquery Datatables, Entity Framework, Mvc</PackageTags>
-    <PackageReleaseNotes>Added multi+shift column selection and some improvements</PackageReleaseNotes>
-    <AssemblyVersion>3.3.2.0</AssemblyVersion>
-    <FileVersion>3.3.2.0</FileVersion>
-    <Version>3.3.2</Version>
+    <PackageReleaseNotes>Added callback functions and stateSave</PackageReleaseNotes>
+    <AssemblyVersion>3.4.0.0</AssemblyVersion>
+    <FileVersion>3.4.0.0</FileVersion>
+    <Version>3.4.0</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -39,6 +40,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+	<None Include="..\README.md">
+	  <Pack>True</Pack>
+	  <PackagePath></PackagePath>
+	</None>
   </ItemGroup>
 
 </Project>
