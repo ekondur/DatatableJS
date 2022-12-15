@@ -221,7 +221,7 @@ To give class for these inputs:
 ```
 ## Title
 Set column header. Default is property name.
-```
+```csharp
 .Title("Person Name");
 ```
 Or use `DisplayAttribute` for properties.
@@ -246,16 +246,34 @@ Manipulate and change display of column according to data.
 ```
 ## Visible
 Set column visible or hidden, default is `true`.
+```csharp
+.Visible(false);
+```
 ## Searchable
 Set column searchable or not, default is `true`.
+```csharp
+.Searchable(false);
+```
 ## Orderable
 Set column orderable or not, default is `true`.
+```csharp
+.Orderable(false);
+```
 ## Width
 Set column width percentage.
+```csharp
+.Width(50);
+```
 ## Class
 Set css class of column.
+```csharp
+.Class("text-danger");
+```
 ## DefaultContent
 Set default value for null data.
+```csharp
+.DefaultContent("No Data");
+```
 ## Command
 Add column commands to table in a variety of ways.
 ```csharp
@@ -312,3 +330,33 @@ Json example is below:
     }
 }
 ```
+## Callbacks
+Jquery datatable supports many callback functionalities:
+- **createdRow**: Callback for whenever a TR element is created for the table's body. [Reference:](https://datatables.net/reference/option/createdRow)
+- **drawCallback**: Function that is called every time DataTables performs a draw. [Reference:](https://datatables.net/reference/option/drawCallback)
+- **footerCallback**: Footer display callback function. [Reference:](https://datatables.net/reference/option/footerCallback)
+- **formatNumber**: Number formatting callback function. [Reference:](https://datatables.net/reference/option/formatNumber)
+- **headerCallback**: Header display callback function. [Reference:](https://datatables.net/reference/option/headerCallback)
+- **infoCallback**: Table summary information display callback. [Reference:](https://datatables.net/reference/option/infoCallback)
+- **initComplete**: Initialisation complete callback. [Reference:](https://datatables.net/reference/option/initComplete)
+- **preDrawCallback**: Pre-draw callback. [Reference:](https://datatables.net/reference/option/preDrawCallback)
+- **rowCallback**: Row draw callback. [Reference:](https://datatables.net/reference/option/rowCallback)
+- **stateLoadCallback**: Callback that defines where and how a saved state should be loaded. [Reference:](https://datatables.net/reference/option/stateLoadCallback)
+- **stateLoadParams**: State loaded - data manipulation callback. [Reference:](https://datatables.net/reference/option/stateLoadParams)
+- **stateLoaded**: State loaded callback. [Reference:](https://datatables.net/reference/option/stateLoaded)
+- **stateSaveCallback**: Callback that defines how the table state is stored and where. [Reference:](https://datatables.net/reference/option/stateSaveCallback)
+- **stateSaveParams**: State save - data manipulation callback [Reference:](https://datatables.net/reference/option/stateSaveParams)
+ 
+ You can easily define them with helper:
+ ```csharp
+.Callbacks(x => x.CreatedRow("createdRow"))
+```
+ ```javascript
+function createdRow(row, data, dataIndex, cells){
+    console.log(dataIndex + " " + data.Name);
+}
+ ```
+ Or multiple callback functions:
+  ```csharp
+ .Callbacks(x => x.CreatedRow("createdRow").InitComplete("initComplete"))
+ ```
