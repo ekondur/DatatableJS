@@ -7,6 +7,7 @@
     {
         internal string URL { get; set; }
         internal HttpMethodType Method { get; set; }
+        internal bool CamelCase { get; set; }
         internal bool Paging { get; set; }
         internal string Data { get; set; }
         internal bool ServerSide { get; set; }

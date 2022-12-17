@@ -18,6 +18,7 @@ namespace DatatableJS
         internal int _rightColumns { get; private set; }
         internal bool _serverSide { get; private set; }
         internal string _method { get; private set; }
+        internal bool _camelCase { get; private set; }
         internal string _data { get; private set; }
         internal string _cssClass { get; private set; } = "display nowrap dataTable dtr-inline collapsed";
         internal string _captionTop { get; private set; }
@@ -106,16 +107,29 @@ namespace DatatableJS
         }
 
         /// <summary>
-        /// Set the action url and type, default type is GET.
+        /// Set the action url, type and json naming policy is camelcase, default is false.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="method"></param>
+        /// <param name="camelCase"></param>
+        /// <returns></returns>
+        public GridBuilder<T> URL(string url, string method, bool camelCase)
+        {
+            _url = url;
+            _method = method;
+            _camelCase = camelCase;
+            return this;
+        }
+
+        /// <summary>
+        /// Set the action url and type.
         /// </summary>
         /// <param name="url"></param>
         /// <param name="method"></param>
         /// <returns></returns>
         public GridBuilder<T> URL(string url, string method)
         {
-            _url = url;
-            _method = method;
-            return this;
+            return URL(url, method, false);
         }
 
         /// <summary>
@@ -125,7 +139,7 @@ namespace DatatableJS
         /// <returns></returns>
         public GridBuilder<T> URL(string url)
         {
-            return URL(url, "GET");
+            return URL(url, "GET", false);
         }
 
         /// <summary>
