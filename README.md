@@ -73,6 +73,10 @@ Set the URL to retrieve data from any action with GET or POST method:
 ```csharp
 .URL(Url.Action("GetAll", "Person"), "POST")
 ```
+If property names are pascal case like "FirstName" and JSON naming policy is camel case like "firstName", enable it.
+```csharp
+.URL(Url.Action("GetDataResult"), "POST", camelCase: true)
+```
 Use `DataRequest` object to bind parameters of request. With `.ToDataResult(request);` extension method, if there is entity framework, execute IQueryable list server side from context. Otherwise manipulate data manually and return `DataResult<T>` object including data.
 
 Install [DatatableJS.Data](https://www.nuget.org/packages/DatatableJS.Data/) from the package manager console:
@@ -221,6 +225,7 @@ To give class for these inputs:
 ```
 ## Title
 Set column header. Default is property name.
+
 ```csharp
 .Title("Person Name");
 ```
