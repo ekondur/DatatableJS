@@ -41,18 +41,18 @@ namespace DatatableJS.Data
                 foreach (var item in request.columns.Where(a => a.searchable))
                 {
                     ParameterExpression param = Expression.Parameter(typeof(T), "t");
-                    MemberExpression member = Expression.Property(param, item.data);
+                    MemberExpression member = Expression.Property(param, item.name);
                     var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
-                    listExp.Add(new FilterDef { Operand = operand, Field = item.data, Value = request.search.value, Operator = Operator.Or });
+                    listExp.Add(new FilterDef { Operand = operand, Field = item.name, Value = request.search.value, Operator = Operator.Or });
                 }
             }
 
             foreach (var item in request.columns.Where(a => a.searchable == true && !string.IsNullOrEmpty(a.search.value)))
             {
                 ParameterExpression param = Expression.Parameter(typeof(T), "t");
-                MemberExpression member = Expression.Property(param, item.data);
+                MemberExpression member = Expression.Property(param, item.name);
                 var operand = member.Type == typeof(string) ? Operand.Contains : Operand.Equal;
-                listExp.Add(new FilterDef { Operand = operand, Field = item.data, Value = item.search.value, Operator = Operator.And });
+                listExp.Add(new FilterDef { Operand = operand, Field = item.name, Value = item.search.value, Operator = Operator.And });
             }
 
             if (listExp.Any())
@@ -71,19 +71,19 @@ namespace DatatableJS.Data
             {
                 if (!request.order.Any())
                 {
-                    query = query.OrderBy(request.columns[0].data ?? request.columns[1].data);
+                    query = query.OrderBy(request.columns[0].name ?? request.columns[1].name);
                 }
                 else
                 {
                     query = request.order[0].dir != "asc"
-                        ? (IQueryable<T>)query.OrderByDescending<T>(request.columns[request.order[0].column].data)
-                        : (IQueryable<T>)query.OrderBy<T>(request.columns[request.order[0].column].data);
+                        ? query.OrderByDescending<T>(request.columns[request.order[0].column].name)
+                        : query.OrderBy<T>(request.columns[request.order[0].column].name);
 
                     for (var i = 1; i < request.order.Count(); i++)
                     {
                         query = request.order[i].dir != "asc"
-                            ? (IQueryable<T>)query.ThenByDescending<T>(request.columns[request.order[i].column].data)
-                            : (IQueryable<T>)query.ThenBy<T>(request.columns[request.order[i].column].data);
+                            ? query.ThenByDescending<T>(request.columns[request.order[i].column].name)
+                            : query.ThenBy<T>(request.columns[request.order[i].column].name);
                     }
                 }
 

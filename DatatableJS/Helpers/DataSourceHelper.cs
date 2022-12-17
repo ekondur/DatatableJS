@@ -21,6 +21,11 @@ namespace DatatableJS
         public HttpMethodType Method { get; set; } = HttpMethodType.GET;
 
         /// <summary>
+        /// Enable Json Naming Policy as CamelCase.
+        /// </summary>
+        public bool CamelCase { get; set; }
+
+        /// <summary>
         /// Disable or enable paging, default is true.
         /// </summary>
         public bool Paging { get; set; } = true;
@@ -55,6 +60,7 @@ namespace DatatableJS
             grid.DataSource.Data = Data;
             grid.DataSource.ServerSide = ServerSide;
             grid.DataSource.PageLength = PageLength;
+            grid.DataSource.CamelCase = CamelCase;
 
             if (!grid.LengthMenu._lengthMenuValues.Any())
             {

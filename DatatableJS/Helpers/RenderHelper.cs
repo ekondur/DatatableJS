@@ -61,12 +61,12 @@ namespace DatatableJS
                         'url': '{grid.Language.URL}'
                     }},
                     ajax: {{
-                            url: ""{grid.DataSource?.URL}"",
-                            type: ""{grid.DataSource?.Method}"",
+                            url: ""{grid.DataSource.URL}"",
+                            type: ""{grid.DataSource.Method}"",
                             data: {GetDataStr(grid)}
                           }},
                     columns: [{string.Join(", ", grid.Columns.Select(a => $@"{{ 
-                                'data': '{a.Data}',
+                                'data': '{(grid.DataSource.CamelCase ? char.ToLowerInvariant(a.Data[0]) + a.Data.Substring(1) : a.Data)}',
                                 'name': '{a.Data}',
                                 'defaultContent': '{a.DefaultContent}',
                                 'orderable': {a.Orderable.ToLowString()},

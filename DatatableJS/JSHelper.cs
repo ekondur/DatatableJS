@@ -175,7 +175,7 @@ namespace DatatableJS
                                 data: {gridBuilder.GetDataStr()}
                             }},
                             columns: [{string.Join(", ", gridBuilder._columns.Select(a => $@"{{ 
-                                'data': '{a.Data}',
+                                'data': '{(gridBuilder._camelCase ? char.ToLowerInvariant(a.Data[0]) + a.Data.Substring(1) : a.Data)}',
                                 'name': '{a.Data}',
                                 'defaultContent': '{a.DefaultContent}',
                                 'orderable': {a.Orderable.ToLowString()},
@@ -183,7 +183,7 @@ namespace DatatableJS
                                 'className': '{a.ClassName}',
                                 'visible': {a.Visible.ToLowString()},
                                 'width': '{(a.Width > 0 ? $"{a.Width}%" : string.Empty)}',
-                                    {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ return {a.Render}; }}")}
+                                {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ return {a.Render}; }}")}
                             }}"))}]
                         }});
                     }});
