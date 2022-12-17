@@ -12,9 +12,9 @@
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>    
     <RepositoryType>git</RepositoryType>    
     <PackageTags>C#, Jquery Datatables, Entity Framework, Query, Linq</PackageTags>    
-    <PackageReleaseNotes>Changed Neutral Culture property of project to English</PackageReleaseNotes>    
+    <PackageReleaseNotes>Added Json CamelCase Naming Policy</PackageReleaseNotes>    
     <NeutralLanguage>en</NeutralLanguage>    
-    <Version>3.3.2</Version>    
+    <Version>3.4.1</Version>    
     <PackageIcon>datatable-js.png</PackageIcon>    
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
