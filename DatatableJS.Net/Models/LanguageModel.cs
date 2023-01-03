@@ -1,4 +1,4 @@
-﻿namespace DatatableJS
+﻿namespace DatatableJS.Net
 {
     internal class LanguageModel
     {

@@ -24,7 +24,6 @@ namespace DatatableJS
         internal string _captionTop { get; private set; }
         internal string _captionBottom { get; private set; }
         internal bool _paging { get; private set; } = true;
-        internal string _langUrl { get; private set; }
         internal bool _columnSearching { get; private set; }
         internal string _columnSearchingCss { get; private set; }
         internal List<int> _lengthMenuValues { get; private set; } = new List<int>();
@@ -45,6 +44,7 @@ namespace DatatableJS
         internal List<OrderModel> _orders = new List<OrderModel>();
 
         internal CallbackModel _callBack = new CallbackModel();
+        internal LanguageModel _language = new LanguageModel();
 
         /// <summary>
         /// Default name is "DataGrid".
@@ -103,6 +103,29 @@ namespace DatatableJS
         {
             var builder = new CallbackBuilder<T>(this);
             config(builder);
+            return this;
+        }
+
+        /// <summary>
+        /// Allowing you to modified all strings individually or completely replace them all as required.  <see href="https://datatables.net/reference/option/language">Reference:</see>
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Language(Action<LanguageBuilder<T>> config)
+        {
+            var builder = new LanguageBuilder<T>(this);
+            config(builder);
+            return this;
+        }
+
+        /// <summary>
+        /// Specify language json url from cdn or local.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Language(string url)
+        {
+            _language.URL = url;
             return this;
         }
 
@@ -255,17 +278,6 @@ namespace DatatableJS
                 _serverSide = false;
             }
             _paging = paging;
-            return this;
-        }
-
-        /// <summary>
-        /// Specify language json url from cdn or local.
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        public GridBuilder<T> Language(string url)
-        {
-            _langUrl = url;
             return this;
         }
 

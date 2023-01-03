@@ -29,10 +29,10 @@ namespace DatatableJS
             var script = $@"
             $(document).ready(function () {{
                 $('#{grid.Name}').DataTable( {{
-                    processing:{grid.Processing.ToLowString()},
-                    scrollX:{grid.ScrollX.ToLowString()},
-                    stateSave:{grid.StateSave.ToLowString()},
-                    serverSide:{grid.DataSource.ServerSide.ToLowString()},
+                    processing: {grid.Processing.ToLowString()},
+                    scrollX: {grid.ScrollX.ToLowString()},
+                    stateSave: {grid.StateSave.ToLowString()},
+                    serverSide: {grid.DataSource.ServerSide.ToLowString()},
                     fixedColumns: {{ 
                         leftColumns: {grid.FixedColumns?.LeftColumns},
                         rightColumns: {grid.FixedColumns?.RightColumns}
@@ -58,7 +58,29 @@ namespace DatatableJS
                     {(!string.IsNullOrEmpty(grid.Callback.StateSaveParams) ? $"stateSaveParams: function (settings, data) {{ {grid.Callback.StateSaveParams}(settings, data); }}," : string.Empty) }
                     {(!grid.DataSource.PageLength.HasValue ? string.Empty : $"pageLength: {grid.DataSource.PageLength.Value},")}
                     language: {{
-                        'url': '{grid.Language.URL}'
+                        url: '{grid.Language.URL}',
+                        {(!string.IsNullOrEmpty(grid.Language.Decimal) ? $"decimal: '{grid.Language.Decimal}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.EmptyTable) ? $"emptyTable: '{grid.Language.EmptyTable}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.Info) ? $"info: '{grid.Language.Info}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.InfoEmpty) ? $"infoEmpty: '{grid.Language.InfoEmpty}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.InfoFiltered) ? $"infoFiltered: '{grid.Language.InfoFiltered}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.InfoPostFix) ? $"infoPostFix: '{grid.Language.InfoPostFix}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.Thousands) ? $"thousands: '{grid.Language.Thousands}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.LengthMenu) ? $"lengthMenu: '{grid.Language.LengthMenu}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.LoadingRecords) ? $"loadingRecords: '{grid.Language.LoadingRecords}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.Processing) ? $"processing: '{grid.Language.Processing}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.Search) ? $"search: '{grid.Language.Search}'," : string.Empty)}
+                        {(!string.IsNullOrEmpty(grid.Language.ZeroRecords) ? $"zeroRecords: '{grid.Language.ZeroRecords}'," : string.Empty)}
+                        paginate: {{
+                                {(!string.IsNullOrEmpty(grid.Language.Paginate.First) ? $"first: '{grid.Language.Paginate.First}'," : string.Empty)}
+                                {(!string.IsNullOrEmpty(grid.Language.Paginate.Last) ? $"last: '{grid.Language.Paginate.Last}'," : string.Empty)}
+                                {(!string.IsNullOrEmpty(grid.Language.Paginate.Next) ? $"next: '{grid.Language.Paginate.Next}'," : string.Empty)}
+                                {(!string.IsNullOrEmpty(grid.Language.Paginate.Previous) ? $"previous: '{grid.Language.Paginate.Previous}'," : string.Empty)}
+                            }},
+                        aria: {{
+                                {(!string.IsNullOrEmpty(grid.Language.Aria.SortAscending) ? $"sortAscending: '{grid.Language.Aria.SortAscending}'," : string.Empty)}
+                                {(!string.IsNullOrEmpty(grid.Language.Aria.SortDescending) ? $"sortDescending: '{grid.Language.Aria.SortDescending}'," : string.Empty)}
+                            }}
                     }},
                     ajax: {{
                             url: ""{grid.DataSource.URL}"",
@@ -66,14 +88,14 @@ namespace DatatableJS
                             data: {GetDataStr(grid)}
                           }},
                     columns: [{string.Join(", ", grid.Columns.Select(a => $@"{{ 
-                                'data': '{(grid.DataSource.CamelCase ? char.ToLowerInvariant(a.Data[0]) + a.Data.Substring(1) : a.Data)}',
-                                'name': '{a.Data}',
-                                'defaultContent': '{a.DefaultContent}',
-                                'orderable': {a.Orderable.ToLowString()},
-                                'searchable': {a.Searchable.ToLowString()},
-                                'className': '{a.ClassName}',
-                                'visible': {a.Visible.ToLowString()},
-                                'width': '{a.Width}%',
+                                data: '{(grid.DataSource.CamelCase ? char.ToLowerInvariant(a.Data[0]) + a.Data.Substring(1) : a.Data)}',
+                                name: '{a.Data}',
+                                defaultContent: '{a.DefaultContent}',
+                                orderable: {a.Orderable.ToLowString()},
+                                searchable: {a.Searchable.ToLowString()},
+                                className: '{a.ClassName}',
+                                visible: {a.Visible.ToLowString()},
+                                width: '{a.Width}%',
                                     {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ return {a.Render}; }}")}
                             }}"))}]
                 }});
