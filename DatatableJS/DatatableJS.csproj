@@ -12,9 +12,9 @@
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>C#, Tag Helper, Jquery Datatables, Entity Framework, Mvc, Net Core</PackageTags>
-    <PackageReleaseNotes>Added Json CamelCase Naming Policy</PackageReleaseNotes>
+    <PackageReleaseNotes>Added Language Builder</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.4.1</Version>
+    <Version>3.5.0</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
