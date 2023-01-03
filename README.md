@@ -298,12 +298,13 @@ Add button groups as a commands.
 cols.Commands(a => a.Id, new[] { new Command("Update", "onUpdate"), new Command("Delete", "onDelete") }, "Reports").Title("Actions");
 cols.Commands(a => a.Id, new[] { new Command("Excel", "onDelete"), new Command("Pdf", "onUpdate") }, "Reports", "", "", "glyphicon glyphicon-export").Title("Export");
 ```
+## Localizations
 Default language is English. You can change with other languages or custumize it. Set json url parameter to Language method for other languages from [CDN](https://datatables.net/plug-ins/i18n/).
 
 ```csharp
 .Language("https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json")
 ```
-Or add json file local and customize it.
+Or add json file local and customize it. [Reference:](https://datatables.net/reference/option/language)
 
 ```csharp
 .Language(Url.Content("/Scripts/Turkish.json"))
@@ -335,6 +336,23 @@ Json example is below:
     }
 }
 ```
+Or, you can just change what you want with builder;
+```csharp
+.Language(lang => lang.EmptyTable("No Data").Search("Search by: "))
+```
+- **Decimal**: Set the decimal place character. [Reference:](https://datatables.net/reference/option/language.decimal)
+- **EmptyTable**: This string is shown when the table is empty of data (regardless of filtering). [Reference:](https://datatables.net/reference/option/language.emptyTable)
+- **Info**: This string gives information to the end user about the information that is current on display on the page. [Reference:](https://datatables.net/reference/option/language.info)
+- **InfoEmpty**: Display information string for when the table is empty. [Reference:](https://datatables.net/reference/option/language.infoEmpty)
+- **InfoFiltered**: When a user filters the information in a table, this string is appended to the information (info) to give an idea of how strong the filtering is. [Reference:](https://datatables.net/reference/option/language.infoFiltered)
+- **InfoPostFix**: If can be useful to append extra information to the info string at times, and this variable does exactly that. [Reference:](https://datatables.net/reference/option/language.infoPostFix)
+- **Thousands**: The thousands separator option is used for output of information only. [Reference:](https://datatables.net/reference/option/language.thousands)
+- **LengthMenu**: Detail the action that will be taken when the drop down menu for the pagination length option is changed. [Reference:](https://datatables.net/reference/option/language.lengthMenu)
+- **LoadingRecords**: This message is shown in an empty row in the table to indicate to the end user the the data is being loaded. [Reference:](https://datatables.net/reference/option/language.loadingRecords)
+- **Processing**: Text that is displayed when the table is processing a user action (usually a sort command or similar). [Reference:](https://datatables.net/reference/option/language.processing)
+- **Search**: Sets the string that is used for DataTables filtering input control. [Reference:](https://datatables.net/reference/option/language.search)
+- **ZeroRecords**: Text shown inside the table records when the is no information to be displayed after filtering. [Reference:](https://datatables.net/reference/option/language.zeroRecords)
+
 ## Callbacks
 Jquery datatable supports many callback functionalities:
 - **createdRow**: Callback for whenever a TR element is created for the table's body. [Reference:](https://datatables.net/reference/option/createdRow)
