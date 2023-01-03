@@ -24,7 +24,6 @@ namespace DatatableJS.Net
         internal string _captionTop { get; private set; }
         internal string _captionBottom { get; private set; }
         internal bool _paging { get; private set; } = true;
-        internal string _langUrl { get; private set; }
         internal bool _columnSearching { get; private set; }
         internal string _columnSearchingCss { get; private set; }
         internal List<int> _lengthMenuValues { get; private set; } = new List<int>();
@@ -45,6 +44,7 @@ namespace DatatableJS.Net
         internal List<OrderDefinition> _orders = new List<OrderDefinition>();
 
         internal CallbackModel _callBack = new CallbackModel();
+        internal LanguageModel _language = new LanguageModel();
 
         /// <summary>
         /// Default name is "DataGrid".
@@ -265,7 +265,7 @@ namespace DatatableJS.Net
         /// <returns></returns>
         public GridBuilder<T> Language(string url)
         {
-            _langUrl = url;
+            _language.URL = url;
             return this;
         }
 
