@@ -119,6 +119,16 @@ namespace DatatableJS
                                     }},"
                                     : string.Empty;
 
+            var colReorderInit = grid._colReorder.Settings ?
+                                 $@"colReorder: {{
+                                        enable: {grid._colReorder.Enable.ToLowString()},
+                                        fixedColumnsLeft: {grid._colReorder.FixedColumnsLeft},
+                                        fixedColumnsRight: {grid._colReorder.FixedColumnsRight},
+                                        order: {grid._colReorder.Order},
+                                        realtime: {grid._colReorder.RealTime.ToLowString()}
+                                    }}," 
+                                    : $"colReorder: {grid._colReorder.ColReorder.ToLowString()},";
+
             var lengthMenu = (
                     grid._lengthMenuValues.Count == 0
                 ) ? string.Empty :
@@ -143,6 +153,7 @@ namespace DatatableJS
                             stateSave: {grid._stateSave.ToLowString()},
                             serverSide: {grid._serverSide.ToLowString()},
                             {selectInit}
+                            {colReorderInit}
                             fixedColumns: {{ 
                                 leftColumns: {grid._leftColumns},
                                 rightColumns: {grid._rightColumns}

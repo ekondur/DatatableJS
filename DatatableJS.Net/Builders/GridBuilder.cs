@@ -45,6 +45,7 @@ namespace DatatableJS.Net
 
         internal CallbackModel _callBack = new CallbackModel();
         internal LanguageModel _language = new LanguageModel();
+        internal ColReorderModel _colReorder = new ColReorderModel();
 
         /// <summary>
         /// Default name is "DataGrid".
@@ -466,6 +467,28 @@ namespace DatatableJS.Net
         public GridBuilder<T> Selecting(bool enable)
         {
             return Selecting(enable, SelectItems.Row, SelectStyle.Default, true, true);
+        }
+
+        /// <summary>
+        /// Enable ColReorder for a table. <see href="https://datatables.net/reference/option/colReorder">Reference:</see>
+        /// </summary>
+        /// <returns></returns>
+        public GridBuilder<T> ColReorder(bool value)
+        {
+            _colReorder.ColReorder = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Enable and configure the ColReorder extension for DataTables. <see href="https://datatables.net/reference/option/#colreorder">Reference:</see>
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public GridBuilder<T> ColReorder(Action<ColReorderBuilder<T>> config)
+        {
+            var builder = new ColReorderBuilder<T>(this);
+            config(builder);
+            return this;
         }
     }
 }

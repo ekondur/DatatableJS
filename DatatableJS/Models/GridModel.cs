@@ -23,7 +23,8 @@ namespace DatatableJS
         internal LanguageModel Language { get; set; }
         internal CaptionsModel Captions { get; set; }
         internal LengthMenuModel LengthMenu { get; set; }
-        public CallbackModel Callback { get; set; }
+        internal CallbackModel Callback { get; set; }
+        internal ColReorderModel ColReorder { get; set; }
 
         /// <summary>
         /// GridModel()
@@ -39,6 +40,7 @@ namespace DatatableJS
             Orders = new List<OrderModel>();
             LengthMenu = new LengthMenuModel();
             Callback = new CallbackModel();
+            ColReorder = new ColReorderModel();
         }
     }
 }

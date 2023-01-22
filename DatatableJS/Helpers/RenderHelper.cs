@@ -26,6 +26,16 @@ namespace DatatableJS
                         $"lengthMenu: {string.Format("[[{0}], [{1}]]", string.Join(", ", grid.LengthMenu._lengthMenuValues), string.Join(", ", grid.LengthMenu._lengthMenuDisplayedTexts.Select(a => string.Concat(@"""", a, @""""))))},"
                         ;
 
+            var colReorderInit = grid.ColReorder.Settings ?
+                     $@"colReorder: {{
+                                        enable: {grid.ColReorder.Enable.ToLowString()},
+                                        fixedColumnsLeft: {grid.ColReorder.FixedColumnsLeft},
+                                        fixedColumnsRight: {grid.ColReorder.FixedColumnsRight},
+                                        order: {grid.ColReorder.Order},
+                                        realtime: {grid.ColReorder.RealTime.ToLowString()}
+                                    }},"
+                        : $"colReorder: {grid.ColReorder.ColReorder.ToLowString()},";
+
             var script = $@"
             $(document).ready(function () {{
                 $('#{grid.Name}').DataTable( {{
@@ -33,6 +43,7 @@ namespace DatatableJS
                     scrollX: {grid.ScrollX.ToLowString()},
                     stateSave: {grid.StateSave.ToLowString()},
                     serverSide: {grid.DataSource.ServerSide.ToLowString()},
+                    {colReorderInit}
                     fixedColumns: {{ 
                         leftColumns: {grid.FixedColumns?.LeftColumns},
                         rightColumns: {grid.FixedColumns?.RightColumns}
