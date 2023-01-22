@@ -90,7 +90,7 @@ namespace DatatableJS.Net
             else if (!String.IsNullOrEmpty(grid._callBack.InitComplete) && grid._columnSearching == true)
             {
                 tfootInit = grid._columnSearching ?
-                                $@"initComplete: function () {{
+                                $@"initComplete: function (settings, json) {{
                                         {grid._callBack.InitComplete}(settings, json);
                                         this.api().columns().every(function() {{
                                             var that = this;
@@ -134,6 +134,16 @@ namespace DatatableJS.Net
                                     }},"
                         : string.Empty;
 
+            var colReorderInit = grid._colReorder.Settings ?
+                     $@"colReorder: {{
+                                        enable: {grid._colReorder.Enable.ToLowString()},
+                                        fixedColumnsLeft: {grid._colReorder.FixedColumnsLeft},
+                                        fixedColumnsRight: {grid._colReorder.FixedColumnsRight},
+                                        order: {grid._colReorder.Order},
+                                        realtime: {grid._colReorder.RealTime.ToLowString()}
+                                    }},"
+                        : $"colReorder: {grid._colReorder.ColReorder.ToLowString()},";
+
             var lengthMenu = (
                     grid._lengthMenuValues.Count == 0
                 ) ? string.Empty :
@@ -158,6 +168,7 @@ namespace DatatableJS.Net
                             stateSave: {grid._stateSave.ToLowString()},
                             serverSide: {grid._serverSide.ToLowString()},
                             {selectInit}
+                            {colReorderInit}
                             fixedColumns: {{ 
                                 leftColumns: {grid._leftColumns},
                                 rightColumns: {grid._rightColumns}
@@ -216,8 +227,8 @@ namespace DatatableJS.Net
                                 name: '{a.Data}',
                                 defaultContent: '{a.DefaultContent}',
                                 orderable: {a.Orderable.ToLowString()},
-                                searchable': {a.Searchable.ToLowString()},
-                                className': '{a.ClassName}',
+                                searchable: {a.Searchable.ToLowString()},
+                                className: '{a.ClassName}',
                                 visible: {a.Visible.ToLowString()},
                                 width: '{(a.Width > 0 ? $"{a.Width}%" : string.Empty)}',
                                 {(string.IsNullOrEmpty(a.Render) ? string.Empty : $"'render': function(data, type, row, meta) {{ return {a.Render}; }}")}
