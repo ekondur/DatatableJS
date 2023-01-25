@@ -383,3 +383,29 @@ function createdRow(row, data, dataIndex, cells){
   ```csharp
  .Callbacks(x => x.CreatedRow("createdRow").InitComplete("initComplete"))
  ```
+### ColReorder:
+ColReorder adds the ability for the end user to be able to reorder columns in a DataTable through a click-and-drag operation. This can be useful when presenting data in a table, letting the user move columns that they wish to compare next to each other for easier comparison.
+```csharp
+.ColReorder(true)
+```
+Or, configure it; [Reference:](https://datatables.net/reference/option/#colreorder)
+* Initial enablement state of ColReorder.
+```csharp
+.ColReorder(x => x.Enable(false))
+```
+* Disallow x columns from reordering (counting from the left).
+```csharp
+.ColReorder(x => x.FixedColumnsLeft(1))
+```
+* Disallow x columns from reordering (counting from the right).
+```csharp
+.ColReorder(x => x.FixedColumnsRight(1))
+```
+* Set a default order for the columns in the table.
+```csharp
+.ColReorder(x => x.Order(5,4,3,2,1,0))
+```
+* Enable/Disable live reordering of columns during a drag.
+```csharp
+.ColReorder(x => x.RealTime(false))
+```
