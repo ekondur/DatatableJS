@@ -58,13 +58,31 @@ namespace DatatableJS
         {
             var tfoot = grid._columnSearching ?
                         $@"<tfoot>
-                            <tr>
-                                {string.Join(Environment.NewLine, grid._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"{((a.Type == typeof(DateTime?) || a.Type == typeof(DateTime)) && grid._serverSide ? "date" : "text")}\" style=\"width:100%\" placeholder=\"{a.Title}\" class=\"{grid._columnSearchingCss}\" />" : "")))}
+                            <tr class=""filters"">
+                                {string.Join(Environment.NewLine, grid._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"{((a.Type == typeof(DateTime?) || a.Type == typeof(DateTime)) && grid._serverSide ? "date" : "text")}\" style=\"width:100%\" placeholder=\"{a.Title}\" class=\"{grid._columnSearchingCss}\" />" : "<input style=\"display:none\" />")))}
                             </tr>
                         </tfoot>"
                         : string.Empty;
 
             var tfootInit = string.Empty;
+
+            var initFootSearch = grid._stateSave ?
+                        $@"var dtable = $('#{grid._name}').DataTable();
+                        var dState = dtable.state.loaded();
+                        var dCounter = -1;
+                        if (dState) {{
+                            dtable.columns().eq(0).each(function(colIdx) {{
+                            var colSearch = dState.columns[colIdx].search;                       
+                            if (dState.columns[colIdx].visible){{
+                                dCounter++;
+                            }}
+                            if (colSearch.search) {{
+                                $('input', $('.filters th')[dCounter]).val(colSearch.search);
+                               }}
+                            }});
+                            dtable.draw();
+                        }};"
+                        : string.Empty;
 
             if (!String.IsNullOrEmpty(grid._callBack.InitComplete) && grid._columnSearching == false)
             {
@@ -87,6 +105,7 @@ namespace DatatableJS
                                                 }}
                                             }});
                                         }});
+                                        {initFootSearch}
                                     }},"
                                     : string.Empty;
             }
@@ -104,6 +123,7 @@ namespace DatatableJS
                                                 }}
                                             }});
                                         }});
+                                        {initFootSearch}
                                     }},"
                                     : string.Empty;
             }
