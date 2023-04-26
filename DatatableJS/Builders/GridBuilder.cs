@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Net.WebRequestMethods;
 
 namespace DatatableJS
 {
@@ -32,12 +34,14 @@ namespace DatatableJS
         internal bool _processing { get; private set; } = true;
         internal bool _scrollX { get; private set; }
         internal bool _stateSave { get; set; }
+        internal string _dom { get; private set; }
 
         internal bool _selectEnable { get; private set; }
         internal SelectStyle _selectStyle { get; private set; }
         internal SelectItems _selectItems { get; private set; }
         internal bool _selectInfo { get; private set; }
         internal bool _selectToggleable { get; private set; }
+        public IHtmlHelper HtmlHelper { get; }
 
         internal List<ColumnDefinition> _columns = new List<ColumnDefinition>();
         internal List<FilterModel> _filters = new List<FilterModel>();
@@ -46,6 +50,11 @@ namespace DatatableJS
         internal CallbackModel _callBack = new CallbackModel();
         internal LanguageModel _language = new LanguageModel();
         internal ColReorderModel _colReorder = new ColReorderModel();
+
+        public GridBuilder(IHtmlHelper htmlHelper)
+        {
+            HtmlHelper = htmlHelper;
+        }
 
         /// <summary>
         /// Default name is "DataGrid".
@@ -230,6 +239,19 @@ namespace DatatableJS
         public GridBuilder<T> Data(string data)
         {
             _data = data;
+            return this;
+        }
+
+
+        /// <summary>
+        /// Dom allow to control position of datatable elements
+        /// </summary>
+        /// <see cref="https://datatables.net/reference/option/dom"/>
+        /// <param name="dom"></param>
+        /// <returns></returns>
+        public GridBuilder<T> Dom(string dom)
+        {
+            _dom = dom; 
             return this;
         }
 

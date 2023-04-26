@@ -32,6 +32,7 @@ namespace DatatableJS.Net
         internal bool _processing { get; private set; } = true;
         internal bool _scrollX { get; private set; }
         internal bool _stateSave { get; set; }
+        internal string _dom { get; set; }
 
         internal bool _selectEnable { get; private set; }
         internal SelectStyle _selectStyle { get; private set; }
