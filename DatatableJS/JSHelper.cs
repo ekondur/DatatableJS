@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace DatatableJS
 {
@@ -29,7 +32,7 @@ namespace DatatableJS
         /// <returns></returns>
         public GridBuilder<T> Datatable<T>() where T : class
         {
-            return new GridBuilder<T>();
+            return new GridBuilder<T>(_htmlHelper);
         }
     }
 
@@ -56,14 +59,38 @@ namespace DatatableJS
         /// <returns></returns>
         public static IHtmlContent Render<T>(this GridBuilder<T> grid)
         {
+            return new HtmlString(RenderHtml<T>(grid).ToString() + RenderScript<T>(grid).ToString());
+        }
+
+        public static IHtmlContent RenderHtml<T>(this GridBuilder<T> grid)
+        {
             var tfoot = grid._columnSearching ?
-                        $@"<tfoot>
+                $@"<tfoot>
                             <tr class=""filters"">
                                 {string.Join(Environment.NewLine, grid._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"{((a.Type == typeof(DateTime?) || a.Type == typeof(DateTime)) && grid._serverSide ? "date" : "text")}\" style=\"width:100%\" placeholder=\"{a.Title}\" class=\"{grid._columnSearchingCss}\" />" : "<input style=\"display:none\" />")))}
                             </tr>
                         </tfoot>"
-                        : string.Empty;
+                : string.Empty;
 
+          
+            var html = $@"
+                    <table id=""{grid._name}"" class=""{grid._cssClass}"" style=""width:100%"">
+                        <thead>
+                            <tr>
+                                {string.Join(Environment.NewLine, grid._columns.Select(a => string.Format("<th>{0}</th>", a.Title)))}
+                            </tr>
+                        </thead>
+                        {tfoot}
+                    </table>";
+
+          
+            return new HtmlString(html);
+        }
+
+
+       
+        public static IHtmlContent RenderScript<T>(this GridBuilder<T> grid)
+        {
             var tfootInit = string.Empty;
 
             var initFootSearch = grid._stateSave ?
@@ -146,7 +173,7 @@ namespace DatatableJS
                                         fixedColumnsRight: {grid._colReorder.FixedColumnsRight},
                                         order: {grid._colReorder.Order},
                                         realtime: {grid._colReorder.RealTime.ToLowString()}
-                                    }}," 
+                                    }},"
                                     : $"colReorder: {grid._colReorder.ColReorder.ToLowString()},";
 
             var lengthMenu = (
@@ -155,16 +182,8 @@ namespace DatatableJS
                     $"lengthMenu: {string.Format("[[{0}], [{1}]]", string.Join(", ", grid._lengthMenuValues), string.Join(", ", grid._lengthMenuDisplayedTexts.Select(a => string.Concat(@"""", a, @""""))))},"
                 ;
 
-            var html = $@"
-                    <table id=""{grid._name}"" class=""{grid._cssClass}"" style=""width:100%"">
-                        <thead>
-                            <tr>
-                                {string.Join(Environment.NewLine, grid._columns.Select(a => string.Format("<th>{0}</th>", a.Title)))}
-                            </tr>
-                        </thead>
-                        {tfoot}
-                    </table>
-                    <script>
+
+            var script = $@"<script>
                     $(document).ready(function () {{
                         $('#{grid._name}').DataTable( {{
                             {tfootInit}
@@ -178,24 +197,25 @@ namespace DatatableJS
                                 leftColumns: {grid._leftColumns},
                                 rightColumns: {grid._rightColumns}
                             }},
-                            order: [{(!grid._ordering ? string.Empty : string.Join(", ", grid._orders.Select(a => $@"[{ a.Column}, '{(a.OrderBy == OrderBy.Ascending ? "asc" : "desc")}']")))}],
+                            order: [{(!grid._ordering ? string.Empty : string.Join(", ", grid._orders.Select(a => $@"[{a.Column}, '{(a.OrderBy == OrderBy.Ascending ? "asc" : "desc")}']")))}],
                             ordering: {grid._ordering.ToLowString()},
                             searching: {grid._searching.ToLowString()},
                             paging: {grid._paging.ToLowString()},
+                            {(!string.IsNullOrEmpty(grid._dom) ?$"dom: '{grid._dom}',":string.Empty)}
                             {lengthMenu}
-                            {(!string.IsNullOrEmpty(grid._callBack.CreatedRow) ? $"createdRow: function (row, data, dataIndex, cells) {{ {grid._callBack.CreatedRow}(row, data, dataIndex, cells); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.DrawCallback) ? $"drawCallback: function (settings) {{ {grid._callBack.DrawCallback}(settings); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.FooterCallback) ? $"footerCallback: function (tfoot, data, start, end, display) {{ {grid._callBack.FooterCallback}(tfoot, data, start, end, display); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.FormatNumber) ? $"formatNumber: function (toFormat) {{ {grid._callBack.FormatNumber}(toFormat); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.HeaderCallback) ? $"headerCallback: function (thead, data, start, end, display) {{ {grid._callBack.HeaderCallback}(thead, data, start, end, display); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.InfoCallback) ? $"infoCallback: function (settings, start, end, max, total, pre) {{ {grid._callBack.InfoCallback}(settings, start, end, max, total, pre); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.PreDrawCallback) ? $"preDrawCallback: function (settings) {{ {grid._callBack.PreDrawCallback}(settings); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.RowCallback) ? $"rowCallback: function (row, data, displayNum, displayIndex, dataIndex) {{ {grid._callBack.RowCallback}(row, data, displayNum, displayIndex, dataIndex); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.StateLoadCallback) ? $"stateLoadCallback: function (settings, callback) {{ {grid._callBack.StateLoadCallback}(settings, callback); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.StateLoadParams) ? $"stateLoadParams: function (settings, data) {{ {grid._callBack.StateLoadParams}(settings, data); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.StateLoaded) ? $"stateLoaded: function (settings, data) {{ {grid._callBack.StateLoaded}(settings, data); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.StateSaveCallback) ? $"stateSaveCallback: function (settings, data) {{ {grid._callBack.StateSaveCallback}(settings, data); }}," : string.Empty) }
-                            {(!string.IsNullOrEmpty(grid._callBack.StateSaveParams) ? $"stateSaveParams: function (settings, data) {{ {grid._callBack.StateSaveParams}(settings, data); }}," : string.Empty) }
+                            {(!string.IsNullOrEmpty(grid._callBack.CreatedRow) ? $"createdRow: function (row, data, dataIndex, cells) {{ {grid._callBack.CreatedRow}(row, data, dataIndex, cells); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.DrawCallback) ? $"drawCallback: function (settings) {{ {grid._callBack.DrawCallback}(settings); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.FooterCallback) ? $"footerCallback: function (tfoot, data, start, end, display) {{ {grid._callBack.FooterCallback}(tfoot, data, start, end, display); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.FormatNumber) ? $"formatNumber: function (toFormat) {{ {grid._callBack.FormatNumber}(toFormat); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.HeaderCallback) ? $"headerCallback: function (thead, data, start, end, display) {{ {grid._callBack.HeaderCallback}(thead, data, start, end, display); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.InfoCallback) ? $"infoCallback: function (settings, start, end, max, total, pre) {{ {grid._callBack.InfoCallback}(settings, start, end, max, total, pre); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.PreDrawCallback) ? $"preDrawCallback: function (settings) {{ {grid._callBack.PreDrawCallback}(settings); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.RowCallback) ? $"rowCallback: function (row, data, displayNum, displayIndex, dataIndex) {{ {grid._callBack.RowCallback}(row, data, displayNum, displayIndex, dataIndex); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.StateLoadCallback) ? $"stateLoadCallback: function (settings, callback) {{ {grid._callBack.StateLoadCallback}(settings, callback); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.StateLoadParams) ? $"stateLoadParams: function (settings, data) {{ {grid._callBack.StateLoadParams}(settings, data); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.StateLoaded) ? $"stateLoaded: function (settings, data) {{ {grid._callBack.StateLoaded}(settings, data); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.StateSaveCallback) ? $"stateSaveCallback: function (settings, data) {{ {grid._callBack.StateSaveCallback}(settings, data); }}," : string.Empty)}
+                            {(!string.IsNullOrEmpty(grid._callBack.StateSaveParams) ? $"stateSaveParams: function (settings, data) {{ {grid._callBack.StateSaveParams}(settings, data); }}," : string.Empty)}
                             {(!grid._pageLength.HasValue ? string.Empty : $"pageLength: {grid._pageLength.Value},")}
                             language: {{
                                 url: '{grid._language.URL}',
@@ -244,8 +264,9 @@ namespace DatatableJS
                     {(string.IsNullOrEmpty(grid._captionBottom) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:bottom\">{1}</caption>');", grid._name, grid._captionBottom))}
                     </script>";
 
-            return new HtmlString(html);
+            return new HtmlString(script);
         }
+
 
         private static string GetDataStr<T>(this GridBuilder<T> grid)
         {

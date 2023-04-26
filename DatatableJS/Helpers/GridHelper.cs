@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+using static System.Net.WebRequestMethods;
 
 namespace DatatableJS
 {
@@ -39,6 +40,12 @@ namespace DatatableJS
         public bool StateSave { get; set; }
 
         /// <summary>
+        /// Enable control over displayed elements 
+        /// </summary>
+        /// <see cref="https://datatables.net/reference/option/dom"/>
+        public string Dom { get; set; }
+
+        /// <summary>
         /// Process
         /// </summary>
         /// <param name="context"></param>
@@ -58,7 +65,8 @@ namespace DatatableJS
                 Searching = Searching,
                 Processing = Processing,
                 ScrollX = ScrollX,
-                StateSave = StateSave
+                StateSave = StateSave,
+                Dom = Dom
             };
             
             context.Items.Add("DataGrid", grid);

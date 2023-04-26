@@ -14,6 +14,8 @@ namespace DatatableJS
         internal bool ScrollX { get; set; }
         internal bool StateSave { get; set; }
 
+        internal string Dom { get; set; }
+
         internal List<ColumnModel> Columns { get; set; }
         internal List<FilterModel> Filters { get; set; }
         internal List<OrderModel> Orders { get; set; }
