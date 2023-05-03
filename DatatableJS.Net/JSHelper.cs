@@ -64,7 +64,7 @@ namespace DatatableJS.Net
         }
 
         /// <summary>
-        /// Render datatable script for prepared grid builder
+        /// Render both html and script
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="grid"></param>
@@ -73,18 +73,28 @@ namespace DatatableJS.Net
         {
             var html = RenderHtmlString(grid);
             var script = RenderScriptString(grid);
-            return new MvcHtmlString(html+script);
+            return new MvcHtmlString(html + Environment.NewLine + script);
         }
 
-
+        /// <summary>
+        /// Render only html 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="grid"></param>
+        /// <returns></returns>
         public static MvcHtmlString RenderHtml<T>(this GridBuilder<T> grid)
         {
-            
             return new MvcHtmlString(RenderHtmlString(grid));
         }
+
+        /// <summary>
+        /// Render only script
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="grid"></param>
+        /// <returns></returns>
         public static MvcHtmlString RenderScript<T>(this GridBuilder<T> grid)
         {
-
             return new MvcHtmlString(RenderScriptString(grid));
         }
 
@@ -100,8 +110,6 @@ namespace DatatableJS.Net
 
             var tfootInit = string.Empty;
 
-
-
             var html = $@"
                     <table id=""{grid._name}"" class=""{grid._cssClass}"" style=""width:100%"">
                         <thead>
@@ -115,7 +123,6 @@ namespace DatatableJS.Net
 
             return html;
         }
-
 
         private static string RenderScriptString<T>(this GridBuilder<T> grid)
         {

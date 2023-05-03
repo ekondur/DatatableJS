@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace DatatableJS
 {
@@ -52,16 +49,22 @@ namespace DatatableJS
         }
 
         /// <summary>
-        /// Render datatable script for prepared grid builder
+        /// Render both html and script
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="grid"></param>
         /// <returns></returns>
         public static IHtmlContent Render<T>(this GridBuilder<T> grid)
         {
-            return new HtmlString(RenderHtml<T>(grid).ToString() + RenderScript<T>(grid).ToString());
+            return new HtmlString(RenderHtml(grid).ToString() + Environment.NewLine + RenderScript(grid).ToString());
         }
 
+        /// <summary>
+        /// Render only html 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="grid"></param>
+        /// <returns></returns>
         public static IHtmlContent RenderHtml<T>(this GridBuilder<T> grid)
         {
             var tfoot = grid._columnSearching ?
@@ -71,7 +74,6 @@ namespace DatatableJS
                             </tr>
                         </tfoot>"
                 : string.Empty;
-
           
             var html = $@"
                     <table id=""{grid._name}"" class=""{grid._cssClass}"" style=""width:100%"">
@@ -82,13 +84,16 @@ namespace DatatableJS
                         </thead>
                         {tfoot}
                     </table>";
-
-          
+ 
             return new HtmlString(html);
         }
 
-
-       
+        /// <summary>
+        /// Render only script
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="grid"></param>
+        /// <returns></returns>
         public static IHtmlContent RenderScript<T>(this GridBuilder<T> grid)
         {
             var tfootInit = string.Empty;
@@ -182,7 +187,6 @@ namespace DatatableJS
                     $"lengthMenu: {string.Format("[[{0}], [{1}]]", string.Join(", ", grid._lengthMenuValues), string.Join(", ", grid._lengthMenuDisplayedTexts.Select(a => string.Concat(@"""", a, @""""))))},"
                 ;
 
-
             var script = $@"<script>
                     $(document).ready(function () {{
                         $('#{grid._name}').DataTable( {{
@@ -266,7 +270,6 @@ namespace DatatableJS
 
             return new HtmlString(script);
         }
-
 
         private static string GetDataStr<T>(this GridBuilder<T> grid)
         {

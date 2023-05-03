@@ -12,10 +12,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageTags>C#, Helper, Jquery Datatables, Entity Framework, Mvc</PackageTags>
-    <PackageReleaseNotes>Persist search value of individual column with statesave</PackageReleaseNotes>
-    <AssemblyVersion>3.6.1.0</AssemblyVersion>
-    <FileVersion>3.6.1.0</FileVersion>
-    <Version>3.6.1</Version>
+    <PackageReleaseNotes>Added separated RenderHtml and RenderScript methods as an alternative to Render method.</PackageReleaseNotes>
+    <AssemblyVersion>3.7.0.0</AssemblyVersion>
+    <FileVersion>3.7.0.0</FileVersion>
+    <Version>3.7.0</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
