@@ -6,6 +6,7 @@
         public string Value { get; set; }
         public Operand Operand { get; set; }
         public Operator Operator { get; set; }
+        public bool CaseSensitive { get; internal set; }
     }
 
     public enum Operand
