@@ -63,10 +63,13 @@ namespace DatatableJS.Data
 
                 case Operand.Contains:
                     if (filter.CaseSensitive)
+                    {
                         return Expression.Call(member, containsMethod, constant);
+                    }
                     else
-                        return Expression.Call(member, containsMethodIgnoreCase, constant, ignoreCase);
-
+                    {
+                        return Expression.Call(member, containsMethodIgnoreCase, constant, ignoreCase); 
+                    }
 
                 case Operand.StartsWith:
                     return Expression.Call(member, startsWithMethod, constant);
