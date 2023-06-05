@@ -47,6 +47,17 @@ namespace DatatableJS.Data.UnitTest
         }
 
         [Test]
+        public void ToDataResult_WhenFilterWithNameCaseSensitive_ReturnsListCountZero()
+        {
+            _request.filters.Add(new Filter { Field = "Name", Operand = Operand.Contains, Value = "jon", CaseSensitive = true });
+            var result = _list.ToDataResult(_request);
+            Assert.That(result.data.Count, Is.EqualTo(0));
+            _request.filters.Add(new Filter { Field = "Name", Operand = Operand.Contains, Value = "Jon", CaseSensitive = true });
+            result = _list.ToDataResult(_request);
+            Assert.That(result.data.Count, Is.EqualTo(1));
+        }
+
+        [Test]
         public void ToDataResult_WhenSortingByNameAndAge()
         {
             _request.order.Add(new Order
