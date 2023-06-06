@@ -6,14 +6,13 @@ using System.Reflection;
 
 namespace DatatableJS.Data
 {
-    public static class ExpressionBuilder
+    internal static class ExpressionBuilder
     {
         private static readonly MethodInfo containsMethod = typeof(string).GetMethod("Contains", new Type[] { typeof(string) });
-        private static readonly MethodInfo containsMethodIgnoreCase = typeof(string).GetMethod("Contains", new Type[] { typeof(string), typeof(StringComparison) });
         private static readonly MethodInfo startsWithMethod = typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
         private static readonly MethodInfo endsWithMethod = typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
-
-        public static Expression<Func<T, bool>> GetExpression<T>(FilterDef filter)
+        private static readonly MethodInfo indexOfMethod = typeof(string).GetMethod("IndexOf", new[] { typeof(string), typeof(StringComparison) });
+        internal static Expression<Func<T, bool>> GetExpression<T>(FilterDef filter)
         {
             if (filter == null)
             {
@@ -39,7 +38,7 @@ namespace DatatableJS.Data
             }
             var propertyValue = converter.ConvertFromInvariantString(filter.Value);
             ConstantExpression constant = Expression.Constant(propertyValue, member.Type);
-            ConstantExpression ignoreCase = Expression.Constant(StringComparison.OrdinalIgnoreCase);
+            ConstantExpression ignoreCase = Expression.Constant(StringComparison.OrdinalIgnoreCase, typeof(StringComparison));
 
             switch (filter.Operand)
             {
@@ -68,7 +67,7 @@ namespace DatatableJS.Data
                     }
                     else
                     {
-                        return Expression.Call(member, containsMethodIgnoreCase, constant, ignoreCase); 
+                        return Expression.NotEqual(Expression.Call(member, indexOfMethod, constant, ignoreCase), Expression.Constant(-1, typeof(int))); 
                     }
 
                 case Operand.StartsWith:
@@ -81,7 +80,7 @@ namespace DatatableJS.Data
             }
         }
 
-        public static Expression<Func<T, bool>> GetExpression<T>(IList<FilterDef> filters)
+        internal static Expression<Func<T, bool>> GetExpression<T>(IList<FilterDef> filters)
         {
             if (filters.Count == 0)
             {
