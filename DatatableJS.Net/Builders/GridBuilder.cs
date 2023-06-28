@@ -26,6 +26,7 @@ namespace DatatableJS.Net
         internal bool _paging { get; private set; } = true;
         internal bool _columnSearching { get; private set; }
         internal string _columnSearchingCss { get; private set; }
+        internal SearchPosition _columnSearchPosition { get; set; } = SearchPosition.Footer;
         internal List<int> _lengthMenuValues { get; private set; } = new List<int>();
         internal List<string> _lengthMenuDisplayedTexts { get; private set; } = new List<string>();
         internal int? _pageLength { get; private set; }
@@ -272,26 +273,50 @@ namespace DatatableJS.Net
         }
 
         /// <summary>
-        /// Enable columns search feature on footer.
+        /// Enable columns search feature.
+        /// </summary>
+        /// <param name="searching">if set to <c>true</c> [searching].</param>
+        /// <param name="css"></param>       
+        /// <param name="position">default is footer</param>
+        /// <returns></returns>
+        public GridBuilder<T> ColumnSearching(bool searching, string css, SearchPosition position)
+        {
+            _columnSearching = searching;
+            _columnSearchingCss = css;
+            _columnSearchPosition = position;
+            return this;
+        }
+
+        /// <summary>
+        /// Enable columns search feature.
+        /// </summary>
+        /// <param name="searching">if set to <c>true</c> [searching].</param>
+        /// <param name="position">default is footer</param>
+        /// <returns></returns>
+        public GridBuilder<T> ColumnSearching(bool searching, SearchPosition position)
+        {
+            return ColumnSearching(searching, "", position);
+        }
+
+        /// <summary>
+        /// Enable columns search feature.
         /// </summary>
         /// <param name="searching">if set to <c>true</c> [searching].</param>
         /// <param name="css"></param>
         /// <returns></returns>
         public GridBuilder<T> ColumnSearching(bool searching, string css)
         {
-            _columnSearching = searching;
-            _columnSearchingCss = css;
-            return this;
+            return ColumnSearching(searching, css, SearchPosition.Footer);
         }
 
         /// <summary>
-        /// Enable columns search feature on footer.
+        /// Enable columns search feature.
         /// </summary>
         /// <param name="searching"></param>
         /// <returns></returns>
         public GridBuilder<T> ColumnSearching(bool searching)
         {
-            return ColumnSearching(searching, "");
+            return ColumnSearching(searching, "", SearchPosition.Footer);
         }
 
         /// <summary>

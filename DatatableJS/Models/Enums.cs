@@ -61,4 +61,20 @@ namespace DatatableJS
         [Description("multi+shift")]
         MultiShift
     }
+
+    /// <summary>
+    /// Select position of the column search box
+    /// </summary>
+    public enum SearchPosition
+    {
+        /// <summary>
+        /// Footer
+        /// </summary>
+        Footer,
+
+        /// <summary>
+        /// Header
+        /// </summary>
+        Header
+    }
 }
