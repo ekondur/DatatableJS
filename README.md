@@ -223,6 +223,13 @@ To give class for these inputs:
 ```csharp
 .ColumnSearching(true, "form-control")
 ```
+To change the position of the search boxes (default is Footer):
+```csharp
+.ColumnSearching(true, SearchPosition.Header)
+```
+```csharp
+.ColumnSearching(true, "form-control", SearchPosition.Header)
+```
 ## Title
 Set column header. Default is property name.
 
