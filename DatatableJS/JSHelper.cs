@@ -68,7 +68,7 @@ namespace DatatableJS
         public static IHtmlContent RenderHtml<T>(this GridBuilder<T> grid)
         {
             var tfoot = grid._columnSearching ?
-                $@"<tfoot>
+                $@"<tfoot style=""display: table-header-group;"">
                             <tr class=""filters"">
                                 {string.Join(Environment.NewLine, grid._columns.Select(a => string.Format("<th>{0}</th>", a.Searchable ? $"<input type=\"{((a.Type == typeof(DateTime?) || a.Type == typeof(DateTime)) && grid._serverSide ? "date" : "text")}\" style=\"width:100%\" placeholder=\"{a.Title}\" class=\"{grid._columnSearchingCss}\" />" : "<input style=\"display:none\" />")))}
                             </tr>
@@ -116,6 +116,9 @@ namespace DatatableJS
                         }};"
                         : string.Empty;
 
+            var initHeaderSearch = grid._columnSearchPosition == SearchPosition.Header ?
+                $"$('#{grid._name} tfoot').insertAfter('#{grid._name} thead');" : string.Empty;
+
             if (!String.IsNullOrEmpty(grid._callBack.InitComplete) && grid._columnSearching == false)
             {
                 tfootInit = "initComplete: function (settings, json) {";
@@ -138,6 +141,7 @@ namespace DatatableJS
                                             }});
                                         }});
                                         {initFootSearch}
+                                        {initHeaderSearch}
                                     }},"
                                     : string.Empty;
             }
@@ -156,6 +160,7 @@ namespace DatatableJS
                                             }});
                                         }});
                                         {initFootSearch}
+                                        {initHeaderSearch}
                                     }},"
                                     : string.Empty;
             }
