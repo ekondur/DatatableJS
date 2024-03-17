@@ -27,7 +27,7 @@ namespace DatatableJS.Data
 
             foreach (var item in request.filters)
             {
-                var exp = GetExpression<T>(item.Operand, item.Field, item.Value, item.CaseSensitive);
+                var exp = GetExpression<T>(item.Operand, item.Field, item.Value);
                 if (exp != null)
                 {
                     query = query.Where(exp);
@@ -97,7 +97,7 @@ namespace DatatableJS.Data
             return result;
         }
 
-        private static Expression<Func<T, bool>> GetExpression<T>(Operand operand, string field, string value, bool caseSensitive)
+        private static Expression<Func<T, bool>> GetExpression<T>(Operand operand, string field, string value)
         {
             return ExpressionBuilder
                 .GetExpression<T>(new FilterDef
@@ -105,7 +105,6 @@ namespace DatatableJS.Data
                     Operand = operand,
                     Field = field,
                     Value = value,
-                    CaseSensitive = caseSensitive
                 });
         }
 
