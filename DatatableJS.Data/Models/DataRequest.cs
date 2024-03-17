@@ -28,7 +28,6 @@ namespace DatatableJS.Data
         public string Field { get; set; }
         public string Value { get; set; }
         public Operand Operand { get; set; }
-        public bool CaseSensitive { get; set; }
     }
 
     public class Column
