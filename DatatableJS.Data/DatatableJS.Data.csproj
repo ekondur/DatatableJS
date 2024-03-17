@@ -12,9 +12,9 @@
     <RepositoryUrl>https://github.com/ekondur/DatatableJS</RepositoryUrl>    
     <RepositoryType>git</RepositoryType>    
     <PackageTags>C#, Jquery Datatables, Entity Framework, Query, Linq</PackageTags>    
-    <PackageReleaseNotes>Added Insensitive Search</PackageReleaseNotes>    
+    <PackageReleaseNotes>Reverted Case Sensitive Issue</PackageReleaseNotes>    
     <NeutralLanguage>en</NeutralLanguage>    
-    <Version>3.7.0</Version>    
+    <Version>3.8.0</Version>    
     <PackageIcon>datatable-js.png</PackageIcon>    
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
