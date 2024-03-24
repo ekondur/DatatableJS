@@ -234,7 +234,7 @@ namespace DatatableJS
                         '</button>'+
                         '<div class=""dropdown-menu"">'+
                         {string.Join(Environment.NewLine, 
-                        commands.Select(a => $@"'<a class=""dropdown-item"" href=""#"" onclick=""{a.OnClick}('+data+');return false;"">{a.Text}</a>'+"))}
+                        commands.Select(a => $@"'<a class=""dropdown-item"" href=""#"" onclick=""{a.OnClick}(\''+data+'\');return false;"">{a.Text}</a>'+"))}
                         '</div>'+
                     '</div>'";
             _grid._columns.Add(_column);
