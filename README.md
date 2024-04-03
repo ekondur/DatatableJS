@@ -3,7 +3,7 @@
 [![NuGet](http://img.shields.io/nuget/v/DatatableJS.svg)](https://www.nuget.org/packages/DatatableJS/)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d794ab84939f4ddc96fffebd6ddf6ff7)](https://www.codacy.com/gh/ekondur/DatatableJS/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ekondur/DatatableJS&amp;utm_campaign=Badge_Grade)
 ### What is DatatableJS?
-DatatableJS is a helper to create a grid with Jquery Datatable and provides an extension to retrive data generically from Entity Framework context. It possible to use many datatable.js features with Html helper. It gives serverside or client side options. There's more: [Wiki Documentation](https://github.com/ekondur/DatatableJS/wiki)
+DatatableJS is a helper to create a grid with Jquery Datatable and provides an extension to retrieve data generically from the Entity Framework context. It is possible to use many datatable.js features with HTML helper. It gives server-side or client-side options. There's more: [Wiki Documentation](https://github.com/ekondur/DatatableJS/wiki)
 
 ![Ekran Alıntısı](https://user-images.githubusercontent.com/4971326/87161335-0f5c1a80-c2cd-11ea-8e19-ed43087bbbe5.PNG)
 
