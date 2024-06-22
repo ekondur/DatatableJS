@@ -288,7 +288,7 @@ namespace DatatableJS.Net
                                 data: {grid.GetDataStr()}
                             }},
                             columns: [{string.Join(", ", grid._columns.Select(a => $@"{{ 
-                                data: '{(grid._camelCase ? char.ToLowerInvariant(a.Data[0]) + a.Data.Substring(1) : a.Data)}',
+                                data: '{(a.Data != null ? (grid._camelCase ? char.ToLowerInvariant(a.Data[0]) + a.Data.Substring(1) : a.Data) : string.Empty)}',
                                 name: '{a.Data}',
                                 defaultContent: '{a.DefaultContent}',
                                 orderable: {a.Orderable.ToLowString()},
