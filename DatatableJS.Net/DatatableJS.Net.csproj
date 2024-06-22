@@ -12,10 +12,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageTags>C#, Helper, Jquery Datatables, Entity Framework, Mvc</PackageTags>
-    <PackageReleaseNotes>Fixed Command String Key Issue</PackageReleaseNotes>
-    <AssemblyVersion>3.8.1</AssemblyVersion>
-    <FileVersion>3.8.1</FileVersion>
-    <Version>3.8.1</Version>
+    <PackageReleaseNotes>Fixed Selecting Checkbox Issue</PackageReleaseNotes>
+    <AssemblyVersion>3.8.2</AssemblyVersion>
+    <FileVersion>3.8.2</FileVersion>
+    <Version>3.8.2</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
