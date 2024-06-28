@@ -12,10 +12,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageTags>C#, Helper, Jquery Datatables, Entity Framework, Mvc</PackageTags>
-    <PackageReleaseNotes>Fixed Selecting Checkbox Issue</PackageReleaseNotes>
-    <AssemblyVersion>3.8.2</AssemblyVersion>
-    <FileVersion>3.8.2</FileVersion>
-    <Version>3.8.2</Version>
+    <PackageReleaseNotes>Added Select All Checkbox</PackageReleaseNotes>
+    <AssemblyVersion>3.9.0</AssemblyVersion>
+    <FileVersion>3.9.0</FileVersion>
+    <Version>3.9.0</Version>
     <PackageIcon>datatable-js.png</PackageIcon>
     <PackageIconUrl />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
