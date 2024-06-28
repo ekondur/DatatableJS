@@ -79,7 +79,10 @@ namespace DatatableJS
                     <table id=""{grid._name}"" class=""{grid._cssClass}"" style=""width:100%"">
                         <thead>
                             <tr>
-                                {string.Join(Environment.NewLine, grid._columns.Select(a => string.Format("<th>{0}</th>", a.Title)))}
+                                {string.Join(Environment.NewLine, 
+                                grid._columns.Select(a => grid._selectEnable && grid._selectItems == SelectItems.Checkbox && a.ClassName == "select-checkbox" 
+                                    ? $"<th style=\"text-align:center\"><input type=\"checkbox\" id=\"{grid._name}_SelectAll\"></th>" 
+                                    : string.Format("<th>{0}</th>", a.Title)))}
                             </tr>
                         </thead>
                         {tfoot}
@@ -271,6 +274,7 @@ namespace DatatableJS
                     }});
                     {(string.IsNullOrEmpty(grid._captionTop) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:top\">{1}</caption>');", grid._name, grid._captionTop))}
                     {(string.IsNullOrEmpty(grid._captionBottom) ? string.Empty : string.Format("$('#{0}').append('<caption style=\"caption-side:bottom\">{1}</caption>');", grid._name, grid._captionBottom))}
+                    {grid.GetSelectionScript()}
                     </script>";
 
             return new HtmlString(script);
@@ -284,6 +288,20 @@ namespace DatatableJS
                     {(grid._filters.Count > 0 ? filters : string.Empty)}
                     {(string.IsNullOrEmpty(grid._data) ? string.Empty : string.Format("d.data = {0}()", grid._data))}
                     }}";
+        }
+
+        private static string GetSelectionScript<T>(this GridBuilder<T> grid)
+        {
+            return grid._selectEnable && grid._selectItems == SelectItems.Checkbox ?
+                $@"$(""#{grid._name}_SelectAll"").on( ""click"", function(e) {{
+                var  {grid._name}DT = $(""#{grid._name}"").DataTable();
+                if ($(this).is( "":checked"" )) {{
+                        {grid._name}DT.rows().select();
+                    }} 
+                    else {{
+                        {grid._name}DT.rows().deselect(); 
+                    }}
+                }});" : string.Empty;
         }
     }
 }
