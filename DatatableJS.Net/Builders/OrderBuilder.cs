@@ -35,7 +35,7 @@ namespace DatatableJS.Net
             var propertyName = ExpressionHelpers<T>.PropertyName(property);
 
             var column = _grid._columns
-                .Where(c => c.Data.Equals(propertyName))
+                .Where(c => c.Data != null && c.Data.Equals(propertyName))
                 .FirstOrDefault();
 
             if (column == null)
