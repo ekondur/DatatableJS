@@ -1,4 +1,4 @@
-> DatatableJs will **no longer** be maintained. For a more advanced version, visit [RazorKit.DataTables](https://github.com/ekondur/RazorKit.DataTables)
+> DatatableJs will **no longer** be maintained. For a more advanced version, visit [RazorKit](https://github.com/ekondur/RazorKit)
 
 # DatatableJS
 [![Build status](https://ci.appveyor.com/api/projects/status/jquswi3vnm0kd9n9/branch/main?svg=true)](https://ci.appveyor.com/project/ekondur/datatablejs/branch/main)
